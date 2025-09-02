@@ -1,0 +1,19 @@
+.login {
+    width: 300px;
+}
+
+.relative {
+    position: relative;
+}
+
+.eyeClose,
+.eyeOpen {
+    position: absolute;
+    right: 10px;
+    bottom: -1px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    cursor: pointer;
+}

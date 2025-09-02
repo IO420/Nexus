@@ -1,0 +1,145 @@
+.barNavigation {
+    text-align: center;
+    background-color: rgb(1, 92, 184);
+    padding: 0 20px;
+}
+
+.barNavigation ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.barNavigation li {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.barNavigation li:hover {
+    background-color: #f9f9f9;
+    color: rgba(0, 61, 121, 1);
+}
+
+.barNavigation ul.active {
+    display: flex;
+    width: 100%;
+}
+
+.menuToggle {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.menuToggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.subMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+    border-radius: 4px 4px 0 0;
+    padding: 15px 0;
+}
+
+.subMenu ul {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    width: 100%;
+    background-color: rgba(0, 61, 121, 1);
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.subMenu.open ul {
+    display: flex;
+    color: rgba(0, 61, 121, 1);
+}
+
+.subMenu ul:hover {
+    color: #5b8cc9;
+}
+
+.subMenu:hover ul {
+    display: flex;
+}
+
+.subMenu li {
+    padding: 10px 0;
+}
+
+.containerLinks{
+    padding: 0 !important;
+}
+
+.links {
+    color: white;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+
+    .menuToggle {
+        display: flex;
+        position: relative;
+        align-items: end;
+        transition: transform 0.3s ease;
+    }
+
+    .menuToggle.center {
+        align-items: center;
+        transform: translateX(-50%);
+        left: 50%;
+    }
+
+    .barNavigation {
+        font-size: 15px;
+    }
+
+    .barNavigation ul {
+        position: absolute;
+        background-color: rgb(1, 92, 184);
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+        align-items: center;
+        display: none;
+        z-index: 1;
+        height: auto;
+    }
+
+    .barNavigation {
+        padding: 0;
+    }
+
+    .barNavigation li:hover {
+        background-color: rgba(0, 61, 121, 1);
+        color: white;
+        border-radius: 0;
+        border: none;
+    }
+
+    .subMenu ul {
+        width: 90%;
+        border-radius: 4px;
+        position: relative;
+        background-color: rgba(0, 61, 121, 1);
+    }
+
+}
