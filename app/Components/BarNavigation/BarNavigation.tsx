@@ -81,7 +81,7 @@ function BarNavigation() {
                     </ul>
                 </li>
 
-                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
+                <li className={`subMenu ${openSubMenu === 3 ? "open" : ""}`} onClick={() => toggleSubMenu(3)}>
                     Reportes
                     <ul>
                         <Link href="/Recibo">
@@ -95,13 +95,15 @@ function BarNavigation() {
                         </Link>
                     </ul>
                 </li>
-                <Link href="/QuitarSancion" className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
+                <Link href="/QuitarSancion" className={`subMenu`}>
                     <li>
                         Quitar sancion
                     </li>
                 </Link>
-                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
-                    Cambiar contraseña
+                <li className={`subMenu`}>
+                    <Link href="CambiarPass">
+                        Cambiar contraseña
+                    </Link>
                 </li>
             </ul>
         </nav>

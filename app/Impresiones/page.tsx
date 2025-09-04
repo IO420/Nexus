@@ -6,12 +6,20 @@ import Impressions from "../Components/Impressions/impressions";
 import Toggle from "../Components/Toggle/Toggle";
 
 import "@/app/globals.css";
+import Information from "../Components/Information/information";
 
 export default function Page() {
   return (
     <section className="containerSection">
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
       <SearchUser />
+
+      <Information
+        NoCuenta="idcuanta"
+        Nombre="juan"
+        Carrera="carrera"
+        Credito="credito"
+      />
 
       <Toggle
         defaultView="1"

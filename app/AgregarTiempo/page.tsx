@@ -5,7 +5,7 @@ export default function Page() {
     <section className='containerSection'>
       <h2 className='title'> AGREGAR TIEMPO </h2>
 
-      <SearchUser/>
+      <SearchUser />
     </section>
 
   );

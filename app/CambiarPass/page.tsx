@@ -3,9 +3,11 @@ import SearchUser from "../Components/SearchUser/searchUser";
 export default function Page() {
   return (
     <section className='containerSection'>
-      <h2 className='title'> Quitar Sanciones </h2>
+      <h2 className='title'> Cambiar contraseña </h2>
+
       <SearchUser/>
     </section>
+
   );
 }
 //IO

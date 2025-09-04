@@ -1,7 +1,5 @@
 'use client'
 import { useState } from "react";
-import Information from "../Information/information";
-
 function SearchUser() {
     const [numAccount, setNumAccount] = useState('');
     return (
@@ -29,13 +27,6 @@ function SearchUser() {
                     </button>
                 </div>
             </form>
-
-            <Information
-            NoCuenta="idcuanta"
-            Nombre="juan"
-            Carrera="carrera"
-            Credito="credito"
-            />
         </>
     )
 }
