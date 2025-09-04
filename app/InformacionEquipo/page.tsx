@@ -62,7 +62,8 @@ export default function Page() {
             label: "Programa por equipo",
             content:
               <>
-
+                <button></button>
+                <label>hola</label>
               </>,
           },
           {
