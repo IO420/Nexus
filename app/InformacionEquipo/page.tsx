@@ -1,4 +1,3 @@
-import SearchUser from "../Components/SearchUser/searchUser";
 import Toggle from "../Components/Toggle/Toggle";
 
 export default function Page() {
@@ -61,7 +60,18 @@ export default function Page() {
           {
             key: "2",
             label: "Programa por equipo",
-            content: <></>,
+            content:
+              <>
+
+              </>,
+          },
+          {
+            key: "3",
+            label: "Programa por sala",
+            content:
+              <>
+
+              </>,
           },
         ]}
       />

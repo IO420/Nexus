@@ -22,8 +22,8 @@ function BarNavigation() {
             </div>
 
             <ul className={openMenu ? "active" : ""}>
-                <li className={`subMenu ${openSubMenu === 0 ? "open" : ""}`} onClick={() => toggleSubMenu(0)}>
-                    Inscripciones
+                <li className={`subMenu ${openSubMenu === 0 ? "open" : ""}`}>
+                    <span onClick={() => toggleSubMenu(0)}>Inscripciones</span>
                     <ul className="containerLinks">
                         <Link href="/Alta" className="links">
                             <li >Alta</li>
@@ -37,8 +37,8 @@ function BarNavigation() {
                     </ul>
                 </li>
 
-                <li className={`subMenu ${openSubMenu === 1 ? "open" : ""}`} onClick={() => toggleSubMenu(1)}>
-                    Servicios
+                <li className={`subMenu ${openSubMenu === 1 ? "open" : ""}`}>
+                    <span onClick={() => toggleSubMenu(1)}>Servicios</span>
                     <ul>
                         <Link href="/Impresiones" className="links">
                             <li >
@@ -63,8 +63,8 @@ function BarNavigation() {
                     </ul>
                 </li>
 
-                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`} onClick={() => toggleSubMenu(2)}>
-                    Equipo
+                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
+                    <span onClick={() => toggleSubMenu(2)}>Equipo</span>
                     <ul >
                         <Link href="/InformacionEquipo" className="links">
                             <li>Informacion de Equipos</li>
@@ -81,8 +81,9 @@ function BarNavigation() {
                     </ul>
                 </li>
 
-                <li className={`subMenu ${openSubMenu === 3 ? "open" : ""}`} onClick={() => toggleSubMenu(3)}>
-                    Reportes
+                <li className={`subMenu ${openSubMenu === 3 ? "open" : ""}`}>
+                    <span onClick={() => toggleSubMenu(3)}>Reportes</span>
+
                     <ul>
                         <Link href="/Recibo">
                             <li>Recibo</li>
@@ -95,13 +96,13 @@ function BarNavigation() {
                         </Link>
                     </ul>
                 </li>
-                <Link href="/QuitarSancion" className={`subMenu`}>
-                    <li>
-                        Quitar sancion
-                    </li>
-                </Link>
                 <li className={`subMenu`}>
-                    <Link href="CambiarPass">
+                    <Link href="/QuitarSancion" className="links">
+                        Quitar sancion
+                    </Link>
+                </li>
+                <li className={`subMenu`}>
+                    <Link href="CambiarPass" className="links">
                         Cambiar contraseña
                     </Link>
                 </li>
