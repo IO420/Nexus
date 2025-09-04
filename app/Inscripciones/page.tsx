@@ -1,5 +1,4 @@
 'use client';
-
 import Receipt from "../Components/Receipt/Receipt";
 import SearchUser from "../Components/SearchUser/searchUser";
 import Selection from "../Components/Selection/Selection";
@@ -8,7 +7,7 @@ import "./inscriptions.css"
 
 export default function Page() {
     return (
-        <section className='containerForm'>
+        <section className='containerSection'>
             <h2 className='title'> INSCRIPCION </h2>
             <SearchUser />
 

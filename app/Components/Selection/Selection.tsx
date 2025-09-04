@@ -16,10 +16,6 @@ function Selection() {
       img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
     },
     {
-      name: "LINUX",
-      img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
-    },
-    {
       name: "PROFESORES",
       img: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     },

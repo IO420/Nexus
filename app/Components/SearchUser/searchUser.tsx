@@ -1,11 +1,12 @@
 'use client'
 import { useState } from "react";
+import Information from "../Information/information";
 
 function SearchUser() {
     const [numAccount, setNumAccount] = useState('');
     return (
         <>
-            <form>
+            <form className="containerForm">
                 <label className='label'>No.Cuenta</label>
                 <div className='groupInput'>
                     <input
@@ -28,13 +29,13 @@ function SearchUser() {
                     </button>
                 </div>
             </form>
-            
-            <div className='information'>
-                <label><b>No.Cuenta: </b>id_cuenta</label>
-                <label><b>Nombre: </b>nombre</label>
-                <label><b>Carrera: </b>carrera</label>
-                <label><b>Crédito: </b>credito</label>
-            </div>
+
+            <Information
+            NoCuenta="idcuanta"
+            Nombre="juan"
+            Carrera="carrera"
+            Credito="credito"
+            />
         </>
     )
 }

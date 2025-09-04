@@ -1,51 +1,48 @@
-'use client'
+'use client';
 
-import { useState } from "react";
-import Receipt from "../Components/Receipt/Receipt";
 import SearchUser from "../Components/SearchUser/searchUser";
-import "@/app/globals.css"
+import Receipt from "../Components/Receipt/Receipt";
 import Impressions from "../Components/Impressions/impressions";
+import Toggle from "../Components/Toggle/Toggle";
+
+import "@/app/globals.css";
 
 export default function Page() {
-  const [view, setView] = useState('impresiones');
-
   return (
-    <section className='containerForm'>
-      <h2 className='title'> IMPRESIONES Y PLOTEO </h2>
+    <section className="containerSection">
+      <h2 className="title">IMPRESIONES Y PLOTEO</h2>
       <SearchUser />
-      <section className="toggleSection">
 
-        <div className='toggleGroup'>
-          <button
-            className={`toggleButton ${view === 'impresiones' ? 'active' : ''}`}
-            onClick={() => setView('impresiones')}
-          >
-            Impresiones
-          </button>
-          <button
-            className={`toggleButton ${view === 'recibo' ? 'active' : ''}`}
-            onClick={() => setView('recibo')}
-          >
-            Recibo
-          </button>
-        </div>
-
-        {view === 'impresiones' && (
-          <Impressions />
-        )}
-
-        {view === 'recibo' && (
-          <>
-            <Receipt />
-            <button
-              className="button buttonSearch">
-              Buscar
-            </button>
-          </>
-
-        )}
-
-      </section>
+      <Toggle
+        defaultView="1"
+        options={[
+          {
+            key: "1",
+            label: "Recibo",
+            content: <Receipt />,
+          },
+          {
+            key: "2",
+            label: "Impresiones B/N",
+            content: <Impressions />,
+          },
+          {
+            key: "3",
+            label: "Impresiones color",
+            content: <Impressions />,
+          },
+          {
+            key: "4",
+            label: "Plotter",
+            content: <Impressions />,
+          },
+          {
+            key: "5",
+            label: "Escaner",
+            content: <Impressions />,
+          },
+        ]}
+      />
     </section>
   );
 }

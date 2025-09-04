@@ -1,6 +1,8 @@
 'use client'
+
 import { useState } from "react";
 import './Impressions.css'
+
 function Impressions() {
     const [pages, setPages] = useState('');
 
@@ -50,8 +52,8 @@ function Impressions() {
                 e.preventDefault();
                 // handlePayment();
             }}>
+            <div className="gap">
 
-            <div className='impressions'>
                 <div className='groupLabel'>
                     <label className='label'>Costo: $1.00</label>
                 </div>
@@ -101,3 +103,4 @@ function Impressions() {
 }
 
 export default Impressions
+//IO

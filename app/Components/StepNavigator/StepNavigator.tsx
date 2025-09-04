@@ -24,10 +24,10 @@ export default function StepNavigator({ totalSteps, children, onFinish }: StepNa
     };
 
     return (
-        <div className="receipt">
+        <section className="stepNavigator">
             {children[step - 1]}
 
-            <div className="buttonContainer">
+            <div className="absoluteButton">
                 {step > 1 && (
                     <button
                         onClick={handlePrev}
@@ -36,13 +36,15 @@ export default function StepNavigator({ totalSteps, children, onFinish }: StepNa
                     </button>
                 )}
 
-                <button
-                    onClick={handleNext}
-                    className="button buttonSearch"
-                >
-                    {step === totalSteps ? "Inscribir" : "Siguiente"}
-                </button>
+                {step < totalSteps &&
+                    <button
+                        onClick={handleNext}
+                        className="button buttonSearch"
+                    >
+                        Siguiente
+                    </button>
+}
             </div>
-        </div>
+        </section>
     );
 }

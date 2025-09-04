@@ -17,7 +17,7 @@ export default function Page() {
   };
 
   return (
-    <section className="containerForm">
+    <section className="containerSection">
       <h1 className="title">ALTA</h1>
 
       <StepNavigator totalSteps={2}>

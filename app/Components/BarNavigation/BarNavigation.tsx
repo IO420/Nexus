@@ -81,9 +81,28 @@ function BarNavigation() {
                     </ul>
                 </li>
 
-                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>Reportes</li>
-                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>Quitar sancion</li>
-                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>Cambiar contraseña</li>
+                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
+                    Reportes
+                    <ul>
+                        <Link href="/Recibo">
+                            <li>Recibo</li>
+                        </Link>
+                        <Link href="/Inscritos">
+                            <li>Inscritos</li>
+                        </Link>
+                        <Link href="/BitacoraSanciones">
+                            <li>Bitacora y sanciones</li>
+                        </Link>
+                    </ul>
+                </li>
+                <Link href="/QuitarSancion" className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
+                    <li>
+                        Quitar sancion
+                    </li>
+                </Link>
+                <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
+                    Cambiar contraseña
+                </li>
             </ul>
         </nav>
     );

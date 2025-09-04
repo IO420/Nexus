@@ -2,7 +2,7 @@ import "./Login.css";
 
 function Login() {
     return (
-        <section className='containerSection'>
+        <section className='center containerSection'>
 
             <form
                 className='login'
