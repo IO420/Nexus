@@ -3,8 +3,16 @@
 import { useState } from "react";
 import './Impressions.css'
 
-function Impressions() {
-    const [pages, setPages] = useState('');
+interface CostOption {
+  value: number;
+}
+
+interface ImpressionsProps {
+  costs: CostOption[];
+}
+function Impressions({ costs }:ImpressionsProps) {
+    const [pages, setPages] = useState("");
+    const [cost, setCost] = useState("");
 
     const [error, setError] = useState('');
     const [alert, setAlert] = useState('');
@@ -54,8 +62,19 @@ function Impressions() {
             }}>
             <div className="gap">
 
-                <div className='groupLabel'>
-                    <label className='label'>Costo: $1.00</label>
+                <div className='groupInput'>
+                    <label className='label'>Costo:</label>
+                    <select
+                        value={cost}
+                        onChange={(e) => setCost(e.target.value)}
+                    >
+                        <option value="">-- Selecciona un tiempo --</option>
+                        {costs.map((c) => (
+                            <option key={c.value} value={c.value}>
+                                ${c.value}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 <div className='groupInput'>

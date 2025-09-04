@@ -25,13 +25,13 @@ function BarNavigation() {
                 <li className={`subMenu ${openSubMenu === 0 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(0)}>Inscripciones</span>
                     <ul className="containerLinks">
-                        <Link href="/Alta" className="links">
+                        <Link href="/Alta">
                             <li >Alta</li>
                         </Link>
-                        <Link href="/AgregarTiempo" className="links">
+                        <Link href="/AgregarTiempo" >
                             <li >Agregar Tiempo</li>
                         </Link>
-                        <Link href="/Inscripciones" className="links">
+                        <Link href="/Inscripciones">
                             <li>Inscripciones</li>
                         </Link>
                     </ul>
@@ -40,22 +40,22 @@ function BarNavigation() {
                 <li className={`subMenu ${openSubMenu === 1 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(1)}>Servicios</span>
                     <ul>
-                        <Link href="/Impresiones" className="links">
+                        <Link href="/Impresiones">
                             <li >
                                 Impresiones y Ploteo
                             </li>
                         </Link>
-                        <Link href="/AsignacionMesas" className="links">
+                        <Link href="/AsignacionMesas">
                             <li>
                                 Asignacion de Mesas
                             </li>
                         </Link>
-                        <Link href="/AsignacionEquipo" className="links">
+                        <Link href="/AsignacionEquipo">
                             <li>
                                 Asignacion de Equipos
                             </li>
                         </Link>
-                        <Link href="/Monitor" className="links">
+                        <Link href="/Monitor">
                             <li>
                                 Monitor
                             </li>
@@ -66,16 +66,16 @@ function BarNavigation() {
                 <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(2)}>Equipo</span>
                     <ul >
-                        <Link href="/InformacionEquipo" className="links">
+                        <Link href="/InformacionEquipo">
                             <li>Informacion de Equipos</li>
                         </Link>
-                        <Link href="/ActivosMantenimiento" className="links">
+                        <Link href="/ActivosMantenimiento">
                             <li >Activos y en Mantenimiento</li>
                         </Link>
-                        <Link href="/Mensajes" className="links">
+                        <Link href="/Mensajes">
                             <li>Mensajes</li>
                         </Link>
-                        <Link href="/Programas" className="links">
+                        <Link href="/Programas">
                             <li>Programas</li>
                         </Link>
                     </ul>
@@ -96,12 +96,12 @@ function BarNavigation() {
                         </Link>
                     </ul>
                 </li>
-                <li className={`subMenu`}>
+                <li className="subMenu">
                     <Link href="/QuitarSancion" className="links">
                         Quitar sancion
                     </Link>
                 </li>
-                <li className={`subMenu`}>
+                <li className="subMenu">
                     <Link href="CambiarPass" className="links">
                         Cambiar contraseña
                     </Link>
@@ -112,3 +112,4 @@ function BarNavigation() {
 }
 
 export default BarNavigation;
+//IO

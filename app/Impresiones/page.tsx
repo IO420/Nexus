@@ -32,22 +32,42 @@ export default function Page() {
           {
             key: "2",
             label: "Impresiones B/N",
-            content: <Impressions />,
+            content: <Impressions
+              costs={[
+                { value: 1 },
+                { value: 2 },
+              ]}
+            />,
           },
           {
             key: "3",
             label: "Impresiones color",
-            content: <Impressions />,
+            content: <Impressions
+              costs={[
+                { value: 2 },
+                { value: 4 },
+              ]}
+            />,
           },
           {
             key: "4",
             label: "Plotter",
-            content: <Impressions />,
+            content: <Impressions
+              costs={[
+                { value: 1 },
+                { value: 2 },
+              ]}
+            />,
           },
           {
             key: "5",
             label: "Escaner",
-            content: <Impressions />,
+            content: <Impressions
+              costs={[
+                { value: 1 },
+                { value: 2 },
+              ]} 
+              />,
           },
         ]}
       />
