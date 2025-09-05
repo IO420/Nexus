@@ -91,7 +91,7 @@ footer {
   flex-direction: column;
 }
 
-.containerForm{
+.containerForm {
   width: 100%;
   max-width: 450px;
 }
@@ -102,7 +102,7 @@ footer {
   right: 0;
   width: 400px;
   height: 615px;
-  background-image: url('/rock.jpg');
+  background-image: url("/rock.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -111,7 +111,7 @@ footer {
 }
 
 .img::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, #f9f9f9, rgba(128, 128, 128, 0));
@@ -136,7 +136,6 @@ select {
   align-items: center;
   justify-content: space-between;
 }
-
 
 .button {
   padding: 0.5rem 1.25rem;
@@ -166,7 +165,6 @@ select {
   background-color: #15803d;
 }
 
-
 .absoluteButton {
   position: absolute;
   bottom: 1rem;
@@ -185,7 +183,7 @@ ul {
   margin-bottom: 10px;
 }
 
-.label{
+.label {
   font-size: 1rem;
   font-weight: bold;
   display: block;
@@ -206,7 +204,7 @@ a {
   margin-top: 10px;
 }
 
-.information ul{
+.information ul {
   padding: 1rem;
 }
 
@@ -275,7 +273,7 @@ form {
 }
 
 
-@media(max-width:800px) {
+@media (max-width: 800px) {
   header {
     padding: 6px 16px;
   }
@@ -301,7 +299,7 @@ form {
 
   .img::before,
   .img::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -328,8 +326,8 @@ form {
   }
 }
 
-@media(max-height:960px) {
+@media (max-height: 960px) {
   .container {
-    margin: 0
+    margin: 0;
   }
 }
