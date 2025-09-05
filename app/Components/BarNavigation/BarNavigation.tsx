@@ -24,14 +24,14 @@ function BarNavigation() {
             <ul className={openMenu ? "active" : ""}>
                 <li className={`subMenu ${openSubMenu === 0 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(0)}>Inscripciones</span>
-                    <ul className="containerLinks">
-                        <Link href="/Alta">
+                    <ul className="containerLinks" >
+                        <Link href="/Alta" className="links">
                             <li >Alta</li>
                         </Link>
-                        <Link href="/AgregarTiempo" >
+                        <Link href="/AgregarTiempo" className="links">
                             <li >Agregar Tiempo</li>
                         </Link>
-                        <Link href="/Inscripciones">
+                        <Link href="/Inscripciones" className="links">
                             <li>Inscripciones</li>
                         </Link>
                     </ul>
@@ -40,22 +40,22 @@ function BarNavigation() {
                 <li className={`subMenu ${openSubMenu === 1 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(1)}>Servicios</span>
                     <ul>
-                        <Link href="/Impresiones">
+                        <Link href="/Impresiones" className="links">
                             <li >
                                 Impresiones y Ploteo
                             </li>
                         </Link>
-                        <Link href="/AsignacionMesas">
+                        <Link href="/AsignacionMesas" className="links">
                             <li>
                                 Asignacion de Mesas
                             </li>
                         </Link>
-                        <Link href="/AsignacionEquipo">
+                        <Link href="/AsignacionEquipo" className="links">
                             <li>
                                 Asignacion de Equipos
                             </li>
                         </Link>
-                        <Link href="/Monitor">
+                        <Link href="/Monitor" className="links">
                             <li>
                                 Monitor
                             </li>
@@ -66,16 +66,16 @@ function BarNavigation() {
                 <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(2)}>Equipo</span>
                     <ul >
-                        <Link href="/InformacionEquipo">
+                        <Link href="/InformacionEquipo" className="links">
                             <li>Informacion de Equipos</li>
                         </Link>
-                        <Link href="/ActivosMantenimiento">
+                        <Link href="/ActivosMantenimiento" className="links">
                             <li >Activos y en Mantenimiento</li>
                         </Link>
-                        <Link href="/Mensajes">
+                        <Link href="/Mensajes" className="links">
                             <li>Mensajes</li>
                         </Link>
-                        <Link href="/Programas">
+                        <Link href="/Programas" className="links">
                             <li>Programas</li>
                         </Link>
                     </ul>
@@ -85,13 +85,13 @@ function BarNavigation() {
                     <span onClick={() => toggleSubMenu(3)}>Reportes</span>
 
                     <ul>
-                        <Link href="/Recibo">
+                        <Link href="/Recibo" className="links">
                             <li>Recibo</li>
                         </Link>
-                        <Link href="/Inscritos">
+                        <Link href="/Inscritos" className="links">
                             <li>Inscritos</li>
                         </Link>
-                        <Link href="/BitacoraSanciones">
+                        <Link href="/BitacoraSanciones" className="links">
                             <li>Bitacora y sanciones</li>
                         </Link>
                     </ul>

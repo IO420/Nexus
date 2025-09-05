@@ -4,6 +4,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import BarNavigation from "./Components/BarNavigation/BarNavigation";
 import "./globals.css";
+import WavesBackground from "./Components/wavesBack";
 
 const poppins = Poppins({
   variable: "--font-poppins", // nombre de la variable CSS
@@ -31,6 +32,7 @@ export default function RootLayout({
             <div className="img"></div>
             {children}
           </div>
+          <WavesBackground />
         </main>
         <Footer />
       </body>

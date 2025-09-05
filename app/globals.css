@@ -5,6 +5,7 @@
 }
 
 body {
+  position: relative;
   font-family: var(--font-poppins), sans-serif;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
@@ -106,7 +107,7 @@ footer {
   background-position: center;
   overflow: hidden;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .img::after {
@@ -268,12 +269,11 @@ form {
 
 .toggleButton.active {
   background-color: #e5e7eb;
+  color: rgb(1, 92, 184);
   border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid rgb(1, 92, 184);
 }
 
-.toggleButton.active {
-  background-color: #f9fafb;
-}
 
 @media(max-width:800px) {
   header {
