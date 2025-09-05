@@ -7,7 +7,7 @@ export default function Page() {
   const [sanciones] = useState([
     {
       id: "1",
-      nombre: "Jose Garcia",
+      nombre: "Jose Toleda",
       mmotivo: "No cerrar sancion",
       duracion: "2",
       fecha_sancion: "10/09/2025 a las 02:45:26 PM",
