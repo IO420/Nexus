@@ -57,10 +57,16 @@ main {
 }
 
 footer {
+  display: flex;
+  justify-content: center;
   text-align: center;
   padding: 10px;
   background-color: rgba(0, 61, 121, 1);
+}
+
+footer p {
   color: white;
+  max-width: 1150px;
 }
 
 .container {
@@ -184,6 +190,14 @@ ul {
   margin-bottom: 10px;
 }
 
+.containerButton {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
 .label {
   font-size: 1rem;
   font-weight: bold;
@@ -274,6 +288,12 @@ form {
   border-bottom: 1px solid rgb(1, 92, 184);
 }
 
+.center {
+  display: grid;
+  grid-template-columns: auto 400px;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 800px) {
   header {

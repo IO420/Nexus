@@ -19,8 +19,7 @@
 }
 
 .barNavigation li:hover {
-    background-color: #f9f9f9;
-    color: rgba(0, 61, 121, 1);
+    background-color: #d59f0f;
 }
 
 .barNavigation ul.active {
@@ -94,10 +93,6 @@
     color: rgb(255, 255, 255);
 }
 
-.subMenu:hover span {
-    color: rgba(0, 61, 121, 1);
-}
-
 .containerLinks {
     padding: 0 !important;
 }
@@ -109,10 +104,6 @@
     color: white;
     width: 100%;
     height: 100%;
-}
-
-.subMenu:hover .links {
-    color: rgba(0, 61, 121, 1);
 }
 
 @media (max-width: 800px) {

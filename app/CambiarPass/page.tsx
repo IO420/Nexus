@@ -1,3 +1,4 @@
+import ChangePassword from "../Components/ChangePassword/changePassword";
 import SearchUser from "../Components/SearchUser/searchUser";
 
 export default function Page() {
@@ -5,7 +6,7 @@ export default function Page() {
     <section className='containerSection'>
       <h2 className='title'> Cambiar contraseña </h2>
 
-      <SearchUser/>
+      <ChangePassword/>
     </section>
 
   );

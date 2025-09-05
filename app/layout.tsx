@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import BarNavigation from "./Components/BarNavigation/BarNavigation";
 import "./globals.css";
-import WavesBackground from "./Components/wavesBack";
+import WavesBackground from "./Components/Wave/wavesBack";
 
 const poppins = Poppins({
   variable: "--font-poppins", // nombre de la variable CSS
