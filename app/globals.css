@@ -121,6 +121,7 @@ input,
 select {
   flex: 1;
   min-width: 200px;
+  max-width: 500px;
   padding: 0.5rem;
   border: 1px solid #cfcfcf;
   background-color: #fff;
@@ -240,7 +241,7 @@ form {
 
 .toggleSection {
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   margin-top: 1rem;
   border: 1px solid #e5e7eb;
   border-radius: 4px;
@@ -266,6 +267,7 @@ form {
 }
 
 .toggleButton.active {
+  font-weight: 700;
   background-color: #e5e7eb;
   color: rgb(1, 92, 184);
   border-radius: 4px 4px 0 0;
