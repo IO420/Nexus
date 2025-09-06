@@ -66,7 +66,6 @@ export default function Page() {
                         <td>{machine.plataforma}</td>
                         <td>{machine.area}</td>
                         <td>
-                          {" "}
                           <input type="checkbox" />
                         </td>
                       </tr>
@@ -98,7 +97,6 @@ export default function Page() {
                       <tr key={index}>
                         <td>{table.mesa}</td>
                         <td>
-                          {" "}
                           <input type="checkbox" />
                         </td>
                       </tr>

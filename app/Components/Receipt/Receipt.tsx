@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
 import "./Receipt.css"
-import Selection from "../Selection/Selection";
 
 function Receipt() {
     const [folio, setFolio] = useState('');

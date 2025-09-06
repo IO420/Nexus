@@ -24,7 +24,7 @@ function BarNavigation() {
             <ul className={openMenu ? "active" : ""}>
                 <li className={`subMenu ${openSubMenu === 0 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(0)}>Inscripciones</span>
-                    <ul className="containerLinks" >
+                    <ul className="containerLinks" onClick={toggleMenu}>
                         <Link href="/Alta" className="links">
                             <li >Alta</li>
                         </Link>
@@ -39,7 +39,7 @@ function BarNavigation() {
 
                 <li className={`subMenu ${openSubMenu === 1 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(1)}>Servicios</span>
-                    <ul>
+                    <ul onClick={toggleMenu}>
                         <Link href="/Impresiones" className="links">
                             <li >
                                 Impresiones y Ploteo
@@ -65,7 +65,7 @@ function BarNavigation() {
 
                 <li className={`subMenu ${openSubMenu === 2 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(2)}>Equipo</span>
-                    <ul >
+                    <ul onClick={toggleMenu}>
                         <Link href="/InformacionEquipo" className="links">
                             <li>Informacion de Equipos</li>
                         </Link>
@@ -83,8 +83,7 @@ function BarNavigation() {
 
                 <li className={`subMenu ${openSubMenu === 3 ? "open" : ""}`}>
                     <span onClick={() => toggleSubMenu(3)}>Reportes</span>
-
-                    <ul>
+                    <ul onClick={toggleMenu}>
                         <Link href="/Recibo" className="links">
                             <li>Recibo</li>
                         </Link>
@@ -96,12 +95,12 @@ function BarNavigation() {
                         </Link>
                     </ul>
                 </li>
-                <li className="subMenu">
+                <li className="subMenu" onClick={toggleMenu}>
                     <Link href="/QuitarSancion" className="links">
                         Quitar sancion
                     </Link>
                 </li>
-                <li className="subMenu">
+                <li className="subMenu" onClick={toggleMenu}>
                     <Link href="CambiarPass" className="links">
                         Cambiar contraseña
                     </Link>

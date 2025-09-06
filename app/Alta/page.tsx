@@ -20,66 +20,67 @@ export default function Page() {
     <section className="containerSection">
       <h1 className="title">ALTA</h1>
 
-      <div className='containerInput'>
-        <label className='label'>No.Cuenta</label>
-        <input
-          type='text'
-          //value={user}
-          //onChange={(e) => setUser(e.target.value)}
-          placeholder='Coloca un número de cuenta...'
-        />
+      <form className='containerForm'>
 
-        <label className='label'>Nombre</label>
-        <input
-          type='text'
-          //value={user}
-          //onChange={(e) => setUser(e.target.value)}
-          placeholder='Coloca '
-        />
+          <label className='label'>No.Cuenta</label>
+          <input
+            type='text'
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder='Coloca un número de cuenta...'
+          />
 
-        <label className='label'>Apellido Paterno</label>
-        <input
-          type='text'
-          //value={user}
-          //onChange={(e) => setUser(e.target.value)}
-          placeholder='Coloca '
-        />
+          <label className='label'>Nombre</label>
+          <input
+            type='text'
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder='Coloca '
+          />
 
-        <label className='label'>Apellido Materno</label>
-        <input
-          type='text'
-          //value={user}
-          //onChange={(e) => setUser(e.target.value)}
-          placeholder='Coloca '
-        />
+          <label className='label'>Apellido Paterno</label>
+          <input
+            type='text'
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder='Coloca '
+          />
 
-        <label className='label'>Email</label>
-        <input
-          type='text'
-          //value={user}
-          //onChange={(e) => setUser(e.target.value)}
-          placeholder='Coloca '
-        />
+          <label className='label'>Apellido Materno</label>
+          <input
+            type='text'
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder='Coloca '
+          />
 
-        <label className='label'>Fecha Nacimiento</label>
-        <input
-          type='text'
-          //value={user}
-          //onChange={(e) => setUser(e.target.value)}
-          placeholder='Coloca '
-        />
+          <label className='label'>Email</label>
+          <input
+            type='text'
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder='Coloca '
+          />
 
-        <label className='label'>Carrera</label>
-        <select
-          value={major}
-          onChange={(e) => setMajor(e.target.value)}
-        >
-          <option value="">-- Selecciona un tiempo --</option>
-          <option value="15">15 minutos</option>
-        </select>
+          <label className='label'>Fecha Nacimiento</label>
+          <input
+            type='text'
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder='Coloca '
+          />
 
-        <button className="button buttonSearch">registrar</button>
-      </div>
+          <label className='label'>Carrera</label>
+          <select
+            value={major}
+            onChange={(e) => setMajor(e.target.value)}
+          >
+            <option value="">-- Selecciona un tiempo --</option>
+            <option value="15">15 minutos</option>
+          </select>
+
+          <button className="button buttonSearch">registrar</button>
+      </form>
 
     </section>
   );

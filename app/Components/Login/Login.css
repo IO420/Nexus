@@ -2,6 +2,13 @@
     width: 300px;
 }
 
+.center {
+  display: grid;
+  grid-template-columns: auto 400px;
+  justify-content: center;
+  align-items: center;
+}
+
 .relative {
     position: relative;
 }
@@ -20,6 +27,6 @@
 
 @media(max-width:800px){
     .center{
-        display: flex;
+        display: flex ;
     }
 }

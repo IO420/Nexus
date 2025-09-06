@@ -95,6 +95,7 @@
 
 .containerLinks {
     padding: 0 !important;
+    border-radius: 0 0 4px 4px;
 }
 
 .links {
@@ -117,8 +118,6 @@
 
     .menuToggle.center {
         align-items: center;
-        transform: translateX(-50%);
-        left: 50%;
     }
 
     .barNavigation {
@@ -129,7 +128,6 @@
         position: absolute;
         background-color: rgb(1, 92, 184);
         flex-direction: column;
-        gap: 10px;
         padding: 10px 0;
         align-items: center;
         display: none;

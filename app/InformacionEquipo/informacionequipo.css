@@ -7,11 +7,6 @@
   justify-content: start;
 }
 
-.margin {
-  margin: 10px 0;
-  display: flex;
-  gap: 50px;
-}
 .conteinercuadro {
   display: flex;
   flex-direction: column;
@@ -50,6 +45,7 @@
   grid-template-columns: repeat(3, 240px); /* ancho fijo por columna */
   gap: 6px 20px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .checkbox-grid label {
@@ -65,22 +61,4 @@
   appearance: checkbox; /* lo vuelve a mostrar como checkbox */
   margin: 0;
   margin-right: 1px; /* espacio mínimo entre el box y el texto */
-}
-input[type="checkbox"] {
-  accent-color: #2563eb;
-}
-
-.btn {
-  display: inline-block;
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.btn:hover {
-  background: #1d4ed8;
 }
