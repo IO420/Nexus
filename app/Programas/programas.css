@@ -1,0 +1,9 @@
+.containersection {
+  width: 100%; /* Que use todo el ancho */
+  display: block; /* Evita que Flex/Grid lo centre */
+  text-align: left; /* Alinea el texto e inputs a la izquierda */
+  margin: 20px 0 0 20px; /* Espacio arriba y a la izquierda */
+}
+.margin {
+  margin: 10px 10px;
+}
