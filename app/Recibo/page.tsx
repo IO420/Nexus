@@ -24,7 +24,7 @@ export default function Page() {
 
   return (
     <section className="containerSection">
-      <h2 className="title"> RECIBO </h2>
+      <h2 className="title"> REPORTES </h2>
 
       <Toggle
         defaultView="1"
@@ -34,8 +34,8 @@ export default function Page() {
             label: "Por recibo",
             content: (
               <>
-                <SearchDateBetween />
                 <div className={styles.tableContainer}>
+                  <SearchDateBetween />
                   <table className={styles.machineTable}>
                     <thead>
                       <tr>
@@ -68,8 +68,8 @@ export default function Page() {
             label: "Por Servicio",
             content: (
               <>
-                <SearchDateBetween />
                 <div className={styles.tableContainer}>
+                  <SearchDateBetween />
                   <table className={styles.machineTable}>
                     <thead>
                       <tr>
