@@ -35,9 +35,9 @@ function SearchDateBetween() {
           />
         </div>
         <button
-          className="button buttonSearch"
+          className="button buttonSearch "
           type="submit"
-          style={{ margin: "1rem 0" }}
+          style={{ margin: "1rem 0 " }}
         >
           Buscar
         </button>
