@@ -2,6 +2,7 @@
     text-align: center;
     background-color: rgb(1, 92, 184);
     padding: 0 20px;
+    display: flex;
 }
 
 .barNavigation ul {
@@ -91,6 +92,7 @@
     align-items: center;
     justify-content: center;
     color: rgb(255, 255, 255);
+    font-size: 1.5rem;
 }
 
 .containerLinks {
@@ -105,6 +107,11 @@
     color: white;
     width: 100%;
     height: 100%;
+    font-size: 1.5rem;
+}
+
+thead,tbody{
+    font-size: 1.25rem;
 }
 
 @media (max-width: 800px) {
@@ -118,10 +125,12 @@
 
     .menuToggle.center {
         align-items: center;
+        margin: 0;
     }
 
     .barNavigation {
         font-size: 15px;
+        display: block;
     }
 
     .barNavigation ul {
@@ -140,7 +149,7 @@
     }
 
     .barNavigation li:hover {
-        background-color: rgba(0, 61, 121, 1);
+        background-color: #d59f0f;
         color: white;
         border-radius: 0;
         border: none;
@@ -151,6 +160,10 @@
         border-radius: 4px;
         position: relative;
         background-color: rgba(0, 61, 121, 1);
+    }
+    
+    thead,tbody{
+        font-size: 1rem;
     }
 
 }

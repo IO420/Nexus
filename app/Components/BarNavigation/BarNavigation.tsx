@@ -14,7 +14,7 @@ function BarNavigation() {
     return (
         <nav className="barNavigation">
             <div
-                className={`menuToggle ${openMenu ? 'center' : ''}`}
+                className={`menuToggle ${openMenu ? '' : ''}`}
                 onClick={toggleMenu}>
                 <div></div>
                 <div></div>
