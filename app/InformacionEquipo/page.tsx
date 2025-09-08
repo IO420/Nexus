@@ -26,7 +26,7 @@ export default function Page() {
                   type="text"
                   //value={user}
                   //onChange={(e) => setUser(e.target.value)}
-                  placeholder="Coloca un número de cuenta..."
+                  placeholder="Coloca"
                 />
 
                 <label className="label">Nombre</label>
