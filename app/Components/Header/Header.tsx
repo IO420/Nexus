@@ -1,21 +1,21 @@
 import Image from "next/image";
-import "./Header.css";
+import header from"./Header.module.css";
 import Link from "next/link";
 
 function Header() {
     return (
         <header>
-            <Link href="https://www.unam.mx/" className="center">
+            <Link href="https://www.unam.mx/" className={header.center}>
                 <Image
-                    className="logo"
+                    className={header.logo}
                     src="/logo_fes.png"
                     alt="Logo FES"
                     width={200}
                     height={50}
                 />
             </Link>
-            <div className="yellowPart"></div>
-            <div className="cedetecContainer">
+            <div className={header.yellowPart}></div>
+            <div className={header.cedetecContainer}>
                 <Image
                     src="/cedetec.jpg"
                     alt="Image of CEDETEC"

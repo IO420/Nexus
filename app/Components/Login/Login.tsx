@@ -2,7 +2,7 @@ import "./Login.css";
 
 function Login() {
     return (
-        <section className='center containerSection'>
+        <section className='centerGrid containerSection'>
 
             <form
                 className='login'
@@ -11,7 +11,7 @@ function Login() {
                     //handleLogin();
                 //</section>}}
             >
-                <h2 className='textHeader'>Inicio de sesión</h2>
+                <h2 className='title'>Inicio de sesión</h2>
 
                 <div className='containerInput'>
                     <label className='label'>Usuario</label>

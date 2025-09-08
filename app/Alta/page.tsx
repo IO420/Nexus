@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import "../globals.css";
+import StepNavigator from "../Components/StepNavigator/StepNavigator";
 
 export default function Page() {
   const [step, setStep] = useState(1);
@@ -20,8 +21,8 @@ export default function Page() {
     <section className="containerSection">
       <h1 className="title">ALTA</h1>
 
-      <form className='containerForm'>
-
+      <StepNavigator totalSteps={2} onFinish={() => console.log()}>
+        <form className='containerForm'>
           <label className='label'>No.Cuenta</label>
           <input
             type='text'
@@ -53,7 +54,8 @@ export default function Page() {
             //onChange={(e) => setUser(e.target.value)}
             placeholder='Coloca '
           />
-
+        </form>
+        <form>
           <label className='label'>Email</label>
           <input
             type='text'
@@ -80,9 +82,11 @@ export default function Page() {
           </select>
 
           <button className="button buttonSearch">registrar</button>
-      </form>
 
-    </section>
+        </form>
+      </StepNavigator>
+
+    </section >
   );
 }
 //IO

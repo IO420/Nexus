@@ -1,7 +1,7 @@
 
 function ChangePassword() {
     return (
-        <section className='center containerSection'>
+        <section className='centerGrid containerSection'>
 
             <form
                 className='login'
