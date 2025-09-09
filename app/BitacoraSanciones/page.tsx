@@ -5,8 +5,19 @@ import SearchDate from "../Components/SearchDate/SearchDate";
 import SearchUser from "../Components/SearchUser/searchUser";
 import Toggle from "../Components/Toggle/Toggle";
 import styles from "./Page.module.css"; // importamos el css
+import Information from "../Components/Information/information";
 
 export default function Page() {
+  const [usuario_sanciones] = useState([
+    {
+      no_cuenta: "425530275 ",
+      motivo: "Motivos",
+      duracion: "5",
+      fecha_sancion: "15/10/2025",
+      utilizar_hasta: "25/10/2025",
+    },
+  ]);
+
   const [machines] = useState([
     {
       hora_entrada: "10 ",
@@ -149,7 +160,71 @@ export default function Page() {
           {
             key: "4",
             label: "Sanciones",
-            content: <SearchUser />,
+            content: (
+              <>
+                <div className={styles.tableContainer}>
+                  <SearchUser></SearchUser>
+                  <Information NoCuenta="id cuenta" Nombre="id nombre" />
+                  <table className={styles.machineTable}>
+                    <thead>
+                      <tr>
+                        <th>Cuenta</th>
+                        <th>Motivo de la sancion</th>
+                        <th>Duracion (Semanas) </th>
+                        <th>Fecha Sancion</th>
+                        <th>Podra utilizar el servicio hasta</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {" "}
+                      <form className="containerForm">
+                        <label className="label">Ubicacion de equipo</label>
+
+                        <div className="groupInput">
+                          <select
+                            value={ubicacion_equipo}
+                            onChange={(e) => setUbicacionEquipo(e.target.value)}
+                          >
+                            <option value="">-- Selecciona un equipo --</option>
+                            <option value="255">Equipo 255</option>
+                          </select>
+                          <button className="button buttonSearch" type="submit">
+                            Asignar
+                          </button>
+                        </div>
+                      </form>
+                      {usuario_sanciones.map((sancion, index) => (
+                        <tr key={index}>
+                          <td>{sancion.no_cuenta}</td>
+                          <td>{sancion.motivo}</td>
+                          <td>{sancion.fecha_sancion}</td>
+                          <td>{sancion.duracion}</td>
+                          <td>{sancion.utilizar_hasta}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                  <form className="containerForm">
+                    <div className="groupInput">
+                      <select
+                        value={ubicacion_equipo}
+                        onChange={(e) => setUbicacionEquipo(e.target.value)}
+                      >
+                        <option value="">-- Selecciona una sancion --</option>
+                        <option value="sancion 1">
+                          {" "}
+                          No cerrar sesion (Una semana)
+                        </option>
+                      </select>
+                      <button className="button buttonSearch" type="submit">
+                        Aplicar sancion
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </>
+            ),
           },
         ]}
       />
