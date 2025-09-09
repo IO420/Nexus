@@ -36,7 +36,7 @@ export default function Page() {
             type='text'
             //value={user}
             //onChange={(e) => setUser(e.target.value)}
-            placeholder='Coloca '
+            placeholder='Coloca el nombre'
           />
 
           <label className='label'>Apellido Paterno</label>
@@ -44,7 +44,7 @@ export default function Page() {
             type='text'
             //value={user}
             //onChange={(e) => setUser(e.target.value)}
-            placeholder='Coloca '
+            placeholder='Coloca el apellido paterno'
           />
 
           <label className='label'>Apellido Materno</label>
@@ -52,7 +52,7 @@ export default function Page() {
             type='text'
             //value={user}
             //onChange={(e) => setUser(e.target.value)}
-            placeholder='Coloca '
+            placeholder='Coloca el apellido materno'
           />
         </form>
         <form>
