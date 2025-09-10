@@ -12,7 +12,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:5000/user", {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
                 usuario: user,
                 password: password,
             });
@@ -64,8 +64,8 @@ function Login() {
                     type='submit'
                 >Iniciar sesión
                 </button>
-            </form>
-            {message &&
+
+                            {message &&
                 <div
                     className={`messageBox ${message.includes('exitoso') ? 'success' : 'error'}`}
                     style={{ marginTop: '10px' }}
@@ -73,6 +73,7 @@ function Login() {
                     {message}
                 </div>
             }
+            </form>
         </section>
     );
 }
