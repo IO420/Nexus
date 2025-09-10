@@ -44,8 +44,14 @@ export default function Page() {
             label: "Impresiones color",
             content: <Impressions
               costs={[
-                { value: 2 },
                 { value: 4 },
+                { value: 5 },
+                { value: 6 },
+                { value: 7 },
+                { value: 8 },
+                { value: 10 },
+                { value: 12 },
+                { value: 14 },
               ]}
             />,
           },
@@ -54,8 +60,23 @@ export default function Page() {
             label: "Plotter",
             content: <Impressions
               costs={[
-                { value: 1 },
-                { value: 2 },
+                { value: 15 },
+                { value: 18 },
+                { value: 20 },
+                { value: 25 },
+                { value: 30 },
+                { value: 40 },
+                { value: 45 },
+                { value: 50 },
+                { value: 60 },
+                { value: 70 },
+                { value: 80 },
+                { value: 90 },
+                { value: 100 },
+                { value: 110 },
+                { value: 120 },
+                { value: 150 },
+                { value: 200 },
               ]}
             />,
           },
@@ -66,6 +87,7 @@ export default function Page() {
               costs={[
                 { value: 1 },
                 { value: 2 },
+                { value: 5 },
               ]} 
               />,
           },

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import SearchUser from "../Components/SearchUser/searchUser";
 import Toggle from "../Components/Toggle/Toggle";
-// Assuming you will create this new component
 
 export default function Page() {
   const [tiempo, setTiempo] = useState("");
@@ -10,10 +9,9 @@ export default function Page() {
 
   return (
     <section className="containerSection">
-      <h2 className="title"> EQUIPOS ACTIVOS Y EN MANTENIMIENTO</h2>
+      <h2 className="title">EQUIPOS ACTIVOS Y EN MANTENIMIENTO</h2>
 
       <div className="mainContainer">
-        {/* Toggle component for 'Asignar' and 'Liberar' tabs */}
         <Toggle
           defaultView="Equipos"
           options={[
@@ -32,12 +30,12 @@ export default function Page() {
                         onChange={(e) => setTiempo(e.target.value)}
                       >
                         <option value="">-- Equipos disponibles --</option>
-                        <option value="15">1 </option>
-                        <option value="30">2 </option>
-                        <option value="45">3 </option>
-                        <option value="60">4 </option>
-                        <option value="90">5 </option>
-                        <option value="120">6 </option>
+                        <option value="15">1</option>
+                        <option value="30">2</option>
+                        <option value="45">3</option>
+                        <option value="60">4</option>
+                        <option value="90">5</option>
+                        <option value="120">6</option>
                       </select>
                       <button className="button buttonSearch" type="submit">
                         Asignar
@@ -53,27 +51,32 @@ export default function Page() {
               content: (
                 <>
                   <form className="containerForm">
-                    <label className="label">Areas Disponibles</label>
+                    <label className="label">Áreas disponibles</label>
                     <div className="groupInput">
                       <select
                         value={tiempo}
                         onChange={(e) => setTiempo(e.target.value)}
                       >
-                        <option value="">-- Areas disponibles --</option>
-                        <option value="15">PECERA </option>
-                        <option value="30">JAULA </option>
-                        <option value="45">HUACAL </option>
-                        <option value="60">PCNET1 </option>
-                        <option value="90">PCNET2 </option>
+                        <option value="">-- Áreas disponibles --</option>
+                        <option value="15">PECERA</option>
+                        <option value="30">JAULA</option>
+                        <option value="45">HUACAL</option>
+                        <option value="60">PCNET1</option>
+                        <option value="90">PCNET2</option>
                       </select>
-                      <div>
+
+                      {/* Checkboxes */}
+                      <div className="checkbox-grid">
                         <label>
-                          <input type="checkbox" /> Activo
+                          <input type="checkbox" />
+                          Activo
                         </label>
                         <label>
-                          <input type="checkbox" /> Mantenimiento
+                          <input type="checkbox" />
+                          Mantenimiento
                         </label>
                       </div>
+
                       <button className="button buttonSearch" type="submit">
                         Actualizar
                       </button>
@@ -88,25 +91,27 @@ export default function Page() {
               content: (
                 <>
                   <form className="containerForm">
-                    <label className="label">Mesas Disponibles</label>
+                    <label className="label">Mesas disponibles</label>
                     <div className="groupInput">
                       <select
                         value={tiempo}
                         onChange={(e) => setTiempo(e.target.value)}
                       >
                         <option value="">-- Mesas disponibles --</option>
-                        <option value="15">1 </option>
-                        <option value="30">4 </option>
-                        <option value="45">7 </option>
-                        <option value="60"> </option>
-                        <option value="90">15 </option>
+                        <option value="15">1</option>
+                        <option value="30">4</option>
+                        <option value="45">7</option>
+                        <option value="60">10</option>
+                        <option value="90">15</option>
                       </select>
-                      <div>
-                        <label></label>
+
+                      <div className="checkbox-grid">
                         <label>
-                          <input type="checkbox" /> Mantenimiento
+                          <input type="checkbox" />
+                          Mantenimiento
                         </label>
                       </div>
+
                       <button className="button buttonSearch" type="submit">
                         Confirmar
                       </button>
@@ -117,10 +122,7 @@ export default function Page() {
             },
           ]}
         />
-
-        {/* This is the new component to display available tables */}
       </div>
     </section>
   );
 }
-//IO

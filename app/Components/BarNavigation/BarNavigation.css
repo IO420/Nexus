@@ -17,6 +17,7 @@
     color: white;
     font-weight: bold;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .barNavigation li:hover {
@@ -65,7 +66,7 @@
     top: 100%;
     width: 100%;
     background-color: rgba(0, 61, 121, 1);
-    transition: max-height 0.3s ease, opacity 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .subMenu.open ul {

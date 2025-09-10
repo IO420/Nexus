@@ -9,8 +9,11 @@ function BarNavigation() {
 
   const toggleMenu = () => setOpenMenu(!openMenu);
   const toggleSubMenu = (index: number) => {
-    setOpenSubMenu(openSubMenu === index ? null : index);
+    if (typeof window !== "undefined" && window.innerWidth <= 800) {
+      setOpenSubMenu(openSubMenu === index ? null : index);
+    }
   };
+
   return (
     <nav className="barNavigation">
       <div className={`menuToggle ${openMenu ? "" : ""}`} onClick={toggleMenu}>

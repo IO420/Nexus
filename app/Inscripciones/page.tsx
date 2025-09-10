@@ -1,32 +1,29 @@
-'use client';
+"use client";
 import Information from "../Components/Information/information";
 import Receipt from "../Components/Receipt/Receipt";
 import SearchUser from "../Components/SearchUser/searchUser";
 import Selection from "../Components/Selection/Selection";
 import StepNavigator from "../Components/StepNavigator/StepNavigator";
-import "./inscriptions.css"
+import "./inscriptions.css";
 
 export default function Page() {
-    return (
-        <section className='containerSection'>
-            <h2 className='title'> INSCRIPCION </h2>
-            
-            <SearchUser />
+  return (
+    <section className="containerSection">
+      <h2 className="title"> INSCRIPCION </h2>
 
-            <Information
-                NoCuenta="idcuanta"
-                Nombre="juan"
-                Carrera="carrera"
-                Credito="credito"
-            />
+      <SearchUser />
 
-            <StepNavigator totalSteps={2} onFinish={() => console.log()}>
-                <Selection />
-                <Receipt />
-            </StepNavigator>
+      <Information
+        NoCuenta="idcuanta"
+        Nombre="juan"
+        Carrera="carrera"
+        Credito="credito"
+      />
 
-        </section>
-
-    );
+      <StepNavigator totalSteps={2} onFinish={() => console.log()}>
+        <Selection />
+        <Receipt />
+      </StepNavigator>
+    </section>
+  );
 }
-//IO
