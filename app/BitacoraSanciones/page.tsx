@@ -176,7 +176,6 @@ export default function Page() {
                       </tr>
                     </thead>
                     <tbody>
-                      {" "}
                       <form className="containerForm">
                         <label className="label">Ubicacion de equipo</label>
 
@@ -213,7 +212,6 @@ export default function Page() {
                       >
                         <option value="">-- Selecciona una sancion --</option>
                         <option value="sancion 1">
-                          {" "}
                           No cerrar sesion (Una semana)
                         </option>
                       </select>

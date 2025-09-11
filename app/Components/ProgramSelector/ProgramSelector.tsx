@@ -49,59 +49,58 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
           </label>
           <label>
             <input type="checkbox" /> COREL DRAW
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> DEV-C++
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> EVIEWS Enterprise
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> Google Earth
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> INTERNERT
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> MAPLE
           </label>
           <label>
             <input type="checkbox" /> MATHEMATICA
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> MATLAB
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> Maxima
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> miktex
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> NETBEANS
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> OFFICE 2016
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> PSeint
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> R 3.0.1
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> R Studio
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> SPPS Statiscs
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> STATA 13
-          </label>{" "}
+          </label>
           <label>
             <input type="checkbox" /> STATGRAOHICS Centurion XVI
           </label>
-          {/* ... resto de checkboxes */}
         </div>
 
         <button className="button buttonSearch">Guardar cambios</button>

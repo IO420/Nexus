@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
-import axios from "axios";
 import "./Login.css";
+import { loginUser } from "@/app/lib/login";
 
 function Login() {
     const [user, setUser] = useState("");
@@ -11,17 +11,14 @@ function Login() {
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
-                usuario: user,
-                password: password,
-            });
+        const data = await loginUser(user, password);
 
+        if ("error" in data) {
+            setMessage(data.error);
+        } else {
+            localStorage.setItem("token", data.access_token);
             setMessage("Inicio de sesión exitoso");
-            console.log("Respuesta del servidor:", response.data);
-        } catch (error) {
-            setMessage("Error en inicio de sesión");
-            console.error("Error:", error);
+            console.log("Respuesta del servidor:", data);
         }
     };
 
@@ -65,14 +62,14 @@ function Login() {
                 >Iniciar sesión
                 </button>
 
-                            {message &&
-                <div
-                    className={`messageBox ${message.includes('exitoso') ? 'success' : 'error'}`}
-                    style={{ marginTop: '10px' }}
-                >
-                    {message}
-                </div>
-            }
+                {message &&
+                    <div
+                        className={`messageBox ${message.includes('exitoso') ? 'success' : 'error'}`}
+                        style={{ marginTop: '10px' }}
+                    >
+                        {message}
+                    </div>
+                }
             </form>
         </section>
     );

@@ -34,7 +34,6 @@ export default function Page() {
               content: (
                 <>
                   <div className="checkbox-grid">
-                    {" "}
                     <label>
                       <input type="checkbox" /> Mesa
                     </label>
