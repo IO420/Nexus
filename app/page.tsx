@@ -1,8 +1,11 @@
 import Login from "./Components/Login/Login";
+import { LoginRedirect } from "./Routes/LoginRedirect";
 
 export default function Home() {
   return (
-    <Login />
+    <LoginRedirect>
+      <Login />
+    </LoginRedirect>
   );
 }
 //IO
