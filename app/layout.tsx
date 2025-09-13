@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Servicio AT",
   description: "Servicio de administracion de la FES Acatlan",
   authors: [{ name: "FES Acatlán" }],
-  creator: "Lino,Axel,Carlos",
+  creator: "Lino,Carlos,Axel",
 };
 
 export default function RootLayout({

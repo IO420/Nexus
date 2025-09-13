@@ -12,8 +12,6 @@ export default function Page() {
     <section className="containerSection">
       <h2 className="title"> ASIGNACION DE EQUIPOS </h2>
 
-      <div className="mainContainer">
-        {/* Toggle component for 'Asignar' and 'Liberar' tabs */}
         <Toggle
           defaultView="Asignar"
           options={[
@@ -47,8 +45,6 @@ export default function Page() {
             },
           ]}
         />
-
-      </div>
     </section>
   );
 }

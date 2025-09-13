@@ -11,7 +11,6 @@ export default function Page() {
     <section className="containerSection">
       <h2 className="title">EQUIPOS ACTIVOS Y EN MANTENIMIENTO</h2>
 
-      <div className="mainContainer">
         <Toggle
           defaultView="Equipos"
           options={[
@@ -121,7 +120,6 @@ export default function Page() {
             },
           ]}
         />
-      </div>
     </section>
   );
 }
