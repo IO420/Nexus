@@ -10,7 +10,7 @@ export const LoginRedirect = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         if (!loading && authenticated) {
-            router.push("/AT/Impresiones");
+            router.push("/Impresiones");
         }
     }, [loading, authenticated, router]);
 

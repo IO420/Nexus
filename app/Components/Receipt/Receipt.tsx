@@ -58,7 +58,7 @@ function Receipt() {
 
 
                 <div className='groupInput'>
-                    <label className='label'>Folio:</label>
+                    <label className='label'>Ticket:</label>
                     <input
                         type='text'
                         value={folio}

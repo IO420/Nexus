@@ -65,7 +65,6 @@ export default function Page() {
                         <option value="90">PCNET2</option>
                       </select>
 
-                      {/* Checkboxes */}
                       <div className="checkbox-grid">
                         <label>
                           <input type="checkbox" />
@@ -105,9 +104,9 @@ export default function Page() {
                         <option value="90">15</option>
                       </select>
 
-                      <div className="checkbox-grid">
-                        <label>
+                      <div className="checkbox">
                           <input type="checkbox" />
+                        <label>
                           Mantenimiento
                         </label>
                       </div>

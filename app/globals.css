@@ -19,7 +19,7 @@ body {
   position: relative;
   font-family: var(--font-poppins), sans-serif;
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
   width: 100dvw;
   overflow: hidden;
@@ -33,7 +33,7 @@ header {
   overflow: hidden;
   background-color: #f9f9f9;
   z-index: 1;
-  height: 57px;
+  height: 70px;
 }
 
 header::after {
@@ -62,12 +62,6 @@ header::before {
   z-index: 1;
 }
 
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 footer {
   position: relative;
   display: flex;
@@ -85,6 +79,16 @@ footer p {
   z-index: 2;
 }
 
+.mainContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -96,7 +100,7 @@ footer p {
   border: 1px solid #d1d5db;
   border-radius: 4px;
   width: 90%;
-  max-width: 1100px;
+  max-width: 1150px;
   height: 550px;
   min-height: 520px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -133,6 +137,7 @@ footer p {
 }
 
 .img::after {
+  display: flex;
   content: "";
   position: absolute;
   inset: 0;
@@ -264,7 +269,6 @@ form {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 1rem;
 }
 
 .gap {
@@ -288,6 +292,7 @@ form {
   background-color: #f3f4f6;
   border-radius: 6px;
   flex-wrap: wrap;
+  min-height: 45px;
 }
 
 .toggleButton {
@@ -388,6 +393,13 @@ table tr {
   background-color: #ffcdd2;
   color: #000000;
   border: 1px solid #ef9a9a;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    width: 100%;
+    max-width: none;
+  }
 }
 
 @media (max-width: 800px) {

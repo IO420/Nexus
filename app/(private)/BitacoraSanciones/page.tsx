@@ -103,58 +103,62 @@ export default function Page() {
             key: "2",
             label: "Bitacora de alumno",
             content: (
-              <div className={styles.tableContainer}>
+              <>
                 <SearchDate />
-                <table className={styles.machineTable}>
-                  <thead>
-                    <tr>
-                      <th>Tiempo Entrada</th>
-                      <th>Tiempo Asignado</th>
-                      <th>Ubicacion del equipo</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {alumnos.map((alumno, index) => (
-                      <tr key={index}>
-                        <td>{alumno.tiempo_entrada}</td>
-                        <td>{alumno.tiempo_asignado}</td>
-                        <td>{alumno.Ubicacion_equipo}</td>
+                <div className={styles.tableContainer}>
+                  <table className={styles.machineTable}>
+                    <thead>
+                      <tr>
+                        <th>Tiempo Entrada</th>
+                        <th>Tiempo Asignado</th>
+                        <th>Ubicacion del equipo</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {alumnos.map((alumno, index) => (
+                        <tr key={index}>
+                          <td>{alumno.tiempo_entrada}</td>
+                          <td>{alumno.tiempo_asignado}</td>
+                          <td>{alumno.Ubicacion_equipo}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             ),
           },
           {
             key: "3",
             label: "Bitacora mesas",
             content: (
-              <div className={styles.tableContainer}>
+              <>
                 <SearchDate />
-                <table className={styles.machineTable}>
-                  <thead>
-                    <tr>
-                      <th>Mesa</th>
-                      <th>Cuenta</th>
-                      <th>Hora Entrada</th>
-                      <th>Tiempo Asignado</th>
-                      <th>Hora Salida</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {tables.map((table, index) => (
-                      <tr key={index}>
-                        <td>{table.no_mesa}</td>
-                        <td>{table.no_cuenta}</td>
-                        <td>{table.hora_entrada}</td>
-                        <td>{table.tiempo_asignado}</td>
-                        <td>{table.hora_salida}</td>
+                <div className={styles.tableContainer}>
+                  <table className={styles.machineTable}>
+                    <thead>
+                      <tr>
+                        <th>Mesa</th>
+                        <th>Cuenta</th>
+                        <th>Hora Entrada</th>
+                        <th>Tiempo Asignado</th>
+                        <th>Hora Salida</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {tables.map((table, index) => (
+                        <tr key={index}>
+                          <td>{table.no_mesa}</td>
+                          <td>{table.no_cuenta}</td>
+                          <td>{table.hora_entrada}</td>
+                          <td>{table.tiempo_asignado}</td>
+                          <td>{table.hora_salida}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             ),
           },
           {
@@ -162,9 +166,9 @@ export default function Page() {
             label: "Sanciones",
             content: (
               <>
+                <SearchUser />
+                <Information NoCuenta="id cuenta" Nombre="id nombre" />
                 <div className={styles.tableContainer}>
-                  <SearchUser/>
-                  <Information NoCuenta="id cuenta" Nombre="id nombre" />
                   <table className={styles.machineTable}>
                     <thead>
                       <tr>
@@ -203,24 +207,23 @@ export default function Page() {
                       ))}
                     </tbody>
                   </table>
-
-                  <form className="containerForm">
-                    <div className="groupInput">
-                      <select
-                        value={ubicacion_equipo}
-                        onChange={(e) => setUbicacionEquipo(e.target.value)}
-                      >
-                        <option value="">-- Selecciona una sancion --</option>
-                        <option value="sancion 1">
-                          No cerrar sesion (Una semana)
-                        </option>
-                      </select>
-                      <button className="button buttonSearch" type="submit">
-                        Aplicar sancion
-                      </button>
-                    </div>
-                  </form>
                 </div>
+                <form className="containerForm">
+                  <div className="groupInput">
+                    <select
+                      value={ubicacion_equipo}
+                      onChange={(e) => setUbicacionEquipo(e.target.value)}
+                    >
+                      <option value="">-- Selecciona una sancion --</option>
+                      <option value="sancion 1">
+                        No cerrar sesion (Una semana)
+                      </option>
+                    </select>
+                    <button className="button buttonSearch" type="submit">
+                      Aplicar sancion
+                    </button>
+                  </div>
+                </form>
               </>
             ),
           },

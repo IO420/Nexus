@@ -13,19 +13,16 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
     <div>
       <form className="form-container">
         {/* Label dinámico con el título que recibimos */}
-        <label htmlFor="equipo">{titulo}</label>
+        <label>{titulo}</label>
 
         {/* Renderizamos UN solo <select> con varias <option> */}
-        <select id="equipo">
+        <select>
           {opcion.map((op, index) => (
             <option key={index} value={op}>
               {op}
             </option>
           ))}
         </select>
-
-        {/* Aquí puedes poner más <option> fijas si quieres */}
-        <option value="">Buscar</option>
 
         {/* Lista de checkboxes (esto lo podrías optimizar igual con .map) */}
         <div className="checkbox-grid">

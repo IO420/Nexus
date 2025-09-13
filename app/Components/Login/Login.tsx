@@ -1,7 +1,8 @@
 'use client';
 import { useState } from "react";
-import "./Login.css";
 import { loginUser } from "@/app/lib/login";
+
+import "./Login.css";
 
 function Login() {
     const [user, setUser] = useState("");

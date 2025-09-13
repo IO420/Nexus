@@ -30,12 +30,12 @@ export default function Page() {
             },
             {
               key: "Liberar",
-              label: "Canceñlar tiempo",
+              label: "Cancelar tiempo",
               content: (
                 <>
                   <div className="checkbox-grid">
                     <label>
-                      <input type="checkbox" /> Mesa
+                      <input type="checkbox" /> Equipo
                     </label>
                     <label>
                       <input type="checkbox" /> Cuenta
@@ -48,7 +48,6 @@ export default function Page() {
           ]}
         />
 
-        {/* This is the new component to display available tables */}
       </div>
     </section>
   );

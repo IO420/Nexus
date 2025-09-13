@@ -7,14 +7,16 @@ import "./globals.css";
 import WavesBackground from "./Components/Wave/wavesBack";
 
 const poppins = Poppins({
-  variable: "--font-poppins", // nombre de la variable CSS
+  variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["400", "600", "700"], // pesos que quieras usar
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Nexus CEDETEC",
-  description: "Nexus CEDETEC - Frontend",
+  title: "Servicio AT",
+  description: "Servicio de administracion de la FES Acatlan",
+  authors: [{ name: "FES Acatlán" }],
+  creator: "Lino,Axel,Carlos",
 };
 
 export default function RootLayout({
@@ -26,12 +28,8 @@ export default function RootLayout({
     <html lang="es">
       <body className={poppins.variable}>
         <Header />
-        <BarNavigation />
         <main>
-          <div className="container">
-            <div className="img"></div>
-            {children}
-          </div>
+          {children}
           <WavesBackground />
         </main>
         <Footer />

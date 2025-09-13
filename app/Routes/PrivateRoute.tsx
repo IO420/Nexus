@@ -18,3 +18,4 @@ export const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 
   return authenticated ? <>{children}</> : null;
 };
+//IO

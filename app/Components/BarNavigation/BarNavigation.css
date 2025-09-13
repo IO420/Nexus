@@ -1,8 +1,12 @@
 .barNavigation {
+    position: absolute;
     text-align: center;
     background-color: rgb(1, 92, 184);
     padding: 0 20px;
     display: flex;
+    width: 100%;
+    top: 0;
+    min-height: 40px;
 }
 
 .barNavigation ul {

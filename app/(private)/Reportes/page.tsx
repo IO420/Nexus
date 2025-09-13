@@ -35,8 +35,8 @@ export default function Page() {
             label: "Por recibo",
             content: (
               <>
-                <div className={styles.tableContainer}>
                   <SearchDateBetween />
+                <div className={styles.tableContainer}>
                   <table className={styles.machineTable}>
                     <thead>
                       <tr>
@@ -69,8 +69,8 @@ export default function Page() {
             label: "Por Servicio",
             content: (
               <>
-                <div className={styles.tableContainer}>
                   <SearchDateBetween />
+                <div className={styles.tableContainer}>
                   <table className={styles.machineTable}>
                     <thead>
                       <tr>
