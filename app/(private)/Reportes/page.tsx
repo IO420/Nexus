@@ -35,7 +35,7 @@ export default function Page() {
             label: "Por recibo",
             content: (
               <>
-                  <SearchDateBetween />
+                <SearchDateBetween />
                 <div className={styles.tableContainer}>
                   <table className={styles.machineTable}>
                     <thead>

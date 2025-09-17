@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import "./Receipt.css"
+import { PostReceipt } from "@/app/lib/receipt";
 
 function Receipt() {
     const [folio, setFolio] = useState('');
@@ -46,11 +47,15 @@ function Receipt() {
     }, [error]);
     //fadeOut alert and error//
 
+    const handleSaveReceipt = ( )=>{
+        //PostReceipt(data{folio,amount,date})
+    }
+
     return (
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                // handleSaveReceipt();
+                handleSaveReceipt();
             }}
         >
 
