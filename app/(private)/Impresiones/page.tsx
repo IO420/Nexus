@@ -6,24 +6,30 @@ import Information from "../../Components/Information/information";
 
 import "@/app/globals.css";
 import { GetStudent } from "@/app/lib/getStudent";
+import AlertBox from "@/app/Components/AlertBox/AlertBox";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { numAccount?: number };
-}) {
+export default async function Page({ searchParams }: any) {
   const params = await searchParams;
   const numAccount = params.numAccount ? Number(params.numAccount) : null;
 
   let student: any = null;
+  let error: string | null = null;
   if (numAccount) {
-    student = await GetStudent(numAccount);
+    const result = await GetStudent(numAccount);
+
+    if (result.error) {
+      error = result.error;
+    } else {
+      student = result;
+    }
   }
 
   return (
     <section className="containerSection">
+      {error && <AlertBox message={error} type="error" />}
+
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
-      <SearchUser />
+      <SearchUser urlBase="Impresiones" />
 
       {student ? (
         <>

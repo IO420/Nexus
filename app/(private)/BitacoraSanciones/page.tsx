@@ -166,7 +166,7 @@ export default function Page() {
             label: "Sanciones",
             content: (
               <>
-                <SearchUser />
+                <SearchUser urlBase="BitacoraSanciones"/>
                 <Information NoCuenta="id cuenta" Nombre="id nombre" />
                 <div className={styles.tableContainer}>
                   <table className={styles.machineTable}>

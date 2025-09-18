@@ -20,7 +20,7 @@ export default function Page() {
               label: "Asignar tiempo",
               content: (
                 <>
-                  <SearchUser />
+                  <SearchUser urlBase="AsignacionEquipo"/>
 
                   <form className="containerForm"></form>
                 </>
@@ -39,7 +39,7 @@ export default function Page() {
                       <input type="checkbox" /> Cuenta
                     </label>
                   </div>
-                  <SearchUser />
+                  <SearchUser urlBase="AsignacionEquipo"/>
                 </>
               ),
             },

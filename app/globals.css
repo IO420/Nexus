@@ -363,38 +363,6 @@ table tr {
   align-items: center;
 }
 
-.messageBox {
-  position: absolute;
-  padding: 0.5rem 1.25rem;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-align: center;
-  opacity: 1;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.messageBox.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease-out;
-}
-
-.success {
-  background-color: #d1f7c4;
-  color: #000000;
-  border: 1px solid #a5d6a7;
-}
-
-.error {
-  background-color: #ffcdd2;
-  color: #000000;
-  border: 1px solid #ef9a9a;
-}
-
 @media (max-width: 1300px) {
   .container {
     width: 100%;

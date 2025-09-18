@@ -2,14 +2,20 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-function SearchUser() {
+
+interface urlProp{
+  urlBase:string
+}
+
+function SearchUser(url:urlProp) {
   const [numAccount, setNumAccount] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (numAccount) {
-      router.push(`/Impresiones?numAccount=${numAccount}`);
+      router.push(`/${url.urlBase}?numAccount=${numAccount}`);
     }
   };
 

@@ -20,7 +20,7 @@ export default function Page() {
               label: "Asignar mesa",
               content: (
                 <>
-                  <SearchUser />
+                  <SearchUser urlBase="AsignacionMesas"/>
 
                   <form className="containerForm">
                     <label className="label">Mesas disponibles</label>
@@ -58,7 +58,7 @@ export default function Page() {
                       <input type="checkbox" /> Cuenta
                     </label>
                   </div>
-                  <SearchUser />
+                  <SearchUser urlBase="AsignacionMesas"/>
                 </>
               ),
             },

@@ -4,6 +4,7 @@ import { envConfig } from "./config";
 export async function GetStudent(numAccount: number) {
   try {
     const response = await axios.get(`${envConfig.apiUrl}/student/${numAccount}`);
+    console.log(response.data)
     return response.data;
   } catch (error: any) {
     const msg =
