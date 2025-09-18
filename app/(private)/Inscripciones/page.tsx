@@ -12,7 +12,7 @@ export default function Page() {
     <section className="containerSection">
       <h2 className="title"> INSCRIPCION </h2>
 
-      <SearchUser />
+      <SearchUser urlBase="Inscripciones"/>
 
       <Information
         NoCuenta="idcuanta"

@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <section className="containerSection">
       <h2 className="title"> Quitar Sanciones </h2>
-      <SearchUser />
+      <SearchUser urlBase="QuitarSanciones"/>
       <div className={styles.tableContainer}>
         <table className={styles.machineTable}>
           <thead>

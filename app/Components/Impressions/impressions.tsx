@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { envConfig } from "@/app/lib/config";
 import "./Impressions.css";
+import AlertBox from "../AlertBox/AlertBox";
 
 interface CostOption {
   value: number;
@@ -20,10 +21,6 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
   const [cost, setCost] = useState("");
 
   const [error, setError] = useState("");
-  const [alert, setAlert] = useState("");
-  const [showError, setShowError] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-
   const router = useRouter();
 
   const handleLogout = () => {
@@ -33,7 +30,6 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
   };
 
   const handlePayment = async () => {
-    setAlert("");
     setError("");
 
     if (!numAccount) {
@@ -46,9 +42,9 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
       return;
     }
 
-    if(!cost){
-        setError("Selecciona un costo")
-        return;
+    if (!cost) {
+      setError("Selecciona un costo");
+      return;
     }
 
     const token = Cookies.get("token");
@@ -72,7 +68,6 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
         }
       );
 
-      setAlert("Cobro realizado correctamente");
       setPages("");
     } catch (error: any) {
       const errorMessage =
@@ -132,16 +127,7 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
             Cobrar
           </button>
 
-          {error && (
-            <div className={`messageBox error ${!showError ? "hidden" : ""}`}>
-              {error}
-            </div>
-          )}
-          {alert && (
-            <div className={`messageBox success ${!showAlert ? "hidden" : ""}`}>
-              {alert}
-            </div>
-          )}
+          {error && <AlertBox message={error} type="error" />}
         </div>
       </div>
     </form>

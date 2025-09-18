@@ -19,7 +19,7 @@ export default function Page() {
               label: "Equipos",
               content: (
                 <>
-                  <SearchUser />
+                  <SearchUser urlBase="ActivosMantenimiento" />
 
                   <form className="containerForm">
                     <label className="label">Equipos disponibles</label>
