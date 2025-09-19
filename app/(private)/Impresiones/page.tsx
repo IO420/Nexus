@@ -36,7 +36,7 @@ export default async function Page({ searchParams }: any) {
           <Information
             NoCuenta={student.id_cuenta}
             Nombre={student.nombre}
-            Carrera={student.id_carrera}
+            Carrera={student.carrera.carrera}
             Credito={student.credito}
           />
 
