@@ -362,11 +362,17 @@ table tr {
   justify-content: center;
   align-items: center;
 }
+.centerGrido {
+  display: grid;
+  grid-template-columns: auto 200px;
+  justify-content: center;
+  align-items: center;
+}
 
 .impressions-title {
-    font-size: 1.75rem;
-    font-weight: bold;
-    text-align: start;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: start;
 }
 
 @media (max-width: 1300px) {
