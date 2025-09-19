@@ -363,6 +363,12 @@ table tr {
   align-items: center;
 }
 
+.impressions-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: start;
+}
+
 @media (max-width: 1300px) {
   .container {
     width: 100%;

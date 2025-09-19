@@ -22,3 +22,4 @@ export default function Information(props: InformationProps) {
     </div>
   );
 }
+//IO
