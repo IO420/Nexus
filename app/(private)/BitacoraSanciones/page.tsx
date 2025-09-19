@@ -6,8 +6,14 @@ import Toggle from "@/app/Components/Toggle/Toggle";
 import SearchDate from "@/app/Components/SearchDate/SearchDate";
 import Information from "@/app/Components/Information/information";
 import SearchUser from "@/app/Components/SearchUser/searchUser";
+import { GetStudent } from "@/app/lib/getStudent";
 
-export default function Page() {
+export default function Page({ searchParams }: any) {
+    const params =  searchParams;
+
+    let student: any = null;
+    let error: string | null = null;
+
   const [usuario_sanciones] = useState([
     {
       no_cuenta: "425530275 ",
@@ -166,8 +172,26 @@ export default function Page() {
             label: "Sanciones",
             content: (
               <>
-                <SearchUser urlBase="BitacoraSanciones"/>
+                <SearchUser urlBase="BitacoraSanciones" />
+                
                 <Information NoCuenta="id cuenta" Nombre="id nombre" />
+
+                <form className="containerForm">
+                  <label className="label">Ubicacion de equipo</label>
+
+                  <div className="groupInput">
+                    <select
+                      value={ubicacion_equipo}
+                      onChange={(e) => setUbicacionEquipo(e.target.value)}
+                    >
+                      <option value="">-- Selecciona un equipo --</option>
+                      <option value="255">Equipo 255</option>
+                    </select>
+                    <button className="button buttonSearch" type="submit">
+                      Asignar
+                    </button>
+                  </div>
+                </form>
                 <div className={styles.tableContainer}>
                   <table className={styles.machineTable}>
                     <thead>
@@ -180,22 +204,6 @@ export default function Page() {
                       </tr>
                     </thead>
                     <tbody>
-                      <form className="containerForm">
-                        <label className="label">Ubicacion de equipo</label>
-
-                        <div className="groupInput">
-                          <select
-                            value={ubicacion_equipo}
-                            onChange={(e) => setUbicacionEquipo(e.target.value)}
-                          >
-                            <option value="">-- Selecciona un equipo --</option>
-                            <option value="255">Equipo 255</option>
-                          </select>
-                          <button className="button buttonSearch" type="submit">
-                            Asignar
-                          </button>
-                        </div>
-                      </form>
                       {usuario_sanciones.map((sancion, index) => (
                         <tr key={index}>
                           <td>{sancion.no_cuenta}</td>

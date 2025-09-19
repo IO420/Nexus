@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { envConfig } from "@/app/lib/config";
-import "./Impressions.css";
 import AlertBox from "../AlertBox/AlertBox";
+import { PostImpressions } from "@/app/lib/postImpressions";
+
+import "./Impressions.css";
 
 interface CostOption {
   value: number;
@@ -16,6 +16,7 @@ interface ImpressionsProps {
   costs: CostOption[];
   numAccount: number | null;
 }
+
 function Impressions({ costs, numAccount }: ImpressionsProps) {
   const [pages, setPages] = useState("");
   const [cost, setCost] = useState("");
@@ -47,38 +48,20 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
       return;
     }
 
-    const token = Cookies.get("token");
-    if (!token) {
-      handleLogout();
+    const result = await PostImpressions({
+      id_cuenta:numAccount,
+      numero_hojas : parseInt(pages),
+      monto: parseInt(cost) * parseInt(pages),
+    });
+
+    if (result.error) {
+      if (result.error === "Token inválido") handleLogout();
+      else setError(result.error);
       return;
     }
 
-    try {
-      await axios.post(
-        `${envConfig.apiUrl}/impressions`,
-        {
-          numAccount: numAccount,
-          pages: parseInt(pages),
-          cost: parseInt(cost) * parseInt(pages),
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setPages("");
-    } catch (error: any) {
-      const errorMessage =
-        error.response?.data?.error || "No se encontró el estudiante";
-
-      if (errorMessage === "Token inválido") {
-        handleLogout();
-      }
-
-      setError(errorMessage);
-    }
+    setPages("");
+    setCost("")
   };
 
   return (
@@ -119,7 +102,7 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
         </div>
 
         <div className="groupLabel">
-          <label className="label">Total: {pages && `$${pages}.00`}</label>
+          <label className="label">Total: {pages && `$${parseInt(cost) * parseInt(pages)}.00`}</label>
         </div>
 
         <div className="containerButton">

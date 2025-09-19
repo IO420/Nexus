@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import styles from "./Page.module.css"; // importamos el css
+import styles from "./Page.module.css";
 import SearchUser from "@/app/Components/SearchUser/searchUser";
 
 export default function Page() {
@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <section className="containerSection">
       <h2 className="title"> Quitar Sanciones </h2>
-      <SearchUser urlBase="QuitarSanciones"/>
+      <SearchUser urlBase="QuitarSancion"/>
       <div className={styles.tableContainer}>
         <table className={styles.machineTable}>
           <thead>

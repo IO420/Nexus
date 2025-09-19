@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "source ~/.nvm/nvm.sh && node --version && nvm use 22.10.0 && npm install && next build && next start -p 3356", 
+    "start": "next start", 
     "lint": "next lint"
   },
   "dependencies": {
