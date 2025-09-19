@@ -1,19 +1,28 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function NotFound() {
+  const router = useRouter();
+
+  const handleButton = () => {
+    router.push("/Impresiones");
+  };
+
   return (
     <section>
       <img
         src="/404-bg.png" // 👈 pon tu imagen en /public/404-bg.png
         alt="Página no encontrada"
       />
+
+      {/* Título */}
       <h1>404 - Página no encontrada</h1>
 
-      <p className="text-gray-700 text-xl mb-2">
-        Lo sentimos, la página que buscas no existe
-      </p>
-      <p className="text-gray-700 text-xl">
-        Por favor, verifica la URL o regresa a la página principal.
-      </p>
-      <button> Regresa al inicio</button>
+      {/* Texto */}
+      <p>Lo sentimos, la página que buscas no existe.</p>
+      <p>Por favor, verifica la URL o regresa a la página principal.</p>
+      <button className="button buttonSearch"> regresa al inicio</button>
     </section>
   );
 }
