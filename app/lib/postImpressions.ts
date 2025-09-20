@@ -2,7 +2,7 @@ import apiClient from "@/app/lib/apiClient";
 
 export async function PostImpressions(data: any) {
   try {
-    const response = await apiClient.post("/operations", data);
+    const response = await apiClient.post("/operations/impressions", data);
     return response.data;
   } catch (error: any) {
     const msg =

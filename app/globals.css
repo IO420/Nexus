@@ -81,10 +81,10 @@ footer p {
 
 .mainContainer {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 40px 1fr;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   height: 100%;
   width: 100%;
 }
@@ -364,9 +364,9 @@ table tr {
 }
 
 .impressions-title {
-    font-size: 1.75rem;
-    font-weight: bold;
-    text-align: start;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: start;
 }
 
 @media (max-width: 1300px) {
@@ -433,6 +433,10 @@ table tr {
     justify-content: center;
     align-items: center;
   }
+
+  footer p {
+    font-size: 1.2rem;
+}
 }
 
 @media (max-height: 960px) {
