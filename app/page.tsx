@@ -3,7 +3,7 @@ import { LoginRedirect } from "./Routes/LoginRedirect";
 
 export default function Home() {
   return (
-    <div className="mainContainer">
+    <div className="loginContainer">
       <LoginRedirect>
         <div className="container">
           <div className="img"></div>

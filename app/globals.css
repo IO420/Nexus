@@ -153,18 +153,18 @@ select {
   border: 1px solid #cfcfcf;
   background-color: #fff;
   border-radius: 4px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: black;
 }
 
 label {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   display: block;
 }
 
 button {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 1rem 1.75rem;
   border-radius: 4px;
   cursor: pointer;
@@ -252,7 +252,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: start;
   border-bottom: 1px solid #cfcfcf;
@@ -369,6 +369,16 @@ table tr {
   text-align: start;
 }
 
+.loginContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
 @media (max-width: 1300px) {
   .container {
     width: 100%;
@@ -436,7 +446,7 @@ table tr {
 
   footer p {
     font-size: 1.2rem;
-}
+  }
 }
 
 @media (max-height: 960px) {

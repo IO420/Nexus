@@ -90,12 +90,12 @@ function BarNavigation() {
         </li>
         <li className="subMenu" onClick={toggleMenu}>
           <Link href="/QuitarSancion" className="links">
-            Quitar sancion
+            <span>Quitar sancion</span>
           </Link>
         </li>
         <li className="subMenu" onClick={toggleMenu}>
           <Link href="/CambiarPass" className="links">
-            Cambiar contraseña
+            <span> Cambiar contraseña</span>
           </Link>
         </li>
       </ul>

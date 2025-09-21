@@ -7,10 +7,9 @@ import "./addTime.css";
 
 export default async function Page({ searchParams }: any) {
 
-  const numAccount = searchParams?.numAccount
-    ? Number(searchParams.numAccount)
-    : null;
-    
+  const params =await searchParams;
+  const numAccount = params.numAccount ? Number(params.numAccount) : null;
+
   let student: any = null;
   if (numAccount) {
     student = await GetStudent(numAccount);
@@ -27,7 +26,7 @@ export default async function Page({ searchParams }: any) {
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <Receipt />
+            <Receipt numAccount={student.id_cuenta} />
           </div>
         </>
       ) : (
