@@ -3,7 +3,6 @@ import apiClient from "./apiClient";
 export async function PostReceipt(data: any) {
   try {
     const response = await apiClient.post("/operations/receipt", data);
-    console.log(response.data);
     return response.data;
   } catch (error: any) {
     const msg =
@@ -13,3 +12,4 @@ export async function PostReceipt(data: any) {
     return { error: msg };
   }
 }
+//IO

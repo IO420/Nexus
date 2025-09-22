@@ -3,22 +3,29 @@ import Receipt from "../../Components/Receipt/Receipt";
 import Impressions from "../../Components/Impressions/impressions";
 import Toggle from "../../Components/Toggle/Toggle";
 import Information from "../../Components/Information/information";
-
 import AlertBox from "@/app/Components/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
+
 import "@/app/globals.css";
 
-export default async function Page({ searchParams }: any) {
-  const params = await  searchParams;
-  const numAccount = params.numAccount ? Number(params.numAccount) : null;
+export default async function Page(props: {
+  searchParams?: Promise<{
+    numAcount: string;
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const numAcount = params?.numAcount ? params.numAcount : null;
+  const showSuccess = params?.success ? parseInt(params.success) : null;
+  let showError = params?.error ? params.error : null;
 
   let student: any = null;
-  let error: string | null = null;
-  if (numAccount) {
-    const result = await GetStudent(numAccount);
+  if (numAcount) {
+    const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      error = result.error;
+      showError = "Alumno no encontrado";
     } else {
       student = result;
     }
@@ -26,10 +33,16 @@ export default async function Page({ searchParams }: any) {
 
   return (
     <section className="containerSection">
-      {error && <AlertBox key={error} message={error} type="error" />}
+      {showError && (
+        <AlertBox key={Date.now()} message={showError} type="error" />
+      )}
+
+      {showSuccess && (
+        <AlertBox message="Recibo guardado correctamente" type="success" />
+      )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
-      <SearchUser urlBase="Impresiones" />
+      <SearchUser urlBase="Impresiones" value={numAcount} />
 
       {student ? (
         <>
@@ -46,7 +59,12 @@ export default async function Page({ searchParams }: any) {
               {
                 key: "1",
                 label: "Recibo",
-                content: <Receipt numAccount={student.id_cuenta}/>,
+                content: (
+                  <Receipt
+                    urlBase="/Impresiones"
+                    numAcount={student.id_cuenta}
+                  />
+                ),
               },
               {
                 key: "2",
@@ -54,7 +72,7 @@ export default async function Page({ searchParams }: any) {
                 content: (
                   <Impressions
                     costs={[{ value: 1 }, { value: 2 }]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -73,7 +91,7 @@ export default async function Page({ searchParams }: any) {
                       { value: 12 },
                       { value: 14 },
                     ]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -101,7 +119,7 @@ export default async function Page({ searchParams }: any) {
                       { value: 150 },
                       { value: 200 },
                     ]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -111,7 +129,7 @@ export default async function Page({ searchParams }: any) {
                 content: (
                   <Impressions
                     costs={[{ value: 1 }, { value: 2 }, { value: 5 }]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },

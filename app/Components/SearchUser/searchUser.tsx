@@ -1,21 +1,28 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface urlProp{
   urlBase:string
+  value:string|null
 }
 
-function SearchUser(url:urlProp) {
-  const [numAccount, setNumAccount] = useState("");
+function SearchUser(props:urlProp) {
+  const [numAcount, setnumAcount] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    if (props.value) {
+      setnumAcount(props.value);
+    }
+  }, [props.value]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (numAccount) {
-      router.push(`/${url.urlBase}?numAccount=${numAccount}`);
+    if (numAcount) {
+      router.push(`/${props.urlBase}?numAcount=${numAcount}`);
     }
   };
 
@@ -27,11 +34,11 @@ function SearchUser(url:urlProp) {
         <div className="groupInput">
           <input
             type="text"
-            value={numAccount}
+            value={numAcount}
             onChange={(e) => {
               const value = e.target.value;
               if (/^\d*$/.test(value) && value.length <= 9) {
-                setNumAccount(value);
+                setnumAcount(value);
               }
             }}
             placeholder="Coloca un número de cuenta..."

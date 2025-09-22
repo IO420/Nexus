@@ -13,6 +13,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  overflow-y: auto;
 }
 
 body {
@@ -101,7 +102,7 @@ footer p {
   border-radius: 4px;
   width: 90%;
   max-width: 1150px;
-  height: 550px;
+  height: 600px;
   min-height: 520px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -153,18 +154,18 @@ select {
   border: 1px solid #cfcfcf;
   background-color: #fff;
   border-radius: 4px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: black;
 }
 
 label {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   display: block;
 }
 
 button {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 1rem 1.75rem;
   border-radius: 4px;
   cursor: pointer;
@@ -252,7 +253,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: start;
   border-bottom: 1px solid #cfcfcf;
@@ -288,7 +289,7 @@ form {
 
 .toggleGroup {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   background-color: #f3f4f6;
   border-radius: 6px;
   flex-wrap: wrap;
@@ -297,13 +298,14 @@ form {
 
 .toggleButton {
   flex: 1;
-  padding: 0.5rem 1rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
   font-weight: 500;
+  overflow: hidden;
+  max-height: 60px;
 }
 
 .toggleButton.active {
@@ -375,6 +377,22 @@ table tr {
   text-align: start;
 }
 
+.loginContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+@media(max-width: 1330px) {
+  .mainContainer {
+    grid-template-rows: 60px 1fr;
+  }
+}
+
 @media (max-width: 1300px) {
   .container {
     width: 100%;
@@ -396,6 +414,10 @@ table tr {
     height: 600px;
     max-height: 600px;
     border-radius: 0;
+  }
+
+  .mainContainer {
+    grid-template-rows: 40px 1fr;
   }
 
   .img {
@@ -442,11 +464,32 @@ table tr {
 
   footer p {
     font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  input,
+  select {
+    font-size: 1.5rem;
+  }
+
+  button {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
 }
 }
 
 @media (max-height: 960px) {
   .container {
     margin: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .title {
+    max-width: 300px;
+    overflow-wrap: break-word;
   }
 }

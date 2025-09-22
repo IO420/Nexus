@@ -10,12 +10,11 @@ export default function NotFound() {
   };
 
   return (
-    <div className="centerGrido">
-      <section>
-        <img
-          src="/404-bg.png" // 👈 pon tu imagen en /public/404-bg.png
-          alt="Página no encontrada"
-        />
+    <section>
+      <img
+        src="/404-bg.png"
+        alt="Página no encontrada"
+      />
 
         {/* Título */}
         <h1>404 - Página no encontrada</h1>

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { envConfig } from "./config";
 
-export async function GetStudent(numAccount: number) {
+export async function GetStudent(numAcount: number) {
   try {
-    const response = await axios.get(`${envConfig.apiUrl}/student/${numAccount}`);
-    console.log(response.data)
+    const response = await axios.get(
+      `${envConfig.apiUrl}/student/${numAcount}`
+    );
     return response.data;
   } catch (error: any) {
     const msg =
@@ -14,3 +15,4 @@ export async function GetStudent(numAccount: number) {
     return { error: msg };
   }
 }
+//IO

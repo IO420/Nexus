@@ -1,9 +1,8 @@
 "use client";
 
+import Cookies from "js-cookie";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
-import AlertBox from "../AlertBox/AlertBox";
 import { PostImpressions } from "@/app/lib/postImpressions";
 
 import "./Impressions.css";
@@ -14,14 +13,13 @@ interface CostOption {
 
 interface ImpressionsProps {
   costs: CostOption[];
-  numAccount: number | null;
+  numAcount: number | null;
 }
 
-function Impressions({ costs, numAccount }: ImpressionsProps) {
+function Impressions({ costs, numAcount }: ImpressionsProps) {
   const [pages, setPages] = useState("");
   const [cost, setCost] = useState("");
 
-  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleLogout = () => {
@@ -31,37 +29,46 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
   };
 
   const handlePayment = async () => {
-    setError("");
 
-    if (!numAccount) {
-      setError("Error busca denuevo al estudiante");
+    if (!numAcount) {
+      router.push(
+        `/Impresiones?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
+      );
       return;
     }
 
     if (!pages) {
-      setError("Ingresa el numero de hojas a imprimir");
+      router.push(
+        `/Impresiones?numAcount=${numAcount}&error=Ingresa el numero de hojas a imprimir`
+      );
       return;
     }
 
     if (!cost) {
-      setError("Selecciona un costo");
+      router.push(
+        `/Impresiones?numAcount=${numAcount}&error=Selecciona un costo`
+      );
       return;
     }
 
     const result = await PostImpressions({
-      id_cuenta:numAccount,
-      numero_hojas : parseInt(pages),
+      id_cuenta: numAcount,
+      numero_hojas: parseInt(pages),
       monto: parseInt(cost) * parseInt(pages),
     });
 
     if (result.error) {
       if (result.error === "Token inválido") handleLogout();
-      else setError(result.error);
+      else {
+        router.push(
+          `/Impresiones?numAcount=${numAcount}&error=${result.error}`
+        );
+      }
       return;
     }
 
     setPages("");
-    setCost("")
+    setCost("");
   };
 
   return (
@@ -102,15 +109,15 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
         </div>
 
         <div className="groupLabel">
-          <label className="label">Total: {pages && `$${parseInt(cost) * parseInt(pages)}.00`}</label>
+          <label className="label">
+            Total: {(pages && cost) && `$${parseInt(cost) * parseInt(pages)}.00`}
+          </label>
         </div>
 
         <div className="containerButton">
           <button className="button buttonCharge" type="submit">
             Cobrar
           </button>
-
-          {error && <AlertBox message={error} type="error" />}
         </div>
       </div>
     </form>

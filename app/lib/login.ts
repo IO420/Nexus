@@ -16,3 +16,4 @@ export async function loginUser(usuario: string, password: string) {
     return { error: msg };
   }
 }
+//IO

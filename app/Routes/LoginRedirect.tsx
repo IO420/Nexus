@@ -5,17 +5,17 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export const LoginRedirect = ({ children }: { children: React.ReactNode }) => {
-    const { loading, authenticated } = useAuth();
-    const router = useRouter();
+  const { loading, authenticated } = useAuth();
+  const router = useRouter();
 
-    useEffect(() => {
-        if (!loading && authenticated) {
-            router.push("/Impresiones");
-        }
-    }, [loading, authenticated, router]);
+  useEffect(() => {
+    if (!loading && authenticated) {
+      router.push("/Impresiones");
+    }
+  }, [loading, authenticated, router]);
 
-    if (loading) return <p>Cargando...</p>;
+  if (loading) return <p>Cargando...</p>;
 
-    return !authenticated ? <>{children}</> : null;
+  return !authenticated ? <>{children}</> : null;
 };
 //IO

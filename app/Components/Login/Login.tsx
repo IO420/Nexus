@@ -10,6 +10,7 @@ function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [alert, setAlert] = useState("");
 
   const router = useRouter();
 
@@ -28,7 +29,7 @@ function Login() {
       document.cookie = `token=${token}; path=/; SameSite=Strict`;
       document.cookie = `id_usuario=${id_usuario}; path=/; SameSite=Strict`;
 
-      setError("Inicio de sesión exitoso");
+      setAlert("Inicio de sesión exitoso");
       router.push("/Impresiones");
     }
   };
@@ -71,6 +72,7 @@ function Login() {
         </button>
 
         {error && <AlertBox message={error} type="error" />}
+        {alert && <AlertBox message={alert} type="success" />}
       </form>
     </section>
   );

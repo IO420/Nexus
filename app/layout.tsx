@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
-import BarNavigation from "./Components/BarNavigation/BarNavigation";
+import WavesBackground from "./Components/visual/Wave/wavesBack";
+import FallingSquares from "./Components/visual/Wave/FallingSquares/FallingSquares";
 import "./globals.css";
-import WavesBackground from "./Components/Wave/wavesBack";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,6 +29,7 @@ export default function RootLayout({
       <body className={poppins.variable}>
         <Header />
         <main>
+          <FallingSquares />
           {children}
           <WavesBackground />
         </main>

@@ -1,15 +1,19 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import "./AlertBox.css";
 
 interface AlertBoxProps {
-  message: string;
+  message: string | null;
   type: "error" | "success";
   duration?: number;
 }
 
-export default function AlertBox({ message, type, duration = 6000 }: AlertBoxProps) {
+export default function AlertBox({
+  message,
+  type,
+  duration = 6000,
+}: AlertBoxProps) {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState("");
 
