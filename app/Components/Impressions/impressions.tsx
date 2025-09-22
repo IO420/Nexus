@@ -14,10 +14,10 @@ interface CostOption {
 
 interface ImpressionsProps {
   costs: CostOption[];
-  numAccount: number | null;
+  numAcount: number | null;
 }
 
-function Impressions({ costs, numAccount }: ImpressionsProps) {
+function Impressions({ costs, numAcount }: ImpressionsProps) {
   const [pages, setPages] = useState("");
   const [cost, setCost] = useState("");
 
@@ -33,7 +33,7 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
   const handlePayment = async () => {
     setError("");
 
-    if (!numAccount) {
+    if (!numAcount) {
       setError("Error busca denuevo al estudiante");
       return;
     }
@@ -49,7 +49,7 @@ function Impressions({ costs, numAccount }: ImpressionsProps) {
     }
 
     const result = await PostImpressions({
-      id_cuenta:numAccount,
+      id_cuenta:numAcount,
       numero_hojas : parseInt(pages),
       monto: parseInt(cost) * parseInt(pages),
     });

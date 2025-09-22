@@ -5,15 +5,18 @@ import { GetStudent } from "@/app/lib/getStudent";
 
 import "./addTime.css";
 
-export default async function Page({ searchParams }: any) {
+export default async function Page(props:{
+  searchParams?: Promise<{
+    numAcount:string;
+  }>
+}) {
 
-  const numAccount = searchParams?.numAccount
-    ? Number(searchParams.numAccount)
-    : null;
-    
+  const params =await props.searchParams;
+  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
+
   let student: any = null;
-  if (numAccount) {
-    student = await GetStudent(numAccount);
+  if (numAcount) {
+    student = await GetStudent(numAcount);
   }
 
   return (
@@ -27,7 +30,7 @@ export default async function Page({ searchParams }: any) {
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <Receipt />
+            <Receipt numAcount={student.id_cuenta} />
           </div>
         </>
       ) : (

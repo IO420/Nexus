@@ -8,14 +8,14 @@ interface urlProp{
 }
 
 function SearchUser(url:urlProp) {
-  const [numAccount, setNumAccount] = useState("");
+  const [numAcount, setnumAcount] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (numAccount) {
-      router.push(`/${url.urlBase}?numAccount=${numAccount}`);
+    if (numAcount) {
+      router.push(`/${url.urlBase}?numAcount=${numAcount}`);
     }
   };
 
@@ -27,11 +27,11 @@ function SearchUser(url:urlProp) {
         <div className="groupInput">
           <input
             type="text"
-            value={numAccount}
+            value={numAcount}
             onChange={(e) => {
               const value = e.target.value;
               if (/^\d*$/.test(value) && value.length <= 9) {
-                setNumAccount(value);
+                setnumAcount(value);
               }
             }}
             placeholder="Coloca un número de cuenta..."

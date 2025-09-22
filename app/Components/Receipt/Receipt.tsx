@@ -7,10 +7,10 @@ import Cookies from "js-cookie";
 import "./Receipt.css";
 
 interface ReceiptsProps {
-  numAccount: number | null;
+  numAcount: number | null;
 }
 
-function Receipt({ numAccount }: ReceiptsProps) {
+function Receipt({ numAcount }: ReceiptsProps) {
   const [folio, setFolio] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
@@ -29,7 +29,7 @@ function Receipt({ numAccount }: ReceiptsProps) {
   //restrict this month//
 
   const handleSaveReceipt = () => {
-    if (!numAccount) {
+    if (!numAcount) {
       setError("Error busca denuevo al estudiante");
       return;
     }
@@ -50,7 +50,7 @@ function Receipt({ numAccount }: ReceiptsProps) {
     }
 
     PostReceipt({
-      id_cuenta: numAccount,
+      id_cuenta: numAcount,
       folio_recibo: folio,
       monto: Number(amount),
       fecha_recibo: date,

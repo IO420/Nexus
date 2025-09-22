@@ -8,14 +8,18 @@ import AlertBox from "@/app/Components/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
 import "@/app/globals.css";
 
-export default async function Page({ searchParams }: any) {
-  const params = await  searchParams;
-  const numAccount = params.numAccount ? Number(params.numAccount) : null;
+export default async function Page(props: {
+  searchParams?: Promise<{
+    numAcount: string;
+  }>;
+}) { 
+  const params = await props.searchParams;
+  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
 
   let student: any = null;
   let error: string | null = null;
-  if (numAccount) {
-    const result = await GetStudent(numAccount);
+  if (numAcount) {
+    const result = await GetStudent(numAcount);
 
     if (result.error) {
       error = result.error;
@@ -46,7 +50,7 @@ export default async function Page({ searchParams }: any) {
               {
                 key: "1",
                 label: "Recibo",
-                content: <Receipt numAccount={student.id_cuenta}/>,
+                content: <Receipt numAcount={student.id_cuenta} />,
               },
               {
                 key: "2",
@@ -54,7 +58,7 @@ export default async function Page({ searchParams }: any) {
                 content: (
                   <Impressions
                     costs={[{ value: 1 }, { value: 2 }]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -73,7 +77,7 @@ export default async function Page({ searchParams }: any) {
                       { value: 12 },
                       { value: 14 },
                     ]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -101,7 +105,7 @@ export default async function Page({ searchParams }: any) {
                       { value: 150 },
                       { value: 200 },
                     ]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -111,7 +115,7 @@ export default async function Page({ searchParams }: any) {
                 content: (
                   <Impressions
                     costs={[{ value: 1 }, { value: 2 }, { value: 5 }]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
