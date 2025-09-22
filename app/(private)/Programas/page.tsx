@@ -5,7 +5,11 @@ import styleprograms from "./programas.module.css";
 
 export default function Page() {
   const [Editar, setEditar] = useState(true);
+  const [Nuevo, setNuevo] = useState(true);
 
+  const handleNuevo = () => {
+    setNuevo(false);
+  };
   const handleEditar = () => {
     setEditar(false);
   };
@@ -26,7 +30,10 @@ export default function Page() {
             <button className="button buttonSearch" onClick={handleEditar}>
               Editar
             </button>
-            <button className={`button buttonSearch ${styleprograms.button}`}>
+            <button
+              className={`button buttonSearch ${styleprograms.button}`}
+              onClick={handleNuevo}
+            >
               Nuevo
             </button>
           </div>
@@ -35,6 +42,25 @@ export default function Page() {
         <section className="containersection">
           <div>ID</div>
           <h2 className="title"> PROGRAMAS </h2>
+          <label className="label">Programas</label>
+          <input
+            type="text"
+            //value={user}
+            //onChange={(e) => setUser(e.target.value)}
+            placeholder="Coloca "
+          />
+          <div className="margin">
+            <button className="button buttonSearch">Insertar</button>
+
+            <button className={`button buttonSearch ${styleprograms.button}`}>
+              Cancelar
+            </button>
+          </div>
+        </section>
+      )}
+
+      {!Nuevo && (
+        <section className="containersection">
           <label className="label">Programas</label>
           <input
             type="text"
