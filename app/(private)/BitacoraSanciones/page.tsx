@@ -8,8 +8,13 @@ import Information from "@/app/Components/Information/information";
 import SearchUser from "@/app/Components/SearchUser/searchUser";
 import { GetStudent } from "@/app/lib/getStudent";
 
-export default function Page({ searchParams }: any) {
-    const params =  searchParams;
+export default async function Page(props:{
+  searchParams?: Promise<{
+    numAcount:string;
+  }>
+}) {
+  const params =await props.searchParams;
+  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
 
     let student: any = null;
     let error: string | null = null;

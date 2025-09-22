@@ -8,9 +8,13 @@ import AlertBox from "@/app/Components/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
 import "@/app/globals.css";
 
-export default async function Page({ searchParams }: any) {
-  const params = await  searchParams;
-  const numAccount = params.numAccount ? Number(params.numAccount) : null;
+export default async function Page(props: {
+  searchParams?: Promise<{
+    numAcount: string;
+  }>;
+}) { 
+  const params = await props.searchParams;
+  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
 
   let student: any = null;
   let error: string | null = null;
@@ -46,7 +50,7 @@ export default async function Page({ searchParams }: any) {
               {
                 key: "1",
                 label: "Recibo",
-                content: <Receipt numAccount={student.id_cuenta}/>,
+                content: <Receipt numAccount={student.id_cuenta} />,
               },
               {
                 key: "2",

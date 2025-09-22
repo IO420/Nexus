@@ -5,10 +5,14 @@ import { GetStudent } from "@/app/lib/getStudent";
 
 import "./addTime.css";
 
-export default async function Page({ searchParams }: any) {
+export default async function Page(props:{
+  searchParams?: Promise<{
+    numAcount:string;
+  }>
+}) {
 
-  const params =await searchParams;
-  const numAccount = params.numAccount ? Number(params.numAccount) : null;
+  const params =await props.searchParams;
+  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
 
   let student: any = null;
   if (numAccount) {
