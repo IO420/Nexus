@@ -5,32 +5,34 @@ import { GetStudent } from "@/app/lib/getStudent";
 
 import "./addTime.css";
 
-export default async function Page(props:{
+export default async function Page(props: {
   searchParams?: Promise<{
-    numAcount:string;
-  }>
+    numAcount: string;
+  }>;
 }) {
-
-  const params =await props.searchParams;
-  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const params = await props.searchParams;
+  const numAcount = params?.numAcount ? params.numAcount : null;
 
   let student: any = null;
   if (numAcount) {
-    student = await GetStudent(numAcount);
+    student = await GetStudent(parseInt(numAcount));
   }
 
   return (
     <section className="containerSection">
       <h2 className="title"> AGREGAR TIEMPO </h2>
 
-      <SearchUser urlBase="AgregarTiempo" />
+      <SearchUser urlBase="AgregarTiempo" value={numAcount} />
 
       {student ? (
         <>
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <Receipt numAcount={student.id_cuenta} />
+            <Receipt
+              urlBase={"/ActivosMantenimiento"}
+              numAcount={student.id_cuenta}
+            />
           </div>
         </>
       ) : (

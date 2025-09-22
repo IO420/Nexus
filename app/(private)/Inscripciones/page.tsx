@@ -7,19 +7,18 @@ import { GetStudent } from "@/app/lib/getStudent";
 
 import "./inscriptions.css";
 
-export default async function Page(props:{
+export default async function Page(props: {
   searchParams?: Promise<{
-    numAcount:string;
-  }>
+    numAcount: string;
+  }>;
 }) {
-  
-  const params =await props.searchParams;
-  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const params = await props.searchParams;
+  const numAcount = params?.numAcount ? params.numAcount : null;
 
   let student: any = null;
   let error: string | null = null;
   if (numAcount) {
-    const result = await GetStudent(numAcount);
+    const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
       error = result.error;
@@ -32,7 +31,7 @@ export default async function Page(props:{
     <section className="containerSection">
       <h2 className="title"> INSCRIPCION </h2>
 
-      <SearchUser urlBase="Inscripciones" />
+      <SearchUser urlBase="Inscripciones" value={numAcount} />
 
       {student ? (
         <>
@@ -45,7 +44,7 @@ export default async function Page(props:{
 
           <StepNavigator totalSteps={2}>
             <Selection />
-            <Receipt numAcount={student.id_cuenta}/>
+            <Receipt urlBase={"Inscripciones"} numAcount={student.id_cuenta} />
           </StepNavigator>
         </>
       ) : (

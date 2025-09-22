@@ -25,7 +25,7 @@ export default async function Page(props: {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      showError = "Alumno no encontrado"
+      showError = "Alumno no encontrado";
     } else {
       student = result;
     }
@@ -42,7 +42,7 @@ export default async function Page(props: {
       )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
-      <SearchUser urlBase="Impresiones" value={numAcount}/>
+      <SearchUser urlBase="Impresiones" value={numAcount} />
 
       {student ? (
         <>
@@ -59,7 +59,12 @@ export default async function Page(props: {
               {
                 key: "1",
                 label: "Recibo",
-                content: <Receipt numAcount={student.id_cuenta} />,
+                content: (
+                  <Receipt
+                    urlBase="/Impresiones"
+                    numAcount={student.id_cuenta}
+                  />
+                ),
               },
               {
                 key: "2",

@@ -7,10 +7,11 @@ import { useRouter } from "next/navigation";
 import "./Receipt.css";
 
 interface ReceiptsProps {
+  urlBase:string;
   numAcount: number | null;
 }
 
-function Receipt({ numAcount }: ReceiptsProps) {
+function Receipt({urlBase , numAcount }: ReceiptsProps) {
   const router = useRouter();
 
   const [folio, setFolio] = useState("");
@@ -30,27 +31,27 @@ function Receipt({ numAcount }: ReceiptsProps) {
   const handleSaveReceipt = async () => {
     if (!numAcount) {
       router.push(
-        `/Impresiones?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
+        `/${urlBase}?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
       );
       return;
     }
 
     if (!folio) {
       router.push(
-        `/Impresiones?numAcount=${numAcount}&error=Ingresa el folio del tiket`
+        `/${urlBase}?numAcount=${numAcount}&error=Ingresa el folio del tiket`
       );
       return;
     }
 
     if (!amount) {
       router.push(
-        `/Impresiones?numAcount=${numAcount}&error=coloca el monto a depositar`
+        `/${urlBase}?numAcount=${numAcount}&error=coloca el monto a depositar`
       );
       return;
     }
 
     if (!date) {
-      router.push(`/Impresiones?numAcount=${numAcount}&error=coloca la fecha`);
+      router.push(`/${urlBase}?numAcount=${numAcount}&error=coloca la fecha`);
       return;
     }
 
@@ -66,10 +67,10 @@ function Receipt({ numAcount }: ReceiptsProps) {
       setAmount("");
       setDate("");
 
-      router.push(`/Impresiones?numAcount=${numAcount}&success=1`);
+      router.push(`/${urlBase}?numAcount=${numAcount}&success=1`);
     } catch (err: any) {
       console.error(err);
-      router.push(`/Impresiones?numAcount=${numAcount}&error=${err}`);
+      router.push(`/${urlBase}?numAcount=${numAcount}&error=${err}`);
     }
   };
 
