@@ -29,6 +29,7 @@ export const config = {
     "/AsignacionEquipo",
     "/Alta",
     "/AgregarTiempo",
-    "/ActivosMantenimiento"],
+    "/ActivosMantenimiento",
+  ],
 };
 //IO
