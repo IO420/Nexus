@@ -67,7 +67,7 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
       setAmount("");
       setDate("");
 
-      router.push(`${urlBase}?numAcount=${numAcount}&success=1`);
+      router.push(`${urlBase}?numAcount=${numAcount}&success=Recibo guardado`);
     } catch (err: any) {
       console.error(err);
       router.push(`${urlBase}?numAcount=${numAcount}&error=${err}`);

@@ -17,7 +17,7 @@ export default async function Page(props: {
 }) {
   const params = await props.searchParams;
   const numAcount = params?.numAcount ? params.numAcount : null;
-  const showSuccess = params?.success ? parseInt(params.success) : null;
+  const showSuccess = params?.success ? params.success : null;
   let showError = params?.error ? params.error : null;
 
   let student: any = null;
@@ -38,7 +38,7 @@ export default async function Page(props: {
       )}
 
       {showSuccess && (
-        <AlertBox message="Recibo guardado correctamente" type="success" />
+        <AlertBox key={Date.now()} message={showSuccess} type="success" />
       )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>

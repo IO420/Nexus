@@ -29,7 +29,6 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
   };
 
   const handlePayment = async () => {
-
     if (!numAcount) {
       router.push(
         `/Impresiones?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
@@ -69,6 +68,9 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
 
     setPages("");
     setCost("");
+    router.push(
+      `/Impresiones?numAcount=${numAcount}&success=Impresion cobrada correctamente`
+    );
   };
 
   return (
@@ -110,7 +112,7 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
 
         <div className="groupLabel">
           <label className="label">
-            Total: {(pages && cost) && `$${parseInt(cost) * parseInt(pages)}.00`}
+            Total: {pages && cost && `$${parseInt(cost) * parseInt(pages)}.00`}
           </label>
         </div>
 

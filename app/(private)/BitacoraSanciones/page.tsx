@@ -1,24 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import styles from "./Page.module.css"; // importamos el css
+import styles from "./Page.module.css";
 import Toggle from "@/app/Components/Toggle/Toggle";
 import SearchDate from "@/app/Components/SearchDate/SearchDate";
 import Information from "@/app/Components/Information/information";
 import SearchUser from "@/app/Components/SearchUser/searchUser";
-import { GetStudent } from "@/app/lib/getStudent";
+import { useState } from "react";
 
-export default async function Page(props: {
-  searchParams?: Promise<{
-    numAcount: string;
-  }>;
-}) {
-  const params = await props.searchParams;
-  const numAcount = params?.numAcount ? params.numAcount : null;
-
-  let student: any = null;
-  let error: string | null = null;
-
+export default function Page() {
   const [usuario_sanciones] = useState([
     {
       no_cuenta: "425530275 ",
@@ -177,7 +166,7 @@ export default async function Page(props: {
             label: "Sanciones",
             content: (
               <>
-                <SearchUser urlBase="BitacoraSanciones" value={numAcount} />
+                <SearchUser urlBase="BitacoraSanciones" value="3" />
 
                 <Information NoCuenta="id cuenta" Nombre="id nombre" />
 
