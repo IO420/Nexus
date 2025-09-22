@@ -4,11 +4,12 @@ import { loginUser } from "@/app/lib/login";
 import { useRouter } from "next/navigation";
 
 import "./Login.css";
+import AlertBox from "../AlertBox/AlertBox";
 
 function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const router = useRouter();
 
@@ -18,10 +19,16 @@ function Login() {
     const data = await loginUser(user, password);
 
     if ("error" in data) {
-      setMessage(data.error);
+      setError(data.error);
     } else {
-      document.cookie = `token=${data.access_token}; path=/; SameSite=Strict`;
-      setMessage("Inicio de sesión exitoso");
+      const token = data.access_token;
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      const id_usuario = payload.id;
+
+      document.cookie = `token=${token}; path=/; SameSite=Strict`;
+      document.cookie = `id_usuario=${id_usuario}; path=/; SameSite=Strict`;
+
+      setError("Inicio de sesión exitoso");
       router.push("/Impresiones");
     }
   };
@@ -63,16 +70,7 @@ function Login() {
           Iniciar sesión
         </button>
 
-        {message && (
-          <div
-            className={`messageBox ${
-              message.includes("exitoso") ? "success" : "error"
-            }`}
-            style={{ marginTop: "10px" }}
-          >
-            {message}
-          </div>
-        )}
+        {error && <AlertBox message={error} type="error" />}
       </form>
     </section>
   );

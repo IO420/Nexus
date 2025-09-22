@@ -4,12 +4,12 @@ import Impressions from "../../Components/Impressions/impressions";
 import Toggle from "../../Components/Toggle/Toggle";
 import Information from "../../Components/Information/information";
 
-import "@/app/globals.css";
-import { GetStudent } from "@/app/lib/getStudent";
 import AlertBox from "@/app/Components/AlertBox/AlertBox";
+import { GetStudent } from "@/app/lib/getStudent";
+import "@/app/globals.css";
 
 export default async function Page({ searchParams }: any) {
-  const params = await searchParams;
+  const params = await  searchParams;
   const numAccount = params.numAccount ? Number(params.numAccount) : null;
 
   let student: any = null;
@@ -26,7 +26,7 @@ export default async function Page({ searchParams }: any) {
 
   return (
     <section className="containerSection">
-      {error && <AlertBox message={error} type="error" />}
+      {error && <AlertBox key={error} message={error} type="error" />}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
       <SearchUser urlBase="Impresiones" />
@@ -46,7 +46,7 @@ export default async function Page({ searchParams }: any) {
               {
                 key: "1",
                 label: "Recibo",
-                content: <Receipt />,
+                content: <Receipt numAccount={student.id_cuenta}/>,
               },
               {
                 key: "2",
