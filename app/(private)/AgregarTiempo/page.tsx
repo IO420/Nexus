@@ -12,11 +12,11 @@ export default async function Page(props:{
 }) {
 
   const params =await props.searchParams;
-  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
 
   let student: any = null;
-  if (numAccount) {
-    student = await GetStudent(numAccount);
+  if (numAcount) {
+    student = await GetStudent(numAcount);
   }
 
   return (
@@ -30,7 +30,7 @@ export default async function Page(props:{
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <Receipt numAccount={student.id_cuenta} />
+            <Receipt numAcount={student.id_cuenta} />
           </div>
         </>
       ) : (

@@ -14,12 +14,12 @@ export default async function Page(props: {
   }>;
 }) { 
   const params = await props.searchParams;
-  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
 
   let student: any = null;
   let error: string | null = null;
-  if (numAccount) {
-    const result = await GetStudent(numAccount);
+  if (numAcount) {
+    const result = await GetStudent(numAcount);
 
     if (result.error) {
       error = result.error;
@@ -50,7 +50,7 @@ export default async function Page(props: {
               {
                 key: "1",
                 label: "Recibo",
-                content: <Receipt numAccount={student.id_cuenta} />,
+                content: <Receipt numAcount={student.id_cuenta} />,
               },
               {
                 key: "2",
@@ -58,7 +58,7 @@ export default async function Page(props: {
                 content: (
                   <Impressions
                     costs={[{ value: 1 }, { value: 2 }]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -77,7 +77,7 @@ export default async function Page(props: {
                       { value: 12 },
                       { value: 14 },
                     ]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -105,7 +105,7 @@ export default async function Page(props: {
                       { value: 150 },
                       { value: 200 },
                     ]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },
@@ -115,7 +115,7 @@ export default async function Page(props: {
                 content: (
                   <Impressions
                     costs={[{ value: 1 }, { value: 2 }, { value: 5 }]}
-                    numAccount={student.id_cuenta}
+                    numAcount={student.id_cuenta}
                   />
                 ),
               },

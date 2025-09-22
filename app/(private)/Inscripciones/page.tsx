@@ -14,12 +14,12 @@ export default async function Page(props:{
 }) {
   
   const params =await props.searchParams;
-  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
 
   let student: any = null;
   let error: string | null = null;
-  if (numAccount) {
-    const result = await GetStudent(numAccount);
+  if (numAcount) {
+    const result = await GetStudent(numAcount);
 
     if (result.error) {
       error = result.error;
@@ -45,7 +45,7 @@ export default async function Page(props:{
 
           <StepNavigator totalSteps={2}>
             <Selection />
-            <Receipt numAccount={student.id_cuenta}/>
+            <Receipt numAcount={student.id_cuenta}/>
           </StepNavigator>
         </>
       ) : (

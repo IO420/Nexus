@@ -14,7 +14,7 @@ export default async function Page(props:{
   }>
 }) {
   const params =await props.searchParams;
-  const numAccount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
 
     let student: any = null;
     let error: string | null = null;

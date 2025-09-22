@@ -1,9 +1,9 @@
 import axios from "axios";
 import { envConfig } from "./config";
 
-export async function GetStudent(numAccount: number) {
+export async function GetStudent(numAcount: number) {
   try {
-    const response = await axios.get(`${envConfig.apiUrl}/student/${numAccount}`);
+    const response = await axios.get(`${envConfig.apiUrl}/student/${numAcount}`);
     console.log(response.data)
     return response.data;
   } catch (error: any) {
