@@ -13,7 +13,6 @@ export default function Page(props: {
   const params = props.searchParams;
 
   const [tiempo, setTiempo] = useState("");
-  const [selectedTable, setSelectedTable] = useState(null);
 
   return (
     <section className="containerSection">

@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 import "./Receipt.css";
 
 interface ReceiptsProps {
-  urlBase:string;
+  urlBase: string;
   numAcount: number | null;
 }
 
-function Receipt({urlBase , numAcount }: ReceiptsProps) {
+function Receipt({ urlBase, numAcount }: ReceiptsProps) {
   const router = useRouter();
 
   const [folio, setFolio] = useState("");
@@ -31,27 +31,27 @@ function Receipt({urlBase , numAcount }: ReceiptsProps) {
   const handleSaveReceipt = async () => {
     if (!numAcount) {
       router.push(
-        `/${urlBase}?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
+        `${urlBase}?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
       );
       return;
     }
 
     if (!folio) {
       router.push(
-        `/${urlBase}?numAcount=${numAcount}&error=Ingresa el folio del tiket`
+        `${urlBase}?numAcount=${numAcount}&error=Ingresa el folio del tiket`
       );
       return;
     }
 
     if (!amount) {
       router.push(
-        `/${urlBase}?numAcount=${numAcount}&error=coloca el monto a depositar`
+        `${urlBase}?numAcount=${numAcount}&error=coloca el monto a depositar`
       );
       return;
     }
 
     if (!date) {
-      router.push(`/${urlBase}?numAcount=${numAcount}&error=coloca la fecha`);
+      router.push(`${urlBase}?numAcount=${numAcount}&error=coloca la fecha`);
       return;
     }
 
@@ -67,10 +67,10 @@ function Receipt({urlBase , numAcount }: ReceiptsProps) {
       setAmount("");
       setDate("");
 
-      router.push(`/${urlBase}?numAcount=${numAcount}&success=1`);
+      router.push(`${urlBase}?numAcount=${numAcount}&success=1`);
     } catch (err: any) {
       console.error(err);
-      router.push(`/${urlBase}?numAcount=${numAcount}&error=${err}`);
+      router.push(`${urlBase}?numAcount=${numAcount}&error=${err}`);
     }
   };
 
@@ -87,8 +87,8 @@ function Receipt({urlBase , numAcount }: ReceiptsProps) {
           <input
             type="text"
             value={folio}
-            onChange={(e) => {
-              const value = e.target.value;
+            onChange={(error) => {
+              const value = error.target.value;
               if (/^\d*$/.test(value)) {
                 setFolio(value);
               }
