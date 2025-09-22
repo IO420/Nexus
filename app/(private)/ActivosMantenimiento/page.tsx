@@ -1,7 +1,9 @@
 "use client";
 import SearchUser from "@/app/Components/SearchUser/searchUser";
+import Equipos from "@/app/Components/ActivosMantenimiento/Equipos";
 import Toggle from "@/app/Components/Toggle/Toggle";
-import { useState } from "react";
+import Areas from "@/app/Components/ActivosMantenimiento/Areas";
+import Mesas from "@/app/Components/ActivosMantenimiento/Mesas";
 
 export default function Page(props: {
   searchParams?: Promise<{
@@ -11,8 +13,6 @@ export default function Page(props: {
   }>;
 }) {
   const params = props.searchParams;
-
-  const [tiempo, setTiempo] = useState("");
 
   return (
     <section className="containerSection">
@@ -27,27 +27,7 @@ export default function Page(props: {
             content: (
               <>
                 <SearchUser urlBase="ActivosMantenimiento" value={"2"} />
-
-                <form className="containerForm">
-                  <label className="label">Equipos disponibles</label>
-                  <div className="groupInput">
-                    <select
-                      value={tiempo}
-                      onChange={(e) => setTiempo(e.target.value)}
-                    >
-                      <option value="">-- Equipos disponibles --</option>
-                      <option value="15">1</option>
-                      <option value="30">2</option>
-                      <option value="45">3</option>
-                      <option value="60">4</option>
-                      <option value="90">5</option>
-                      <option value="120">6</option>
-                    </select>
-                    <button className="button buttonSearch" type="submit">
-                      Asignar
-                    </button>
-                  </div>
-                </form>
+                <Equipos />
               </>
             ),
           },
@@ -56,37 +36,7 @@ export default function Page(props: {
             label: "Areas",
             content: (
               <>
-                <form className="containerForm">
-                  <label className="label">Áreas disponibles</label>
-                  <div className="groupInput">
-                    <select
-                      value={tiempo}
-                      onChange={(e) => setTiempo(e.target.value)}
-                    >
-                      <option value="">-- Áreas disponibles --</option>
-                      <option value="15">PECERA</option>
-                      <option value="30">JAULA</option>
-                      <option value="45">HUACAL</option>
-                      <option value="60">PCNET1</option>
-                      <option value="90">PCNET2</option>
-                    </select>
-
-                    <div className="checkbox-grid">
-                      <label>
-                        <input type="checkbox" />
-                        Activo
-                      </label>
-                      <label>
-                        <input type="checkbox" />
-                        Mantenimiento
-                      </label>
-                    </div>
-
-                    <button className="button buttonSearch" type="submit">
-                      Actualizar
-                    </button>
-                  </div>
-                </form>
+                <Areas />
               </>
             ),
           },
@@ -95,31 +45,7 @@ export default function Page(props: {
             label: "Liberar mesa",
             content: (
               <>
-                <form className="containerForm">
-                  <label className="label">Mesas disponibles</label>
-                  <div className="groupInput">
-                    <select
-                      value={tiempo}
-                      onChange={(e) => setTiempo(e.target.value)}
-                    >
-                      <option value="">-- Mesas disponibles --</option>
-                      <option value="15">1</option>
-                      <option value="30">4</option>
-                      <option value="45">7</option>
-                      <option value="60">10</option>
-                      <option value="90">15</option>
-                    </select>
-
-                    <div className="checkbox">
-                      <input type="checkbox" />
-                      <label>Mantenimiento</label>
-                    </div>
-
-                    <button className="button buttonSearch" type="submit">
-                      Confirmar
-                    </button>
-                  </div>
-                </form>
+                <Mesas />
               </>
             ),
           },
