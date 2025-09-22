@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./AlertBox.css";
 
 interface AlertBoxProps {
-  message: string;
+  message: string | null;
   type: "error" | "success";
   duration?: number;
 }

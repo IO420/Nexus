@@ -1,8 +1,8 @@
 "use client";
-import AlertBox from "../AlertBox/AlertBox";
+
 import { useState } from "react";
 import { PostReceipt } from "@/app/lib/postReceipt";
-import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 import "./Receipt.css";
 
@@ -11,12 +11,11 @@ interface ReceiptsProps {
 }
 
 function Receipt({ numAcount }: ReceiptsProps) {
+  const router = useRouter();
+
   const [folio, setFolio] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
-
-  const [error, setError] = useState("");
-  const [alert, setAlert] = useState("");
 
   //restrict this month//
   const day = new Date();
@@ -28,33 +27,50 @@ function Receipt({ numAcount }: ReceiptsProps) {
   const maxFecha = new Date(year, month, today).toISOString().split("T")[0];
   //restrict this month//
 
-  const handleSaveReceipt = () => {
+  const handleSaveReceipt = async () => {
     if (!numAcount) {
-      setError("Error busca denuevo al estudiante");
+      router.push(
+        `/Impresiones?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
+      );
       return;
     }
 
     if (!folio) {
-      setError("Ingresa el folio del tiket");
+      router.push(
+        `/Impresiones?numAcount=${numAcount}&error=Ingresa el folio del tiket`
+      );
       return;
     }
 
     if (!amount) {
-      setError("coloca el monto a depositar");
+      router.push(
+        `/Impresiones?numAcount=${numAcount}&error=coloca el monto a depositar`
+      );
       return;
     }
 
     if (!date) {
-      setError("coloca la fecha");
+      router.push(`/Impresiones?numAcount=${numAcount}&error=coloca la fecha`);
       return;
     }
 
-    PostReceipt({
-      id_cuenta: numAcount,
-      folio_recibo: folio,
-      monto: Number(amount),
-      fecha_recibo: date,
-    });
+    try {
+      await PostReceipt({
+        id_cuenta: numAcount,
+        folio_recibo: folio,
+        monto: Number(amount),
+        fecha_recibo: date,
+      });
+
+      setFolio("");
+      setAmount("");
+      setDate("");
+
+      router.push(`/Impresiones?numAcount=${numAcount}&success=1`);
+    } catch (err: any) {
+      console.error(err);
+      router.push(`/Impresiones?numAcount=${numAcount}&error=${err}`);
+    }
   };
 
   return (
@@ -96,8 +112,9 @@ function Receipt({ numAcount }: ReceiptsProps) {
                 if (value === "" || numericValue <= 1000) {
                   setAmount(value);
                 } else {
-                  setAlert("");
-                  setError("El monto no puede superar $1000.00");
+                  router.push(
+                    `/Impresiones?numAcount=${numAcount}&error=El monto no puede superar $1000.00`
+                  );
                 }
               }
             }}
@@ -120,9 +137,6 @@ function Receipt({ numAcount }: ReceiptsProps) {
 
         <div className="containerButton">
           <button className="button buttonSearch">Guardar</button>
-
-          {error && <AlertBox message={error} type="error" />}
-          {alert && <AlertBox message={alert} type="success" />}
         </div>
       </div>
     </form>

@@ -51,5 +51,6 @@
   }
   .wave {
     display: none;
+    animation: none;
   }
 }

@@ -13,6 +13,23 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: []
+  matcher: [    
+    "/Reportes",
+    "/Monitor",
+    "/QuitarSancion",
+    "/Programas",
+    "/Mensajes",
+    "/Inscritos",
+    "/Inscripciones",
+    "/InformacionEquipo",
+    "/Impresiones",
+    "/CambiarPass",
+    "/BitacoraSanciones",
+    "/AsignacionMesas",
+    "/AsignacionEquipo",
+    "/Alta",
+    "/AgregarTiempo",
+    "/ActivosMantenimiento",
+  ],
 };
 //IO

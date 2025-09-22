@@ -4,6 +4,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import WavesBackground from "./Components/Wave/wavesBack";
 import "./globals.css"; 
+import FallingSquares from "./Components/FallingSquares/FallingSquares";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,9 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={poppins.variable} suppressHydrationWarning>
+      <body className={poppins.variable}>
         <Header />
         <main>
+          <FallingSquares/>
           {children}
           <WavesBackground />
         </main>

@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <section>
       <img
-        src="/404-bg.png" // 👈 pon tu imagen en /public/404-bg.png
+        src="/404-bg.png"
         alt="Página no encontrada"
       />
 

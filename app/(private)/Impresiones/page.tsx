@@ -3,26 +3,29 @@ import Receipt from "../../Components/Receipt/Receipt";
 import Impressions from "../../Components/Impressions/impressions";
 import Toggle from "../../Components/Toggle/Toggle";
 import Information from "../../Components/Information/information";
-
 import AlertBox from "@/app/Components/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
+
 import "@/app/globals.css";
 
 export default async function Page(props: {
   searchParams?: Promise<{
     numAcount: string;
+    success?: string;
+    error?: string;
   }>;
-}) { 
+}) {
   const params = await props.searchParams;
-  const numAcount = params?.numAcount ? parseInt(params.numAcount) : null;
+  const numAcount = params?.numAcount ? params.numAcount : null;
+  const showSuccess = params?.success ? parseInt(params.success) : null;
+  let showError = params?.error ? params.error : null;
 
   let student: any = null;
-  let error: string | null = null;
   if (numAcount) {
-    const result = await GetStudent(numAcount);
+    const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      error = result.error;
+      showError = "Alumno no encontrado"
     } else {
       student = result;
     }
@@ -30,10 +33,16 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-      {error && <AlertBox key={error} message={error} type="error" />}
+      {showError && (
+        <AlertBox key={Date.now()} message={showError} type="error" />
+      )}
+
+      {showSuccess && (
+        <AlertBox message="Recibo guardado correctamente" type="success" />
+      )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
-      <SearchUser urlBase="Impresiones" />
+      <SearchUser urlBase="Impresiones" value={numAcount}/>
 
       {student ? (
         <>

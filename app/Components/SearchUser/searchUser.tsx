@@ -1,21 +1,28 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface urlProp{
   urlBase:string
+  value:string|null
 }
 
-function SearchUser(url:urlProp) {
+function SearchUser(props:urlProp) {
   const [numAcount, setnumAcount] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    if (props.value) {
+      setnumAcount(props.value);
+    }
+  }, [props.value]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (numAcount) {
-      router.push(`/${url.urlBase}?numAcount=${numAcount}`);
+      router.push(`/${props.urlBase}?numAcount=${numAcount}`);
     }
   };
 
