@@ -6,6 +6,7 @@ export async function GetStudent(numAcount: number) {
     const response = await axios.get(
       `${envConfig.apiUrl}/student/${numAcount}`
     );
+
     return response.data;
   } catch (error: any) {
     const msg =

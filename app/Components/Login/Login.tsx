@@ -3,8 +3,8 @@ import { useState } from "react";
 import { loginUser } from "@/app/lib/login";
 import { useRouter } from "next/navigation";
 
-import "./Login.css";
 import AlertBox from "../AlertBox/AlertBox";
+import "./Login.css";
 
 function Login() {
   const [user, setUser] = useState("");
