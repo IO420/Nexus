@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./Page.module.css";
 
-interface sancion {
+interface quitarSanciones {
   id: number;
   nombre: string;
   motivo: string;
@@ -12,7 +12,7 @@ interface sancion {
 }
 
 function QuitarSancion() {
-  const [sanciones, setSanciones] = useState<sancion[]>([]);
+  const [quitarSanciones, SetQuitarSanciones] = useState<quitarSanciones[]>([]);
   return (
     <section className="containerSection">
       <div className={styles.tableContainer}>
@@ -28,14 +28,14 @@ function QuitarSancion() {
             </tr>
           </thead>
           <tbody>
-            {sanciones.map((sancion, index) => (
+            {quitarSanciones.map((quitarSanciones, index) => (
               <tr key={index}>
-                <td>{sancion.id}</td>
-                <td>{sancion.nombre}</td>
-                <td>{sancion.motivo}</td>
-                <td>{sancion.duracion}</td>
-                <td>{sancion.fecha_sancion}</td>
-                <td>{sancion.utilizar_equipo}</td>
+                <td>{quitarSanciones.id}</td>
+                <td>{quitarSanciones.nombre}</td>
+                <td>{quitarSanciones.motivo}</td>
+                <td>{quitarSanciones.duracion}</td>
+                <td>{quitarSanciones.fecha_sancion}</td>
+                <td>{quitarSanciones.utilizar_equipo}</td>
               </tr>
             ))}
           </tbody>

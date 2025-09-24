@@ -1,0 +1,61 @@
+"use client";
+import { useState } from "react";
+import styles from "./Page.module.css";
+import SearchDate from "../SearchDate/SearchDate";
+
+interface equipos {
+  hora_entrada: string;
+  min_utilizados: number;
+  hora_salida: string;
+  cuenta_asociada: number;
+}
+
+function BitacoraEquipo() {
+  const [equipo, setEquipo] = useState<equipos[]>([]);
+  const [ubicacion_equipo, setUbicacionEquipo] = useState("");
+  return (
+    <>
+      <SearchDate />
+      <form className="containerForm">
+        <label className="label">Ubicacion de equipo</label>
+
+        <div className="groupInput">
+          <select
+            value={ubicacion_equipo}
+            onChange={(e) => setUbicacionEquipo(e.target.value)}
+          >
+            <option value="">-- Selecciona un equipo --</option>
+            <option value="255">Equipo 255</option>
+          </select>
+          <button className="button buttonSearch" type="submit">
+            Asignar
+          </button>
+        </div>
+      </form>
+      <div className={styles.tableContainer}>
+        <table className={styles.machineTable}>
+          <thead>
+            <tr>
+              <th>Hora Entrada</th>
+              <th>Minutos utilizados</th>
+              <th>Hora salida</th>
+              <th>Cuenta asociada</th>
+            </tr>
+          </thead>
+          <tbody>
+            {equipo.map((equipo, index) => (
+              <tr key={index}>
+                <td>{equipo.hora_entrada}</td>
+                <td>{equipo.min_utilizados}</td>
+                <td>{equipo.hora_salida}</td>
+                <td>{equipo.cuenta_asociada}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+export default BitacoraEquipo;
