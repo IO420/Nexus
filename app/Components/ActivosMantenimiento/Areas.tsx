@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-function Areas() {
+export default function Areas() {
   const [tiempo, setTiempo] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -40,4 +40,3 @@ function Areas() {
     </form>
   );
 }
-export default Areas;

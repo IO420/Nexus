@@ -253,7 +253,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: start;
   border-bottom: 1px solid #cfcfcf;
@@ -387,7 +387,7 @@ table tr {
   width: 100%;
 }
 
-@media(max-width: 1330px) {
+@media (max-width: 1330px) {
   .mainContainer {
     grid-template-rows: 60px 1fr;
   }
@@ -476,9 +476,9 @@ table tr {
   }
 
   button {
-  font-size: 1.5rem;
-  padding: 1rem 1.5rem;
-}
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
 }
 
 @media (max-height: 960px) {
