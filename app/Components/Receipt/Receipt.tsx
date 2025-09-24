@@ -93,7 +93,7 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
                 setFolio(value);
               }
             }}
-            placeholder="Numero de folio..."
+            placeholder="Numero de tiket..."
             inputMode="numeric"
             pattern="[0-9]*"
           />

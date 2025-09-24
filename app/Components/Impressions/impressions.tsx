@@ -84,7 +84,7 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
         <div className="groupInput">
           <label className="label">Costo:</label>
           <select value={cost} onChange={(e) => setCost(e.target.value)}>
-            <option value="">-- Selecciona un tiempo --</option>
+            <option value="">Selecciona el costo</option>
             {costs.map((c) => (
               <option key={c.value} value={c.value}>
                 ${c.value}

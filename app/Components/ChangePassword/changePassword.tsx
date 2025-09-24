@@ -42,7 +42,7 @@ export default function ChangePassword() {
         <div className="containerInput relative">
           <label className="label">Confirmar la contraña</label>
           <input
-            placeholder="Coloca tu contraseña..."
+            placeholder="Coloca tu nueva contraseña..."
             value={confirmNewPass}
             onChange={(e) => {
               setconfirmNewPass(e.target.value);

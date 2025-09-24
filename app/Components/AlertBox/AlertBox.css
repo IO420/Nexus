@@ -1,3 +1,26 @@
+/* Animaciones */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
 .messageBox {
   display: flex;
   position: absolute;
@@ -6,20 +29,20 @@
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  opacity: 1;
   z-index: 100;
   top: 0;
   left: 0;
-  width: 100%;
+  max-width: 500px;
   max-height: min-content;
-  opacity: 0.9;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+}
+
+.messageBox:not(.hidden) {
+  animation: slideInLeft 0.5s ease forwards;
 }
 
 .messageBox.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease-out,transform 0.5 ease;
+  animation: slideOutRight 0.5s ease forwards;
 }
 
 .success {

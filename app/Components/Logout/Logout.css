@@ -23,8 +23,8 @@
     content: "";
     border: 3px solid white;
     border-radius: 2px;
-    height: 15px;
-    width: 15px;
+    height: 2rem;
+    width: 2rem;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -36,7 +36,7 @@
     border: 2px solid white;
     border-radius: 1px;
     height: 0px;
-    width: 10px;
+    width: 1.5rem;
     position: absolute;
     left: 50%;
     top: 50%;

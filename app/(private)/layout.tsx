@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { PrivateRoute } from "../Routes/PrivateRoute";
 import BarNavigation from "../Components/BarNavigation/BarNavigation";
 import Logout from "../Components/Logout/Logout";
 
@@ -8,7 +7,7 @@ export default function PrivateLayout({ children }: { children: ReactNode }) {
     <div className="mainContainer">
       <BarNavigation />
       <div className="container">
-        <Logout/>
+        <Logout />
         <div className="img"></div>
         {children}
       </div>

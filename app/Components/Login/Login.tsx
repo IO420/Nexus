@@ -24,10 +24,10 @@ function Login() {
     } else {
       const token = data.access_token;
       const payload = JSON.parse(atob(token.split(".")[1]));
-      const id_usuario = payload.id;
+      const usuario = payload.usuario;
 
       document.cookie = `token=${token}; path=/; SameSite=Strict`;
-      document.cookie = `id_usuario=${id_usuario}; path=/; SameSite=Strict`;
+      document.cookie = `usuario=${usuario}; path=/; SameSite=Strict`;
 
       setAlert("Inicio de sesión exitoso");
       router.push("/Impresiones");

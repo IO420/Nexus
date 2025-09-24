@@ -90,6 +90,17 @@ footer p {
   width: 100%;
 }
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -108,6 +119,7 @@ footer p {
   overflow: hidden;
   background-color: #f9f9f9;
   z-index: 0;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .containerSection {
@@ -129,7 +141,7 @@ footer p {
   right: 0;
   width: 725px;
   height: 615px;
-  background-image: url("https://www.acatlan.unam.mx/images/fes_05.jpg");
+  background-image: url("/rock2.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -523,7 +535,7 @@ table tr {
 
 @media (max-width: 450px) {
   .title {
-    max-width: 300px;
+    max-width: 250px;
     overflow-wrap: break-word;
   }
 }

@@ -26,10 +26,16 @@
   content: "";
   top: 0;
   left: -20px;
-  width: 50%;
+  width: 65%;
   height: 100%;
   min-width: 300px;
-  background: #bd8c01;
+  background: linear-gradient(to right, #bd8c01, #f9f9f9);
   transform: skew(-45deg);
   z-index: 0;
+}
+
+@media (max-width: 800px) {
+  .yellowPart {
+    background: #bd8c01;
+  }
 }
