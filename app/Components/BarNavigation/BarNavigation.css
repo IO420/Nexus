@@ -56,7 +56,6 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 10px;
   position: relative;
   z-index: 1;
   border-radius: 4px 4px 0 0;
@@ -139,7 +138,7 @@ tbody {
 
   .barNavigation ul {
     position: absolute;
-    background-color: rgb(1, 92, 184);
+    background-color: #003e79;
     flex-direction: column;
     padding: 10px 0;
     align-items: center;
@@ -160,10 +159,10 @@ tbody {
   }
 
   .subMenu ul {
-    width: 90%;
+    width: 100%;
     border-radius: 4px;
     position: relative;
-    background-color: rgba(0, 61, 121, 1);
+    background-color: rgb(1, 92, 184);
   }
 
   thead,

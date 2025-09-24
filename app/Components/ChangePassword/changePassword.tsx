@@ -14,7 +14,7 @@ export default function ChangePassword() {
 
   return (
     <section className="centerGrid containerSection">
-      <form onSubmit={handleChangePass}>
+      <form onSubmit={handleChangePass} className="pass">
         <div className="containerInput relative">
           <label className="label">Contraseña actual</label>
           <input
