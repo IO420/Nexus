@@ -29,11 +29,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={poppins.variable}>
         <Header />
-        <main>
-          <FallingSquares />
-          {children}
-          <WavesBackground />
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

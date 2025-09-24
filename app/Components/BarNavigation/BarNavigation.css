@@ -1,6 +1,6 @@
 .barNavigation {
   text-align: center;
-  background-color: rgb(1, 92, 184);
+  background-color: #003e79;
   padding: 0 20px;
   display: flex;
   width: 100%;
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  gap: 10px;
 }
 
 .barNavigation li {
@@ -24,7 +25,7 @@
 }
 
 .barNavigation li:hover {
-  background-color: #d59f0f;
+  background-color: #bd8c01;
 }
 
 .barNavigation ul.active {
@@ -67,7 +68,7 @@
   flex-direction: column;
   top: 100%;
   width: 100%;
-  background-color: rgb(1, 92, 184);
+  background-color: #003e79;
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
