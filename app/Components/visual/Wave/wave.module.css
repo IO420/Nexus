@@ -5,6 +5,7 @@
   width: 100%;
   height: 30vh;
   overflow: hidden;
+  opacity: 0.4;
   background: #4fc3f7; /* color del mar */
   z-index: -1; /* para que quede atrás del contenido */
 }

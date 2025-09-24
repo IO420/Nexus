@@ -9,7 +9,7 @@
 .square {
   position: absolute;
   top: -100px;
-  opacity: 0.9;
+  opacity: 0.1;
   animation: fall linear infinite;
   border-radius: 6px;
 }
@@ -28,7 +28,7 @@
   width: 40px;
   height: 40px;
   background: linear-gradient(45deg, #f6ff7e, #e6ff75);
-  animation-duration: 10s;
+  animation-duration: 11s;
   animation-delay: 0s;
 }
 
@@ -37,7 +37,7 @@
   width: 60px;
   height: 60px;
   background: linear-gradient(45deg, #438bce, #185a9d);
-  animation-duration: 6s;
+  animation-duration: 12s;
   animation-delay: 2s;
 }
 
@@ -46,7 +46,7 @@
   width: 50px;
   height: 50px;
   background: linear-gradient(45deg, #f7d71e, #ffd200);
-  animation-duration: 5s;
+  animation-duration: 15s;
   animation-delay: 1s;
 }
 .square:nth-child(4) {
@@ -54,7 +54,7 @@
   width: 70px;
   height: 70px;
   background: linear-gradient(45deg, #ffe600, #ffd000);
-  animation-duration: 7s;
+  animation-duration: 17s;
   animation-delay: 3s;
 }
 .square:nth-child(5) {
@@ -62,7 +62,7 @@
   width: 45px;
   height: 45px;
   background: linear-gradient(45deg, #00c6ff, #0072ff);
-  animation-duration: 4.5s;
+  animation-duration: 14.5s;
   animation-delay: 1.5s;
 }
 .square:nth-child(6) {
@@ -70,7 +70,7 @@
   width: 55px;
   height: 55px;
   background: linear-gradient(45deg, #535ef9, #201db9);
-  animation-duration: 6.5s;
+  animation-duration: 16.5s;
   animation-delay: 2.5s;
 }
 .square:nth-child(7) {
@@ -78,7 +78,7 @@
   width: 65px;
   height: 65px;
   background: linear-gradient(45deg, #115799, #384aef);
-  animation-duration: 5.5s;
+  animation-duration: 15.5s;
   animation-delay: 1.2s;
 }
 .square:nth-child(8) {
@@ -86,7 +86,7 @@
   width: 40px;
   height: 40px;
   background: linear-gradient(45deg, #ffdf4e, #f9d423);
-  animation-duration: 7.5s;
+  animation-duration: 17.5s;
   animation-delay: 0.5s;
 }
 .square:nth-child(9) {
@@ -94,7 +94,7 @@
   width: 75px;
   height: 75px;
   background: linear-gradient(45deg, #b09000, #98c93d);
-  animation-duration: 4.2s;
+  animation-duration: 14.2s;
   animation-delay: 2.8s;
 }
 .square:nth-child(10) {
@@ -102,7 +102,7 @@
   width: 28px;
   height: 28px;
   background: linear-gradient(45deg, #ffdb66, #f4ff5e);
-  animation-duration: 6.8s;
+  animation-duration: 16.8s;
   animation-delay: 1.8s;
 }
 
