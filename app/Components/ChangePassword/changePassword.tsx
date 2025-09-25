@@ -61,7 +61,7 @@ export default function ChangePassword() {
           </button>
 
           <button
-            className="button buttonSearch"
+            className="button buttonCancel"
             style={{ maxWidth: "100%", width: "100%" }}
             type="submit"
           >

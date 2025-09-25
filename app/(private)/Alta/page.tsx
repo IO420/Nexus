@@ -11,7 +11,7 @@ export default function Page() {
       <h1 className="title">ALTA</h1>
 
       <StepNavigator totalSteps={2} onFinish={() => console.log()}>
-        <form className="containerForm">
+        <form className="containerForm gap">
           <label className="label">No.Cuenta</label>
           <input
             type="text"
@@ -44,7 +44,7 @@ export default function Page() {
             placeholder="Coloca el apellido materno"
           />
         </form>
-        <form>
+        <form className="gap">
           <label className="label">Email</label>
           <input
             type="text"

@@ -62,7 +62,7 @@ export default function Page() {
           <div className="margin">
             <button className="button buttonSearch">Guardar</button>
             <button
-              className={`button buttonSearch ${styleprograms.button}`}
+              className={`button buttonCancel ${styleprograms.button}`}
               onClick={handleCancelar}
             >
               Cancelar
@@ -79,7 +79,7 @@ export default function Page() {
           <div className="margin">
             <button className="button buttonSearch">Insertar</button>
             <button
-              className={`button buttonSearch ${styleprograms.button}`}
+              className={`button buttonCancel ${styleprograms.button}`}
               onClick={handleCancelar}
             >
               Cancelar

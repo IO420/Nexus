@@ -7,7 +7,6 @@ import AlertBox from "@/app/Components/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
-
 export default async function Page(props: {
   searchParams?: Promise<{
     numAcount: string;
@@ -34,7 +33,9 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+        </>
       )}
 
       {showSuccess && (

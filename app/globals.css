@@ -26,6 +26,10 @@ body {
   overflow: hidden;
 }
 
+main {
+  position: relative;
+}
+
 header {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -213,6 +217,14 @@ button {
 
 .buttonCharge:hover {
   background-color: #15803d;
+}
+
+.buttonCancel {
+  background-color: #d32f2f;
+}
+
+.buttonCancel:hover {
+  background-color: #d12020;
 }
 
 .absoluteButton {
@@ -404,6 +416,12 @@ table tr {
 .pass {
   display: flex;
   width: 300px;
+}
+
+.containerAlert {
+  position: absolute;
+  background-color: #003e79;
+  z-index: 10;
 }
 
 @media (max-width: 1330px) {
