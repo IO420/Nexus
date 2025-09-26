@@ -1,5 +1,3 @@
-"use client";
-
 import BitacoraAlumno from "@/app/Components/Reportes/BitacoraSanciones/BitacoraAlumno";
 import BitacoraEquipo from "@/app/Components/Reportes/BitacoraSanciones/BitacoraEquipo";
 import BitacoraMesas from "@/app/Components/Reportes/BitacoraSanciones/BitacoraMesas";

@@ -3,10 +3,10 @@ import Receipt from "../../Components/Receipt/Receipt";
 import Toggle from "../../Components/Global/Toggle/Toggle";
 import Information from "../../Components/Global/Information/information";
 import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import Impressions from "@/app/Components/Servicios/Impressions/impressions";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
-import Impressions from "@/app/Components/Servicios/Impressions/impressions";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -46,7 +46,7 @@ export default async function Page(props: {
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
       <SearchUser urlBase="Impresiones" value={numAcount} />
 
-      {student ? (
+      {student && (
         <>
           <Information
             NoCuenta={student.id_cuenta}
@@ -138,8 +138,6 @@ export default async function Page(props: {
             ]}
           />
         </>
-      ) : (
-        <></>
       )}
     </section>
   );
