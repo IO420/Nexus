@@ -89,7 +89,7 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
             value={folio}
             onChange={(error) => {
               const value = error.target.value;
-              if (/^\d*$/.test(value)) {
+              if (/^\d*$/.test(value) && value.length <= 7) {
                 setFolio(value);
               }
             }}
@@ -114,7 +114,7 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
                   setAmount(value);
                 } else {
                   router.push(
-                    `/Impresiones?numAcount=${numAcount}&error=El monto no puede superar $1000.00`
+                    `${urlBase}?numAcount=${numAcount}&error=El monto no puede superar $1000.00`
                   );
                 }
               }

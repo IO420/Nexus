@@ -1,12 +1,13 @@
-import SearchUser from "../../Components/SearchUser/searchUser";
+import SearchUser from "../../Components/Global/SearchUser/searchUser";
 import Receipt from "../../Components/Receipt/Receipt";
-import Impressions from "../../Components/Impressions/impressions";
-import Toggle from "../../Components/Toggle/Toggle";
-import Information from "../../Components/Information/information";
-import AlertBox from "@/app/Components/AlertBox/AlertBox";
+import Toggle from "../../Components/Global/Toggle/Toggle";
+import Information from "../../Components/Global/Information/information";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
+import Impressions from "@/app/Components/Servicios/Impressions/impressions";
+
 export default async function Page(props: {
   searchParams?: Promise<{
     numAcount: string;
@@ -17,14 +18,14 @@ export default async function Page(props: {
   const params = await props.searchParams;
   const numAcount = params?.numAcount ? params.numAcount : null;
   const showSuccess = params?.success ? params.success : null;
-  let showError = params?.error ? params.error : null;
+  const showError = params?.error ? params.error : null;
 
   let student: any = null;
+
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      showError = "Alumno no encontrado";
     } else {
       student = result;
     }

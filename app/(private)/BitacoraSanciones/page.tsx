@@ -1,10 +1,10 @@
 "use client";
 
-import Toggle from "@/app/Components/Toggle/Toggle";
-import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
-import BitacoraMesas from "@/app/Components/BitacoraSanciones/BitacoraMesas";
-import BitacoraAlumno from "@/app/Components/BitacoraSanciones/BitacoraAlumno";
-import BitacoraEquipo from "@/app/Components/BitacoraSanciones/BitacoraEquipo";
+import BitacoraAlumno from "@/app/Components/Reportes/BitacoraSanciones/BitacoraAlumno";
+import BitacoraEquipo from "@/app/Components/Reportes/BitacoraSanciones/BitacoraEquipo";
+import BitacoraMesas from "@/app/Components/Reportes/BitacoraSanciones/BitacoraMesas";
+import Sanciones from "@/app/Components/Reportes/BitacoraSanciones/Sanciones";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default function Page() {
   return (

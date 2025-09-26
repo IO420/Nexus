@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./Page.module.css";
-import SearchUser from "../SearchUser/searchUser";
-import Information from "../Information/information";
+import SearchUser from "../../Global/SearchUser/searchUser";
+import Information from "../../Global/Information/information";
 import { GetStudent } from "@/app/lib/getStudent";
 import { envConfig } from "@/app/lib/config";
 

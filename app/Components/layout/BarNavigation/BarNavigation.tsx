@@ -24,7 +24,7 @@ function BarNavigation() {
 
       <ul className={openMenu ? "active" : ""}>
         <li className={`subMenu ${openSubMenu === 0 ? "open" : ""}`}>
-          <span onClick={() => toggleSubMenu(0)}>Inscripciones</span>
+          <span onClick={() => toggleSubMenu(0)}>Inscripcion</span>
           <ul className="containerLinks" onClick={toggleMenu}>
             <Link href="/Alta" className="links">
               <li>Alta</li>
@@ -32,8 +32,8 @@ function BarNavigation() {
             <Link href="/AgregarTiempo" className="links">
               <li>Agregar Tiempo</li>
             </Link>
-            <Link href="/Inscripciones" className="links">
-              <li>Inscripciones</li>
+            <Link href="/Inscripcion" className="links">
+              <li>Inscripcion</li>
             </Link>
           </ul>
         </li>

@@ -1,6 +1,6 @@
 "use client";
-import SearchUser from "@/app/Components/SearchUser/searchUser";
-import Toggle from "@/app/Components/Toggle/Toggle";
+import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { useState } from "react";
 
 export default function Page() {

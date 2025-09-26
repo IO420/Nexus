@@ -1,6 +1,6 @@
 "use client";
 
-import SearchUser from "@/app/Components/SearchUser/searchUser";
+import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import QuitarSancion from "@/app/Components/QuitarSancion/QuitarSancion";
 
 export default function Page() {

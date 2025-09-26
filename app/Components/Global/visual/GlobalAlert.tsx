@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AlertBox from "@/app/Components/AlertBox/AlertBox";
-import ClearParams from "@/app/Components/ClearParams/ClearParams";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default function GlobalAlert() {
   const [showSuccess, setShowSuccess] = useState<string | null>(null);
@@ -22,14 +22,12 @@ export default function GlobalAlert() {
       {showError && (
         <>
           <AlertBox key={Date.now()} message={showError} type="error" />
-          <ClearParams paramsToClear={["error"]} />
         </>
       )}
 
       {showSuccess && (
         <>
           <AlertBox key={Date.now()} message={showSuccess} type="success" />
-          <ClearParams paramsToClear={["success"]} />
         </>
       )}
     </section>

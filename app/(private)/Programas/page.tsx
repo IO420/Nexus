@@ -3,7 +3,6 @@ import { useState } from "react";
 import styleprograms from "./programas.module.css";
 
 export default function Page() {
-  // modo puede ser: "ver", "editar", "nuevo"
   const [modo, setModo] = useState("ver");
 
   const handleNuevo = () => {

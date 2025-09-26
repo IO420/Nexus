@@ -1,8 +1,8 @@
-import ProgramSelector from "@/app/Components/ProgramSelector/ProgramSelector";
-import Toggle from "@/app/Components/Toggle/Toggle";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
+import ProgramSelector from "@/app/Components/Equipo/ProgramSelector/ProgramSelector";
+import Equipos from "@/app/Components/Equipo/Equipos/equipos";
 
 import "./informacionequipo.css";
-import Equipos from "@/app/Components/Equipos/equipos";
 
 export default function Page() {
   return (

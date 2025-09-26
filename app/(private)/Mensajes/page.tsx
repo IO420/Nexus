@@ -1,7 +1,7 @@
 "use client";
 
-import EnviarMensaje from "@/app/Components/EviarMensaje/EnviarMensaje";
-import Toggle from "@/app/Components/Toggle/Toggle";
+import EnviarMensaje from "@/app/Components/Equipo/EviarMensaje/EnviarMensaje";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default function Page() {
   return (

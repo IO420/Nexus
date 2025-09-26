@@ -1,9 +1,9 @@
 "use client";
-import SearchUser from "@/app/Components/SearchUser/searchUser";
-import Equipos from "@/app/Components/ActivosMantenimiento/Equipos";
-import Toggle from "@/app/Components/Toggle/Toggle";
-import Areas from "@/app/Components/ActivosMantenimiento/Areas";
-import Mesas from "@/app/Components/ActivosMantenimiento/Mesas";
+import Areas from "@/app/Components/Equipo/ActivosMantenimiento/Areas";
+import Mesas from "@/app/Components/Equipo/ActivosMantenimiento/Mesas";
+import Equipos from "@/app/Components/Equipo/Equipos/equipos";
+import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default function Page(props: {
   searchParams?: Promise<{

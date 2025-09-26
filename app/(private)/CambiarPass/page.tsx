@@ -1,13 +1,12 @@
-import ChangePassword from "../../Components/ChangePassword/changePassword";
+import ChangePassword from "@/app/Components/auth/ChangePassword/changePassword";
 
 export default function Page() {
   return (
-    <section className='containerSection'>
-      <h2 className='title'> Cambiar contraseña </h2>
+    <section className="containerSection">
+      <h2 className="title"> Cambiar contraseña </h2>
 
-      <ChangePassword/>
+      <ChangePassword />
     </section>
-
   );
 }
 //IO

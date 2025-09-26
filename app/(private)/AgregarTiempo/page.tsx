@@ -1,7 +1,7 @@
-import SearchUser from "@/app/Components/SearchUser/searchUser";
-import Information from "@/app/Components/Information/information";
+import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import Information from "@/app/Components/Global/Information/information";
 import Receipt from "@/app/Components/Receipt/Receipt";
-import AlertBox from "@/app/Components/AlertBox/AlertBox";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 
 import { GetStudent } from "@/app/lib/getStudent";
 
@@ -16,12 +16,18 @@ export default async function Page(props: {
 }) {
   const params = await props.searchParams;
   const numAcount = params?.numAcount ? params.numAcount : null;
-  const showSuccess = params?.success ? parseInt(params.success) : null;
-  const showError = params?.error ? params.error : null;
+  const showSuccess = params?.success ? params.success : null;
+  let showError = params?.error ? params.error : null;
 
   let student: any = null;
   if (numAcount) {
-    student = await GetStudent(parseInt(numAcount));
+    const result = await GetStudent(parseInt(numAcount));
+
+    if (result.error) {
+      showError = "Alumno no encontrado";
+    } else {
+      student = result;
+    }
   }
 
   return (
