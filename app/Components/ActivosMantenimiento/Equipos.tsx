@@ -2,19 +2,53 @@
 import { useState } from "react";
 
 function Equipos() {
+  const [cuenta, setCuenta] = useState("");
   const [tiempo, setTiempo] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBuscar = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Equipo asignado con tiempo:", tiempo);
+    if (!cuenta) {
+      setMensaje("Ingresa un número de cuenta antes de buscar");
+      return;
+    }
+    setMensaje(`Buscando información del No. de cuenta: ${cuenta}`);
+  };
+
+  const handleAsignar = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!tiempo) {
+      setMensaje("Selecciona un equipo antes de asignar");
+      return;
+    }
+    setMensaje(`Equipo asignado con tiempo: ${tiempo} minutos`);
   };
 
   return (
-    <form className="containerForm" onSubmit={handleSubmit}>
-      <label className="label">Equipos disponibles</label>
-      <div className="groupInput">
+    <div className="containerForm">
+      {/* Formulario Buscar */}
+      <form onSubmit={handleBuscar} className="groupInput">
+        <label className="label">No. de cuenta:</label>
+        <input
+          type="text"
+          value={cuenta}
+          onChange={(e) => setCuenta(e.target.value)}
+          placeholder="Ingresa el número de cuenta"
+        />
+        <button className="button buttonSearch" type="submit">
+          Buscar
+        </button>
+      </form>
+
+      {/* Formulario Asignar */}
+      <form
+        onSubmit={handleAsignar}
+        className="groupInput"
+        style={{ marginTop: "20px" }}
+      >
+        <label className="label">Equipos disponibles:</label>
         <select value={tiempo} onChange={(e) => setTiempo(e.target.value)}>
-          <option value="">-- Equipos disponibles --</option>
+          <option value="">-- Selecciona un equipo --</option>
           <option value="15">1</option>
           <option value="30">2</option>
           <option value="45">3</option>
@@ -25,8 +59,10 @@ function Equipos() {
         <button className="button buttonSearch" type="submit">
           Asignar
         </button>
-      </div>
-    </form>
+      </form>
+
+      {mensaje && <p style={{ marginTop: "20px" }}>{mensaje}</p>}
+    </div>
   );
 }
 
