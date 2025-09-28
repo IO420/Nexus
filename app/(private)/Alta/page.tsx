@@ -1,9 +1,28 @@
-import RegisterAlta from "@/app/Components/Inscripciones/Alta/registerAlta";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import RegisterAlta from "@/app/Components/Alta/registerAlta";
+
 import "./style.css";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const showSuccess = params?.success ? params.success : null;
+  const showError = params?.error ? params.error : null;
+
   return (
     <section className="containerSection">
+      {showError && (
+        <AlertBox key={Date.now()} message={showError} type="error" />
+      )}
+
+      {showSuccess && (
+        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+      )}
+
       <h1 className="title">ALTA</h1>
 
       <RegisterAlta />

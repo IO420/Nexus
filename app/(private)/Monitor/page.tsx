@@ -1,126 +1,16 @@
-"use client";
+import styles from "./Page.module.css";
 
-import { useState } from "react";
-import styles from "./Page.module.css"; // importamos el css
-
-export default function Page() {
-  const [machines] = useState([
-    {
-      ubicacion: "Laboratorio 1",
-      nombre: "PC-01",
-      plataforma: "Windows 10",
-      area: "Diseño",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 2",
-      nombre: "PC-15",
-      plataforma: "Linux",
-      area: "Programación",
-      disponible: false,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-    {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    }, {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    }, {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    }, {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    }, {
-      ubicacion: "Laboratorio 3",
-      nombre: "PC-23",
-      plataforma: "MacOS",
-      area: "Edición",
-      disponible: true,
-    },
-  ]);
+export default async function Page(props: {
+  searchParams?: Promise<{
+    numAcount: string;
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const numAcount = params?.numAcount ? params.numAcount : null;
+  const showSuccess = params?.success ? params.success : null;
+  const showError = params?.error ? params.error : null;
 
   return (
     <section className='containerSection'>
@@ -144,7 +34,7 @@ export default function Page() {
             </tr>
           </thead>
           <tbody>
-            {machines.map((machine, index) => (
+            {/* {machines.map((machine, index) => (
               <tr key={index}>
                 <td>{machine.ubicacion}</td>
                 <td>{machine.nombre}</td>
@@ -154,7 +44,7 @@ export default function Page() {
                   {machine.disponible ? "si" : "no"}
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
       </div>

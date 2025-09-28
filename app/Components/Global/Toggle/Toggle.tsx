@@ -1,5 +1,7 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, ReactNode } from "react";
 
 interface ToggleOption {
@@ -14,8 +16,19 @@ interface ToggleProps {
 }
 
 export default function Toggle({ options, defaultView }: ToggleProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [view, setView] = useState(defaultView || options[0].key);
 
+  const handleClick = (key: string) => {
+    setView(key);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("key", key);
+
+    router.replace(`${window.location.pathname}?${params.toString()}`);
+  };
+  
   return (
     <section className="toggleSection">
       <div className="toggleGroup">
@@ -23,7 +36,7 @@ export default function Toggle({ options, defaultView }: ToggleProps) {
           <button
             key={opt.key}
             className={`toggleButton ${view === opt.key ? "active" : ""}`}
-            onClick={() => setView(opt.key)}
+            onClick={() => handleClick(opt.key)}
           >
             {opt.label}
           </button>
@@ -36,3 +49,4 @@ export default function Toggle({ options, defaultView }: ToggleProps) {
     </section>
   );
 }
+//IO

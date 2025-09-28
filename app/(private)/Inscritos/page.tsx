@@ -1,5 +1,16 @@
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    period: string;
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const period = params?.period ? params.period : null;
+  const showSuccess = params?.success ? params.success : null;
+  const showError = params?.error ? params.error : null;
+
   return (
     <section className='containerSection'>
       <h2 className='title'> INSCRITOS </h2>

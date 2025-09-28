@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
-import styles from "./Page.module.css";
 import SearchDate from "../SearchDate/SearchDate";
+import { useState } from "react";
+
+import styles from "./Page.module.css";
 
 interface alumnos {
   tiempo_entrada: string;

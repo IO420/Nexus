@@ -5,8 +5,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostImpressions } from "@/app/lib/postImpressions";
 
-import "./Impressions.css";
-
 interface CostOption {
   value: number;
 }
@@ -110,10 +108,11 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
           />
         </div>
 
-        <div className="groupLabel">
+        <div className="groupInput">
           <label className="label">
-            Total: {pages && cost && `$${parseInt(cost) * parseInt(pages)}.00`}
+            Total: 
           </label>
+          <label style={{width:"100%", minWidth:"200px", maxWidth:"500px"}}>{pages && cost && `$${parseInt(cost) * parseInt(pages)}.00`}</label>
         </div>
 
         <div className="containerButton">

@@ -30,7 +30,7 @@ export default function Equipos() {
     <form className="containerForm">
       <div className="groupInput">
         <input
-          placeholder="text"
+          placeholder="Numero de Equipo a buscar..."
           value={Equipo}
           onChange={(e) => {
             setEquipo(e.target.value);

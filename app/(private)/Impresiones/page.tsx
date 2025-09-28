@@ -3,19 +3,21 @@ import Receipt from "../../Components/Receipt/Receipt";
 import Toggle from "../../Components/Global/Toggle/Toggle";
 import Information from "../../Components/Global/Information/information";
 import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
-import Impressions from "@/app/Components/Servicios/Impressions/impressions";
+import Impressions from "@/app/Components/Impressions/impressions";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
 
 export default async function Page(props: {
   searchParams?: Promise<{
+    key: string;
     numAcount: string;
     success?: string;
     error?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
   const showSuccess = params?.success ? params.success : null;
   const showError = params?.error ? params.error : null;
@@ -34,9 +36,7 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <>
-          <AlertBox key={Date.now()} message={showError} type="error" />
-        </>
+        <AlertBox key={Date.now()} message={showError} type="error" />
       )}
 
       {showSuccess && (
@@ -56,10 +56,10 @@ export default async function Page(props: {
           />
 
           <Toggle
-            defaultView="1"
+            defaultView={key}
             options={[
               {
-                key: "1",
+                key: "Recibo",
                 label: "Recibo",
                 content: (
                   <Receipt
@@ -69,20 +69,22 @@ export default async function Page(props: {
                 ),
               },
               {
-                key: "2",
+                key: "B/N",
                 label: "Impresiones B/N",
                 content: (
                   <Impressions
+                    key={1}
                     costs={[{ value: 1 }, { value: 2 }]}
                     numAcount={student.id_cuenta}
                   />
                 ),
               },
               {
-                key: "3",
+                key: "color",
                 label: "Impresiones color",
                 content: (
                   <Impressions
+                    key={2}
                     costs={[
                       { value: 4 },
                       { value: 5 },
@@ -98,10 +100,11 @@ export default async function Page(props: {
                 ),
               },
               {
-                key: "4",
+                key: "Plotter",
                 label: "Plotter",
                 content: (
                   <Impressions
+                    key={3}
                     costs={[
                       { value: 15 },
                       { value: 18 },
@@ -126,10 +129,11 @@ export default async function Page(props: {
                 ),
               },
               {
-                key: "5",
+                key: "Escaner",
                 label: "Escaner",
                 content: (
                   <Impressions
+                    key={4}
                     costs={[{ value: 1 }, { value: 2 }, { value: 5 }]}
                     numAcount={student.id_cuenta}
                   />

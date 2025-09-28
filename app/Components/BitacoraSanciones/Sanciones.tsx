@@ -1,0 +1,20 @@
+import Information from "../Global/Information/information";
+import SearchUser from "../Global/SearchUser/searchUser";
+
+interface Student {
+  id_cuenta: string ;
+  nombre: string ;
+}
+
+export default async function Sanciones(props: { student?: Student }) {
+  const idCuenta = props?.student?.id_cuenta ?? null;
+
+  return (
+    <>
+      <SearchUser urlBase="BitacoraSanciones" value={idCuenta} />
+      {props.student && (
+        <Information NoCuenta={props.student.id_cuenta} Nombre={props.student.nombre} />
+      )}
+    </>
+  );
+}

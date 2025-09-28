@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import styles from "./Page.module.css"; // importamos el css
+import styles from "./Page.module.css";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
-import SearchDateBetween from "@/app/Components/Reportes/SearchDateBetween/SearchDateBetween";
+import SearchDateBetween from "@/app/Components/SearchDateBetween/SearchDateBetween";
+
+import { useState } from "react";
 
 export default function Page() {
   const [reportes] = useState([

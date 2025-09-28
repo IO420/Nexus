@@ -12,7 +12,6 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
   return (
     <div>
       <form className="form-container">
-        {/* Label dinámico con el título que recibimos */}
         <label>{titulo}</label>
 
         {/* Renderizamos UN solo <select> con varias <option> */}

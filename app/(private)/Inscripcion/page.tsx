@@ -3,10 +3,10 @@ import Information from "@/app/Components/Global/Information/information";
 import StepNavigator from "@/app/Components/Global/StepNavigator/StepNavigator";
 import Receipt from "@/app/Components/Receipt/Receipt";
 import Selection from "@/app/Components/Selection/Selection";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "./inscriptions.css";
-import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -34,9 +34,7 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <>
-          <AlertBox key={Date.now()} message={showError} type="error" />
-        </>
+        <AlertBox key={Date.now()} message={showError} type="error" />
       )}
 
       {showSuccess && (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import styles from "./Page.module.css";
 
 interface alumno_sancion {
@@ -20,9 +21,8 @@ interface sancion {
   duracion: number;
 }
 
-export default function UbicacionEquipo() {
+export default function UbicacionEquipo(sanciones:alumno_sancion[]) {
   const [ubicacionEquipo, setUbicacionEquipo] = useState("");
-  const [sanciones, setSanciones] = useState<>([]);
 
   return (
     <>
@@ -59,13 +59,12 @@ export default function UbicacionEquipo() {
           </thead>
           <tbody>
             {sanciones &&
-              sanciones.map((sancion, index) => (
+              sanciones.map((s, index) => (
                 <tr key={index}>
-                  <td>{sancion.id_sancion}</td>
-                  <td>{sancion.sancion}</td>
-                  <td>{sancion.fecha_sancion}</td>
-                  <td>{sancion.duracion}</td>
-                  <td>{sancion.utilizar_hasta}</td>
+                  <td>{s.sancion.id_sancion}</td>
+                  <td>{s.sancion.sancion}</td>
+                  <td>{s.fecha_inicio}</td>
+                  <td>{s.sancion.duracion}</td>
                 </tr>
               ))}
           </tbody>
