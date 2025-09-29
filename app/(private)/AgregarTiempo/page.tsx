@@ -6,6 +6,7 @@ import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "./addTime.css";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -33,11 +34,17 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox message="Recibo guardado correctamente" type="success" />
+        <>
+          <AlertBox message="Recibo guardado correctamente" type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
 
       <h2 className="title"> AGREGAR TIEMPO </h2>
@@ -49,7 +56,7 @@ export default async function Page(props: {
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <Receipt urlBase={"/AgregarTiempo"} numAcount={student.id_cuenta} />
+            <Receipt numAcount={student.id_cuenta} />
           </div>
         </>
       ) : (

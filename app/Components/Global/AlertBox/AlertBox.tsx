@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import "./AlertBox.css";
+import ClearParams from "../ClearParams/ClearParams";
 
 interface AlertBoxProps {
   message: string | null;

@@ -1,12 +1,12 @@
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Information from "@/app/Components/Global/Information/information";
-import StepNavigator from "@/app/Components/Global/StepNavigator/StepNavigator";
 import Receipt from "@/app/Components/Receipt/Receipt";
 import Selection from "@/app/Components/Selection/Selection";
 import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 import { GetStudent } from "@/app/lib/getStudent";
 
-import "./inscriptions.css";
+import "./inscripcion.css";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -34,18 +34,24 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
 
       <h2 className="title"> INSCRIPCION </h2>
 
       <SearchUser urlBase="Inscripcion" value={numAcount} />
 
-      {student ? (
+      {student && (
         <>
           <Information
             NoCuenta={student.id_cuenta}
@@ -53,14 +59,11 @@ export default async function Page(props: {
             Carrera={student.carrera.carrera}
             Credito={student.credito}
           />
-
-          <StepNavigator totalSteps={2}>
+          <section className="inscripcion">
             <Selection />
-            <Receipt urlBase={"Inscripcion"} numAcount={student.id_cuenta} />
-          </StepNavigator>
+            <Receipt numAcount={student.id_cuenta} />
+          </section>
         </>
-      ) : (
-        <></>
       )}
     </section>
   );

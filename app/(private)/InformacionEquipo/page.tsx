@@ -4,6 +4,7 @@ import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 import ProgramSelector from "@/app/Components/InformacionEquipos/ProgramSelector";
 
 import "./informacionequipo.css";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -20,11 +21,17 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
 
       <h2 className="title"> INFORMACION DE EQUIPOS </h2>

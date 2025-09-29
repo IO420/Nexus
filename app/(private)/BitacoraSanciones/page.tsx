@@ -5,6 +5,7 @@ import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 import { GetStudent } from "@/app/lib/getStudent";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -34,11 +35,17 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
       
       <h2 className="title"> BITACORA Y SANCIONES </h2>

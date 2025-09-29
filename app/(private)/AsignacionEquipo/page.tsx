@@ -1,4 +1,5 @@
 import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
@@ -19,11 +20,17 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
       
       <h2 className="title"> ASIGNACION DE EQUIPOS </h2>

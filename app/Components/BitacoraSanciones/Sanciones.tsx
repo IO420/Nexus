@@ -1,9 +1,10 @@
 import Information from "../Global/Information/information";
 import SearchUser from "../Global/SearchUser/searchUser";
+import TableSancion from "./TableSancion";
 
 interface Student {
-  id_cuenta: string ;
-  nombre: string ;
+  id_cuenta: string;
+  nombre: string;
 }
 
 export default async function Sanciones(props: { student?: Student }) {
@@ -13,7 +14,14 @@ export default async function Sanciones(props: { student?: Student }) {
     <>
       <SearchUser urlBase="BitacoraSanciones" value={idCuenta} />
       {props.student && (
-        <Information NoCuenta={props.student.id_cuenta} Nombre={props.student.nombre} />
+        <>
+          <Information
+            NoCuenta={props.student.id_cuenta}
+            Nombre={props.student.nombre}
+          />
+
+          <TableSancion  />
+        </>
       )}
     </>
   );

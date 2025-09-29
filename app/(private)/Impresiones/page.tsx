@@ -7,6 +7,7 @@ import Impressions from "@/app/Components/Impressions/impressions";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -36,11 +37,17 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
@@ -61,12 +68,7 @@ export default async function Page(props: {
               {
                 key: "Recibo",
                 label: "Recibo",
-                content: (
-                  <Receipt
-                    urlBase="/Impresiones"
-                    numAcount={student.id_cuenta}
-                  />
-                ),
+                content: <Receipt numAcount={student.id_cuenta} />,
               },
               {
                 key: "B/N",
