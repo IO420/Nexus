@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import styles from "./Page.module.css";
+import axios from "axios";
 
 interface alumno_sancion {
   id_alumno_sancion: number;
@@ -20,9 +24,25 @@ interface sancion {
 }
 
 export default function TableSancion() {
+  const [sanciones, setSanciones] = useState<any>();
+  const [button, setButton] = useState<boolean>(false);
 
+  useEffect(() => {
+    const getSanciones = async () => {
+      const response = await axios.get(
+        ""
+      );
+      setSanciones(response);
+    };
+    getSanciones();
+  }, [button]);
+
+  const handlebutton = () => {
+    setButton(!button);
+  };
   return (
     <>
+      <h1>{sanciones}</h1>
       <div className={styles.tableContainer}>
         <table className={styles.machineTable}>
           <thead>
@@ -34,24 +54,22 @@ export default function TableSancion() {
               <th>Podra utilizar el servicio hasta</th>
             </tr>
           </thead>
-          <tbody>
-
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
 
       <form className="containerForm">
         <div className="groupInput">
-          <select
-          >
+          <select>
             <option value="">-- Selecciona una sancion --</option>
             <option value="sancion 1">No cerrar sesion (Una semana)</option>
           </select>
-          <button className="button buttonSearch" type="submit">
-            Aplicar sancion
-          </button>
         </div>
       </form>
+          <button className="button buttonSearch" onClick={handlebutton}>
+            Aplicar sancion
+          </button>
+          <h1>{button ? <p>desactivado</p> : <p>activado</p>}</h1>
     </>
   );
 }

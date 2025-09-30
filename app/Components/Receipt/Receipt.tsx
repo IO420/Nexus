@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PostReceipt } from "@/app/lib/postReceipt";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import "./Receipt.css";
 
@@ -12,8 +12,6 @@ interface ReceiptsProps {
 
 function Receipt({ numAcount }: ReceiptsProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const [folio, setFolio] = useState("");
   const [amount, setAmount] = useState("");
@@ -30,11 +28,12 @@ function Receipt({ numAcount }: ReceiptsProps) {
   //restrict this month//
 
   const handleSaveReceipt = async () => {
-    const params = new URLSearchParams(searchParams.toString());
+    const currentUrl = new URL(window.location.href);
+    const params = new URLSearchParams();
 
     const setError = (msg: string) => {
       params.set("error", msg);
-      router.push(`${pathname}&${params.toString()}`);
+      router.push(`${currentUrl}&${params.toString()}`);
     };
 
     if (!numAcount) {
@@ -67,7 +66,7 @@ function Receipt({ numAcount }: ReceiptsProps) {
 
       params.delete("error");
       params.set("success", "Recibo guardado");
-      router.push(`${pathname}&${params.toString()}`);
+      router.push(`${currentUrl}&${params.toString()}`);
     } catch (err: any) {
       setError(String(err));
     }
@@ -112,9 +111,10 @@ function Receipt({ numAcount }: ReceiptsProps) {
                 if (value === "" || numericValue <= 1000) {
                   setAmount(value);
                 } else {
-                  const params = new URLSearchParams(searchParams.toString());
+                  const currentUrl = new URL(window.location.href);
+                  const params = new URLSearchParams();
                   params.set("error", "El monto no puede superar $1000.00");
-                  router.push(`${pathname}&${params.toString()}`);
+                  router.push(`${currentUrl}&${params.toString()}`);
                 }
               }
             }}

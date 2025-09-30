@@ -20,7 +20,7 @@ export default async function Sanciones(props: { student?: Student }) {
             Nombre={props.student.nombre}
           />
 
-          <TableSancion  />
+        <TableSancion  />
         </>
       )}
     </>

@@ -2,7 +2,7 @@
 
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { PostImpressions } from "@/app/lib/postImpressions";
 
 interface CostOption {
@@ -19,8 +19,6 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
   const [cost, setCost] = useState("");
 
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const handleLogout = () => {
     Cookies.remove("token");
@@ -29,11 +27,12 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
   };
 
   const handlePayment = async () => {
-    const params = new URLSearchParams(searchParams.toString());
+    const currentUrl = new URL(window.location.href);
+    const params = new URLSearchParams();
 
     const setError = (msg: string) => {
       params.set("error", msg);
-      router.push(`${pathname}&${params.toString()}`);
+      router.push(`${currentUrl}&${params.toString()}`);
     };
 
     if (!numAcount) {
@@ -66,7 +65,7 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
     setCost("");
     params.delete("error");
     params.set("success", "Impresion cobrada correctamente");
-    router.push(`${pathname}&${params.toString()}`);
+    router.push(`${currentUrl}&${params.toString()}`);
   };
 
   return (
