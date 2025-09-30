@@ -74,7 +74,7 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
       Object.keys(checkboxes).filter((p) => checkboxes[p])
     );
   };
-
+  //hola madefoker
   return (
     <form className="form-container" onSubmit={handleSubmit}>
       <label>{titulo}</label>
