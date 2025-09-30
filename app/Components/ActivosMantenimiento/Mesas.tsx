@@ -22,9 +22,10 @@ function Mesas() {
           <option value="90">15</option>
         </select>
 
-        <div className="checkbox">
+        <div className="checkbox-grid">
+          <label>
           <input type="checkbox" />
-          <label>Mantenimiento</label>
+            Mantenimiento</label>
         </div>
 
         <button className="button buttonSearch" type="submit">

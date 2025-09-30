@@ -1,16 +1,17 @@
-'use client'
+"use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface urlProp{
-  urlBase:string
-  value:string|null
+interface urlProp {
+  value: string | null;
 }
 
-function SearchUser(props:urlProp) {
+function SearchUser(props: urlProp) {
   const [numAcount, setnumAcount] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (props.value) {
@@ -20,16 +21,17 @@ function SearchUser(props:urlProp) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    const params = new URLSearchParams(searchParams.toString());
     if (numAcount) {
-      router.push(`/${props.urlBase}?numAcount=${numAcount}`);
+      params.delete("error");
+      params.set("numAcount", `${numAcount}`);
+      router.push(`${pathname}?${params.toString()}`);
     }
   };
 
   return (
     <>
-      <form className="containerForm"
-      onSubmit={handleSubmit}>
+      <form className="containerForm" onSubmit={handleSubmit}>
         <label className="label">No.Cuenta</label>
         <div className="groupInput">
           <input

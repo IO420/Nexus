@@ -8,6 +8,7 @@ interface ClearParamsProps {
 
 export default function ClearParams({ paramsToClear }: ClearParamsProps) {
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const url = new URL(window.location.href);
     let changed = false;
 

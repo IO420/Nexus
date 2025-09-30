@@ -8,12 +8,14 @@ import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
-    machine: string;
+    key?:string;
+    machine?: string;
     success?: string;
     error?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const machine = params?.machine ? params.machine : null;
   const showSuccess = params?.success ? params.success : null;
   const showError = params?.error ? params.error : null;
@@ -37,15 +39,15 @@ export default async function Page(props: {
       <h2 className="title"> INFORMACION DE EQUIPOS </h2>
 
       <Toggle
-        defaultView="1"
+        defaultView={key}
         options={[
           {
-            key: "1",
+            key: "Equipos",
             label: "Equipos",
             content: <Equipos />,
           },
           {
-            key: "2",
+            key: "Equipo",
             label: "Programa por equipo",
             content: (
               <ProgramSelector
@@ -56,7 +58,7 @@ export default async function Page(props: {
             ),
           },
           {
-            key: "3",
+            key: "Sala",
             label: "Programa por sala",
             content: (
               <ProgramSelector

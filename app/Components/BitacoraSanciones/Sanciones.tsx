@@ -12,7 +12,7 @@ export default async function Sanciones(props: { student?: Student }) {
 
   return (
     <>
-      <SearchUser urlBase="BitacoraSanciones" value={idCuenta} />
+      <SearchUser value={idCuenta} />
       {props.student && (
         <>
           <Information

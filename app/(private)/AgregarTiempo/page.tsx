@@ -49,7 +49,7 @@ export default async function Page(props: {
 
       <h2 className="title"> AGREGAR TIEMPO </h2>
 
-      <SearchUser urlBase="AgregarTiempo" value={numAcount} />
+      <SearchUser value={numAcount} />
 
       {student ? (
         <>

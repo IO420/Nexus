@@ -17,7 +17,7 @@ export default async function Page(props: {
     <>
     <h2 className="title"> Quitar Sanciones </h2>
     <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
-      <SearchUser urlBase="QuitarSancion" value={numAcount} />
+      <SearchUser value={numAcount} />
       <QuitarSancion />
     </div>
     </>

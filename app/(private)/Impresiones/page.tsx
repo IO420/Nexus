@@ -51,7 +51,7 @@ export default async function Page(props: {
       )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
-      <SearchUser urlBase="Impresiones" value={numAcount} />
+      <SearchUser value={numAcount} />
 
       {student && (
         <>

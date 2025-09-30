@@ -45,7 +45,7 @@ export default async function Page(props: {
             label: "Equipos",
             content: (
               <>
-                <SearchUser urlBase="ActivosMantenimiento" value={numAcount} />
+                <SearchUser value={numAcount} />
                 <Equipos />
               </>
             ),

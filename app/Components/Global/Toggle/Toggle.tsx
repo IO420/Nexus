@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState, ReactNode } from "react";
 
@@ -18,6 +18,7 @@ interface ToggleProps {
 export default function Toggle({ options, defaultView }: ToggleProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [view, setView] = useState(defaultView || options[0].key);
 
   const handleClick = (key: string) => {
@@ -26,7 +27,7 @@ export default function Toggle({ options, defaultView }: ToggleProps) {
     const params = new URLSearchParams(searchParams.toString());
     params.set("key", key);
 
-    router.replace(`${window.location.pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`);
   };
   
   return (
