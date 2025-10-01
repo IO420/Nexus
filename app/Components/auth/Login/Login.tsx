@@ -35,7 +35,7 @@ function Login() {
       const usuario = payload.usuario;
 
       document.cookie = `token=${token}; path=/; SameSite=Strict`;
-      document.cookie = `usuario=${usuario}; path=/; SameSite=Strict`;
+      document.cookie = `user=${usuario}; path=/; SameSite=Strict`;
 
       toast.success("Inicio de sesión exitoso");
       router.push("/Impresiones");
