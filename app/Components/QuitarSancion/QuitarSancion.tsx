@@ -22,9 +22,9 @@ function QuitarSancion() {
             <tr>
               <th>id</th>
               <th>Nombre</th>
-              <th>Motivo Sancion</th>
+              <th>Motivo Sanción</th>
               <th>Duracion (semanas) </th>
-              <th>Fecha Sancion</th>
+              <th>Fecha Sanción</th>
               <th>Podria utilizar el servicio hasta</th>
             </tr>
           </thead>
@@ -42,7 +42,7 @@ function QuitarSancion() {
           </tbody>
         </table>
       </div>
-      <button className="button buttonSearch">Quitar Sancion</button>
+      <button className="button buttonSearch">Quitar Sanción</button>
     </section>
   );
 }

@@ -50,13 +50,14 @@ export default async function Page(props: {
       <h2 className="title"> ASIGNACION DE EQUIPOS </h2>
 
       <Toggle
-        defaultView="Asignar"
+        defaultView= "Asignar"
         options={[
           {
             key: "Asignar",
             label: "Asignar tiempo",
             content: (
               <>
+              
                 <SearchUser value={numAcount} />
 
                 {student && <h1>No hay records disponibles</h1>}
@@ -68,6 +69,7 @@ export default async function Page(props: {
             label: "Cancelar tiempo",
             content: (
               <>
+              <ClearParams paramsToClear={["numAcount"]}/>
                 <div className="checkbox-grid">
                   <label>
                     <input type="checkbox" /> Equipo

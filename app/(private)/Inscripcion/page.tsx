@@ -47,7 +47,7 @@ export default async function Page(props: {
         </>
       )}
 
-      <h2 className="title"> INSCRIPCION </h2>
+      <h2 className="title"> INSCRIPCIÓN </h2>
 
       <SearchUser value={numAcount} />
 

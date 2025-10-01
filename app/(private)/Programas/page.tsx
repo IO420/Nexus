@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   return (
-    <>
+    <section className="containerSection">
       {modo === "ver" && (
         <section className="containersection">
           <h3 className="title">PROGRAMAS</h3>
@@ -86,6 +86,6 @@ export default function Page() {
           </div>
         </section>
       )}
-    </>
+    </section>
   );
 }

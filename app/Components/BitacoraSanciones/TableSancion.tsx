@@ -27,19 +27,18 @@ export default function TableSancion() {
   const [sanciones, setSanciones] = useState<any>();
   const [button, setButton] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getSanciones = async () => {
-      const response = await axios.get(
-        ""
-      );
-      setSanciones(response);
-    };
-    getSanciones();
-  }, [button]);
+  // useEffect(() => {
+  //   const getSanciones = async () => {
+  //     const response = await axios.get("");
+  //     setSanciones(response);
+  //   };
+  //   getSanciones();
+  // }, [button]);
 
   const handlebutton = () => {
     setButton(!button);
   };
+  
   return (
     <>
       <h1>{sanciones}</h1>
@@ -48,9 +47,9 @@ export default function TableSancion() {
           <thead>
             <tr>
               <th>Cuenta</th>
-              <th>Motivo de la sancion</th>
+              <th>Motivo de la sanción</th>
               <th>Duracion (Semanas) </th>
-              <th>Fecha Sancion</th>
+              <th>Fecha Sanción</th>
               <th>Podra utilizar el servicio hasta</th>
             </tr>
           </thead>
@@ -61,15 +60,14 @@ export default function TableSancion() {
       <form className="containerForm">
         <div className="groupInput">
           <select>
-            <option value="">-- Selecciona una sancion --</option>
+            <option value="">-- Selecciona una sanción --</option>
             <option value="sancion 1">No cerrar sesion (Una semana)</option>
           </select>
         </div>
       </form>
-          <button className="button buttonSearch" onClick={handlebutton}>
-            Aplicar sancion
-          </button>
-          <h1>{button ? <p>desactivado</p> : <p>activado</p>}</h1>
+      <button className="button buttonSearch" onClick={handlebutton}>
+        Aplicar sanción
+      </button>
     </>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 
+import "@/app/globals.css"
+
 export default function Areas() {
   const [area, setArea] = useState(""); // Área seleccionada
   const [activo, setActivo] = useState(false); // Checkbox Activo
@@ -36,7 +38,7 @@ export default function Areas() {
   return (
     <form className="containerForm" onSubmit={handleActualizar}>
       <label className="label">Áreas disponibles:</label>
-      <div className="groupInput">
+      <div className="groupInput" style={{display:"flex", flexDirection:"column"}}>
         {/* Select de áreas */}
         <select value={area} onChange={(e) => setArea(e.target.value)}>
           <option value="">-- Áreas disponibles --</option>
@@ -48,13 +50,15 @@ export default function Areas() {
         </select>
 
         {/* Checkboxes */}
+        <div className="checkbox-grid">
+
         <div className="checkbox" style={{ marginTop: "10px" }}>
-          <label style={{ marginRight: "10px" }}>
+          <label style={{ marginRight: "10px"}}>
             <input
               type="checkbox"
               checked={activo}
               onChange={(e) => setActivo(e.target.checked)}
-            />
+              />
             Activo
           </label>
           <label>
@@ -62,10 +66,11 @@ export default function Areas() {
               type="checkbox"
               checked={mantenimiento}
               onChange={(e) => setMantenimiento(e.target.checked)}
-            />
+              />
             Mantenimiento
           </label>
         </div>
+              </div>
 
         {/* Botón Actualizar */}
         <button

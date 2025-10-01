@@ -53,14 +53,37 @@ export default async function Page(props: {
           <thead>
             <tr>
               <th>Carrera</th>
-              <th>Windows</th>
-              <th>Macintosh</th>
-              <th>Linux</th>
+              <th>Genero</th>
               <th>Profesores</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
+      </div>
+
+      <div className="tableContainer" style={{ marginTop: "100px" }}>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Impresione B/N</th>
+            <th>Impresiones Color</th>
+            <th>Plotteo</th>
+            <th>Escaner</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5,000</td>
+            <td>10,000</td>
+            <td>10,000</td>
+            <td>20,000</td>
+            <td>45,000</td>
+          </tr>
+        </tbody>
+      </table>
       </div>
     </section>
   );
