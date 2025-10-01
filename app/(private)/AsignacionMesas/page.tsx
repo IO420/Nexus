@@ -1,10 +1,9 @@
-
-import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
+import AsignacionMesas from "@/app/Components/AsignacionMesas";
+import CheckBox from "@/app/Components/CheckBox";
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default function Page() {
-
   return (
     <section className="containerSection">
       <h2 className="title"> ASIGNACION DE MESAS </h2>
@@ -17,10 +16,8 @@ export default function Page() {
             label: "Asignar mesa",
             content: (
               <>
-                <ClearParams paramsToClear={["numAcount"]} />
-
-                <SearchUser key={2} value={"0"} />
-
+                <SearchUser value={"3"} />
+                <AsignacionMesas />
               </>
             ),
           },
@@ -29,8 +26,7 @@ export default function Page() {
             label: "Cancelar Tiempo",
             content: (
               <>
-                <ClearParams paramsToClear={["numAcount"]} />
-
+                <CheckBox />
               </>
             ),
           },

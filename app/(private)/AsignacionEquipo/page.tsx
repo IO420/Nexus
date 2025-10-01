@@ -4,7 +4,8 @@ import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
 
-import '@/app/globals.css'
+import "@/app/globals.css";
+import CheckBox from "@/app/Components/CheckBox";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -69,17 +70,7 @@ export default async function Page(props: {
             label: "Cancelar tiempo",
             content: (
               <>
-              <ClearParams paramsToClear={["numAcount"]}/>
-                <div className="checkbox-grid">
-                  <label>
-                    <input type="checkbox" /> Equipo
-                  </label>
-                  <label>
-                    <input type="checkbox" /> Cuenta
-                  </label>
-                </div>
-
-                <SearchUser value={numAcount} />
+                <CheckBox />
               </>
             ),
           },
