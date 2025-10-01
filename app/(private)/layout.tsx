@@ -1,14 +1,17 @@
 import { ReactNode } from "react";
-import { PrivateRoute } from "../Routes/PrivateRoute";
-import BarNavigation from "../Components/BarNavigation/BarNavigation";
-import Logout from "../Components/Logout/Logout";
+import BarNavigation from "../Components/layout/BarNavigation/BarNavigation";
+import Logout from "../Components/auth/Logout/Logout";
 
-export default function PrivateLayout({ children }: { children: ReactNode }) {
+export default async function PrivateLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <div className="mainContainer">
       <BarNavigation />
       <div className="container">
-        <Logout/>
+        <Logout />
         <div className="img"></div>
         {children}
       </div>

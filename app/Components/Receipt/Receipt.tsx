@@ -7,11 +7,10 @@ import { useRouter } from "next/navigation";
 import "./Receipt.css";
 
 interface ReceiptsProps {
-  urlBase: string;
   numAcount: number | null;
 }
 
-function Receipt({ urlBase, numAcount }: ReceiptsProps) {
+function Receipt({ numAcount }: ReceiptsProps) {
   const router = useRouter();
 
   const [folio, setFolio] = useState("");
@@ -29,30 +28,28 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
   //restrict this month//
 
   const handleSaveReceipt = async () => {
+    const currentUrl = new URL(window.location.href);
+    const params = new URLSearchParams();
+
+    const setError = (msg: string) => {
+      params.set("error", msg);
+      router.push(`${currentUrl}&${params.toString()}`);
+    };
+
     if (!numAcount) {
-      router.push(
-        `${urlBase}?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
-      );
-      return;
+      return setError("busca de nuevo al estudiante");
     }
 
     if (!folio) {
-      router.push(
-        `${urlBase}?numAcount=${numAcount}&error=Ingresa el folio del tiket`
-      );
-      return;
+      return setError("Ingresa el folio del ticket");
     }
 
     if (!amount) {
-      router.push(
-        `${urlBase}?numAcount=${numAcount}&error=coloca el monto a depositar`
-      );
-      return;
+      return setError("Coloca el monto a depositar");
     }
 
     if (!date) {
-      router.push(`${urlBase}?numAcount=${numAcount}&error=coloca la fecha`);
-      return;
+      return setError("Coloca la fecha");
     }
 
     try {
@@ -67,10 +64,11 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
       setAmount("");
       setDate("");
 
-      router.push(`${urlBase}?numAcount=${numAcount}&success=Recibo guardado`);
+      params.delete("error");
+      params.set("success", "Recibo guardado");
+      router.push(`${currentUrl}&${params.toString()}`);
     } catch (err: any) {
-      console.error(err);
-      router.push(`${urlBase}?numAcount=${numAcount}&error=${err}`);
+      setError(String(err));
     }
   };
 
@@ -89,11 +87,11 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
             value={folio}
             onChange={(error) => {
               const value = error.target.value;
-              if (/^\d*$/.test(value)) {
+              if (/^\d*$/.test(value) && value.length <= 7) {
                 setFolio(value);
               }
             }}
-            placeholder="Numero de folio..."
+            placeholder="Numero de tiket..."
             inputMode="numeric"
             pattern="[0-9]*"
           />
@@ -113,9 +111,10 @@ function Receipt({ urlBase, numAcount }: ReceiptsProps) {
                 if (value === "" || numericValue <= 1000) {
                   setAmount(value);
                 } else {
-                  router.push(
-                    `/Impresiones?numAcount=${numAcount}&error=El monto no puede superar $1000.00`
-                  );
+                  const currentUrl = new URL(window.location.href);
+                  const params = new URLSearchParams();
+                  params.set("error", "El monto no puede superar $1000.00");
+                  router.push(`${currentUrl}&${params.toString()}`);
                 }
               }
             }}

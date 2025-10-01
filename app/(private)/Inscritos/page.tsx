@@ -1,14 +1,39 @@
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    period: string;
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const period = params?.period ? params.period : null;
+  const showSuccess = params?.success ? params.success : null;
+  const showError = params?.error ? params.error : null;
+
   return (
-    <section className='containerSection'>
-      <h2 className='title'> INSCRITOS </h2>
+    <section className="containerSection">
+      {showError && (
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
+      )}
+
+      {showSuccess && (
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
+      )}
+      <h2 className="title"> INSCRITOS </h2>
 
       <form className="containerForm">
         <label>Seleccione el periodo</label>
         <div className="groupInput">
-          <select
-          >
+          <select>
             <option value="">-- Seleccione el periodo --</option>
             <option value="15">1 </option>
             <option value="30">2 </option>
@@ -17,17 +42,14 @@ export default function Page() {
             <option value="90">5 </option>
             <option value="120">6 </option>
           </select>
-          <button
-            className='button buttonSearch'
-            type='submit'
-          >Buscar
+          <button className="button buttonSearch" type="submit">
+            Buscar
           </button>
         </div>
-
       </form>
 
       <div className="tableContainer">
-        <table >
+        <table>
           <thead>
             <tr>
               <th>Carrera</th>
@@ -37,12 +59,10 @@ export default function Page() {
               <th>Profesores</th>
             </tr>
           </thead>
-          <tbody>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
-
   );
 }
 //IO

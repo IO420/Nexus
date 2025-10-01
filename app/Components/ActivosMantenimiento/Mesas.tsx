@@ -37,14 +37,9 @@ function Mesas() {
           <option value="15">15</option>
         </select>
 
-        {/* Checkbox Mantenimiento */}
-        <div className="checkbox" style={{ marginTop: "10px" }}>
+        <div className="checkbox-grid">
           <label>
-            <input
-              type="checkbox"
-              checked={mantenimiento}
-              onChange={(e) => setMantenimiento(e.target.checked)}
-            />
+            <input type="checkbox" />
             Mantenimiento
           </label>
         </div>

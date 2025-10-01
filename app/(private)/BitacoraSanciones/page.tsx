@@ -1,21 +1,60 @@
-"use client";
-
-import Toggle from "@/app/Components/Toggle/Toggle";
-import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
-import BitacoraMesas from "@/app/Components/BitacoraSanciones/BitacoraMesas";
 import BitacoraAlumno from "@/app/Components/BitacoraSanciones/BitacoraAlumno";
 import BitacoraEquipo from "@/app/Components/BitacoraSanciones/BitacoraEquipo";
+import BitacoraMesas from "@/app/Components/BitacoraSanciones/BitacoraMesas";
+import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import { GetStudent } from "@/app/lib/getStudent";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    key?: string;
+    numAcount?: string;
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const key = params?.key && params.key ;
+  const numAcount = params?.numAcount ? params.numAcount : null;
+  const showSuccess = params?.success ? params.success : null;
+  const showError = params?.error ? params.error : null;
+
+    let student: any = null;
+  
+    if (numAcount) {
+      const result = await GetStudent(parseInt(numAcount));
+  
+      if (result.error) {
+      } else {
+        student = result;
+      }
+    }
+
   return (
     <section className="containerSection">
+      {showError && (
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
+      )}
+
+      {showSuccess && (
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
+      )}
+      
       <h2 className="title"> BITACORA Y SANCIONES </h2>
 
       <Toggle
-        defaultView="1"
+        defaultView={key}
         options={[
           {
-            key: "1",
+            key: "Equipo",
             label: "Bitacora equipo",
             content: (
               <>
@@ -24,7 +63,7 @@ export default function Page() {
             ),
           },
           {
-            key: "2",
+            key: "Alumno",
             label: "Bitacora alumno",
             content: (
               <>
@@ -33,7 +72,7 @@ export default function Page() {
             ),
           },
           {
-            key: "3",
+            key: "Mesas",
             label: "Bitacora mesas",
             content: (
               <>
@@ -42,11 +81,11 @@ export default function Page() {
             ),
           },
           {
-            key: "4",
+            key: "Sanciones",
             label: "Sanciones",
             content: (
               <>
-                <Sanciones />
+                <Sanciones student={student}/>
               </>
             ),
           },

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
-import FallingSquares from "./Components/visual/FallingSquares/FallingSquares";
-import WavesBackground from "./Components/visual/Wave/wavesBack";
+
+import Header from "./Components/layout/Header/Header";
+import Footer from "./Components/layout/Footer/Footer";
 
 import "./globals.css";
 
@@ -27,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={poppins.variable}>
+      <body className={poppins.variable} suppressHydrationWarning>
         <Header />
         <main>{children}</main>
         <Footer />

@@ -1,24 +1,53 @@
-import ProgramSelector from "@/app/Components/ProgramSelector/ProgramSelector";
-import Toggle from "@/app/Components/Toggle/Toggle";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
+import Equipos from "@/app/Components/Equipos/equipos";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import ProgramSelector from "@/app/Components/InformacionEquipos/ProgramSelector";
 
 import "./informacionequipo.css";
-import Equipos from "@/app/Components/Equipos/equipos";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    key?:string;
+    machine?: string;
+    success?: string;
+    error?: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const key = params?.key && params.key;
+  const machine = params?.machine ? params.machine : null;
+  const showSuccess = params?.success ? params.success : null;
+  const showError = params?.error ? params.error : null;
+
   return (
     <section className="containerSection">
+      {showError && (
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
+      )}
+
+      {showSuccess && (
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
+      )}
+
       <h2 className="title"> INFORMACION DE EQUIPOS </h2>
 
       <Toggle
-        defaultView="1"
+        defaultView={key}
         options={[
           {
-            key: "1",
+            key: "Equipos",
             label: "Equipos",
-            content: <Equipos key={2} />,
+            content: <Equipos />,
           },
           {
-            key: "2",
+            key: "Equipo",
             label: "Programa por equipo",
             content: (
               <ProgramSelector
@@ -29,7 +58,7 @@ export default function Page() {
             ),
           },
           {
-            key: "3",
+            key: "Sala",
             label: "Programa por sala",
             content: (
               <ProgramSelector
@@ -44,3 +73,4 @@ export default function Page() {
     </section>
   );
 }
+//IO

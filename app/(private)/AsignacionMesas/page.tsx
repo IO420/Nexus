@@ -1,6 +1,6 @@
 "use client";
-import SearchUser from "@/app/Components/SearchUser/searchUser";
-import Toggle from "@/app/Components/Toggle/Toggle";
+import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { useState } from "react";
 
 export default function Page() {
@@ -18,7 +18,7 @@ export default function Page() {
             label: "Asignar mesa",
             content: (
               <>
-                <SearchUser urlBase="AsignacionMesas" value={"3"} />
+                <SearchUser value={"3"} />
 
                 <form className="containerForm">
                   <label className="label">Mesas disponibles</label>
@@ -56,7 +56,7 @@ export default function Page() {
                     <input type="checkbox" /> Cuenta
                   </label>
                 </div>
-                <SearchUser urlBase="AsignacionMesas" value={"3"} />
+                <SearchUser value={"3"} />
               </>
             ),
           },

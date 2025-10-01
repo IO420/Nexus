@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import styles from "./Page.module.css"; // importamos el css
-import Toggle from "@/app/Components/Toggle/Toggle";
+import styles from "./Page.module.css";
+import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import SearchDateBetween from "@/app/Components/SearchDateBetween/SearchDateBetween";
+
+import { useState } from "react";
 
 export default function Page() {
   const [reportes] = useState([
@@ -69,7 +70,7 @@ export default function Page() {
             label: "Por Servicio",
             content: (
               <>
-                  <SearchDateBetween />
+                <SearchDateBetween />
                 <div className={styles.tableContainer}>
                   <table className={styles.machineTable}>
                     <thead>

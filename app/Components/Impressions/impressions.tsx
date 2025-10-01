@@ -5,8 +5,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostImpressions } from "@/app/lib/postImpressions";
 
-import "./Impressions.css";
-
 interface CostOption {
   value: number;
 }
@@ -29,25 +27,24 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
   };
 
   const handlePayment = async () => {
+    const currentUrl = new URL(window.location.href);
+    const params = new URLSearchParams();
+
+    const setError = (msg: string) => {
+      params.set("error", msg);
+      router.push(`${currentUrl}&${params.toString()}`);
+    };
+
     if (!numAcount) {
-      router.push(
-        `/Impresiones?numAcount=${numAcount}&error=Error busca denuevo al estudiante`
-      );
-      return;
+      return setError("busca de nuevo al estudiante");
     }
 
     if (!pages) {
-      router.push(
-        `/Impresiones?numAcount=${numAcount}&error=Ingresa el numero de hojas a imprimir`
-      );
-      return;
+      return setError("Ingresa el numero de hojas a imprimir");
     }
 
     if (!cost) {
-      router.push(
-        `/Impresiones?numAcount=${numAcount}&error=Selecciona un costo`
-      );
-      return;
+      return setError("Selecciona un costo");
     }
 
     const result = await PostImpressions({
@@ -59,18 +56,16 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
     if (result.error) {
       if (result.error === "Token inválido") handleLogout();
       else {
-        router.push(
-          `/Impresiones?numAcount=${numAcount}&error=${result.error}`
-        );
+        return setError(`Error: ${result.error}`);
       }
       return;
     }
 
     setPages("");
     setCost("");
-    router.push(
-      `/Impresiones?numAcount=${numAcount}&success=Impresion cobrada correctamente`
-    );
+    params.delete("error");
+    params.set("success", "Impresion cobrada correctamente");
+    router.push(`${currentUrl}&${params.toString()}`);
   };
 
   return (
@@ -84,7 +79,7 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
         <div className="groupInput">
           <label className="label">Costo:</label>
           <select value={cost} onChange={(e) => setCost(e.target.value)}>
-            <option value="">-- Selecciona un tiempo --</option>
+            <option value="">Selecciona el costo</option>
             {costs.map((c) => (
               <option key={c.value} value={c.value}>
                 ${c.value}
@@ -110,9 +105,12 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
           />
         </div>
 
-        <div className="groupLabel">
-          <label className="label">
-            Total: {pages && cost && `$${parseInt(cost) * parseInt(pages)}.00`}
+        <div className="groupInput">
+          <label className="label">Total:</label>
+          <label
+            style={{ width: "100%", minWidth: "200px", maxWidth: "500px" }}
+          >
+            {pages && cost && `$${parseInt(cost) * parseInt(pages)}.00`}
           </label>
         </div>
 

@@ -1,31 +1,34 @@
-import SearchUser from "../../Components/SearchUser/searchUser";
+import SearchUser from "../../Components/Global/SearchUser/searchUser";
 import Receipt from "../../Components/Receipt/Receipt";
-import Impressions from "../../Components/Impressions/impressions";
-import Toggle from "../../Components/Toggle/Toggle";
-import Information from "../../Components/Information/information";
-import AlertBox from "@/app/Components/AlertBox/AlertBox";
+import Toggle from "../../Components/Global/Toggle/Toggle";
+import Information from "../../Components/Global/Information/information";
+import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
+import Impressions from "@/app/Components/Impressions/impressions";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
+import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
+    key: string;
     numAcount: string;
     success?: string;
     error?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
   const showSuccess = params?.success ? params.success : null;
-  let showError = params?.error ? params.error : null;
+  const showError = params?.error ? params.error : null;
 
   let student: any = null;
+
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      showError = "Alumno no encontrado";
     } else {
       student = result;
     }
@@ -34,17 +37,23 @@ export default async function Page(props: {
   return (
     <section className="containerSection">
       {showError && (
-        <AlertBox key={Date.now()} message={showError} type="error" />
+        <>
+          <AlertBox key={Date.now()} message={showError} type="error" />
+          <ClearParams paramsToClear={["error"]} />
+        </>
       )}
 
       {showSuccess && (
-        <AlertBox key={Date.now()} message={showSuccess} type="success" />
+        <>
+          <AlertBox key={Date.now()} message={showSuccess} type="success" />
+          <ClearParams paramsToClear={["success"]} />
+        </>
       )}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
-      <SearchUser urlBase="Impresiones" value={numAcount} />
+      <SearchUser value={numAcount} />
 
-      {student ? (
+      {student && (
         <>
           <Information
             NoCuenta={student.id_cuenta}
@@ -54,33 +63,30 @@ export default async function Page(props: {
           />
 
           <Toggle
-            defaultView="1"
+            defaultView={key}
             options={[
               {
-                key: "1",
+                key: "Recibo",
                 label: "Recibo",
-                content: (
-                  <Receipt
-                    urlBase="/Impresiones"
-                    numAcount={student.id_cuenta}
-                  />
-                ),
+                content: <Receipt numAcount={student.id_cuenta} />,
               },
               {
-                key: "2",
+                key: "B/N",
                 label: "Impresiones B/N",
                 content: (
                   <Impressions
+                    key={1}
                     costs={[{ value: 1 }, { value: 2 }]}
                     numAcount={student.id_cuenta}
                   />
                 ),
               },
               {
-                key: "3",
+                key: "color",
                 label: "Impresiones color",
                 content: (
                   <Impressions
+                    key={2}
                     costs={[
                       { value: 4 },
                       { value: 5 },
@@ -96,10 +102,11 @@ export default async function Page(props: {
                 ),
               },
               {
-                key: "4",
+                key: "Plotter",
                 label: "Plotter",
                 content: (
                   <Impressions
+                    key={3}
                     costs={[
                       { value: 15 },
                       { value: 18 },
@@ -124,10 +131,11 @@ export default async function Page(props: {
                 ),
               },
               {
-                key: "5",
+                key: "Escaner",
                 label: "Escaner",
                 content: (
                   <Impressions
+                    key={4}
                     costs={[{ value: 1 }, { value: 2 }, { value: 5 }]}
                     numAcount={student.id_cuenta}
                   />
@@ -136,8 +144,6 @@ export default async function Page(props: {
             ]}
           />
         </>
-      ) : (
-        <></>
       )}
     </section>
   );

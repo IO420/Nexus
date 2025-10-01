@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
-import styles from "./Page.module.css";
-
 import SearchDate from "../SearchDate/SearchDate";
+import { useState } from "react";
+
+import styles from "./Page.module.css";
 
 interface tables {
   no_mesa: number;
@@ -14,7 +14,7 @@ interface tables {
 
 function BitacoraMesas() {
   const [tables, setTables] = useState<tables[]>([]);
-  const [ubicacion_equipo, setUbicacionEquipo] = useState("");
+
   return (
     <>
       <SearchDate />

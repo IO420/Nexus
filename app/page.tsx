@@ -1,4 +1,4 @@
-import Login from "./Components/Login/Login";
+import Login from "./Components/auth/Login/Login";
 import { LoginRedirect } from "./Routes/LoginRedirect";
 
 export default function Home() {
