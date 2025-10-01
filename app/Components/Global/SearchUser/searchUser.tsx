@@ -19,11 +19,10 @@ function SearchUser(props: urlProp) {
     }
   }, [props.value]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const params = new URLSearchParams(searchParams.toString());
     if (numAcount) {
-      params.delete("error");
       params.set("numAcount", `${numAcount}`);
       router.push(`${pathname}?${params.toString()}`);
     }

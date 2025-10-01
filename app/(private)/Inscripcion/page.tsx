@@ -2,30 +2,26 @@ import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Information from "@/app/Components/Global/Information/information";
 import Receipt from "@/app/Components/Receipt/Receipt";
 import Selection from "@/app/Components/Selection/Selection";
-import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
-import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "./inscripcion.css";
+import ShowError from "@/app/Components/Global/ShowError";
 
 export default async function Page(props: {
   searchParams?: Promise<{
     numAcount: string;
-    success?: string;
-    error?: string;
   }>;
 }) {
   const params = await props.searchParams;
   const numAcount = params?.numAcount ? params.numAcount : null;
-  const showSuccess = params?.success ? params.success : null;
-  let showError = params?.error ? params.error : null;
 
   let student: any = null;
+  let errorMessage = "";
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      showError = "Alumno no encontrado";
+      errorMessage = `${result.error}`;
     } else {
       student = result;
     }
@@ -33,19 +29,8 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-      {showError && (
-        <>
-          <AlertBox key={Date.now()} message={showError} type="error" />
-          <ClearParams paramsToClear={["error"]} />
-        </>
-      )}
-
-      {showSuccess && (
-        <>
-          <AlertBox key={Date.now()} message={showSuccess} type="success" />
-          <ClearParams paramsToClear={["success"]} />
-        </>
-      )}
+      
+      {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title"> INSCRIPCIÓN </h2>
 

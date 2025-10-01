@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostImpressions } from "@/app/lib/postImpressions";
+import toast from "react-hot-toast";
 
 interface CostOption {
   value: number;
@@ -27,24 +28,19 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
   };
 
   const handlePayment = async () => {
-    const currentUrl = new URL(window.location.href);
-    const params = new URLSearchParams();
-
-    const setError = (msg: string) => {
-      params.set("error", msg);
-      router.push(`${currentUrl}&${params.toString()}`);
-    };
-
     if (!numAcount) {
-      return setError("busca de nuevo al estudiante");
+      toast.error("busca de nuevo al estudiante");
+      return;
     }
 
     if (!pages) {
-      return setError("Ingresa el numero de hojas a imprimir");
+      toast.error("Ingresa el numero de hojas a imprimir");
+      return;
     }
 
     if (!cost) {
-      return setError("Selecciona un costo");
+      toast.error("Selecciona un costo");
+      return;
     }
 
     const result = await PostImpressions({
@@ -56,16 +52,15 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
     if (result.error) {
       if (result.error === "Token inválido") handleLogout();
       else {
-        return setError(`Error: ${result.error}`);
+        toast.error(result.error);
+        return;
       }
       return;
     }
 
     setPages("");
     setCost("");
-    params.delete("error");
-    params.set("success", "Impresion cobrada correctamente");
-    router.push(`${currentUrl}&${params.toString()}`);
+    toast.success("Impresion cobrada correctamente");
   };
 
   return (

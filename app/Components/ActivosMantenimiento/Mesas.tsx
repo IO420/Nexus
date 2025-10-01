@@ -8,7 +8,7 @@ function Mesas() {
   const [mantenimiento, setMantenimiento] = useState(false); // Checkbox Mantenimiento
   const [mensaje, setMensaje] = useState(""); // Mensaje dinámico
 
-  const handleConfirmar = (e: React.FormEvent) => {
+  const handleConfirmar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!mesa) {

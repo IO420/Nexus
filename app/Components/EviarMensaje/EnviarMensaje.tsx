@@ -12,7 +12,7 @@ const EnviarMensaje = ({ titulo, opciones }: EnviarMensajeProps) => {
   const [mensaje, setMensaje] = useState("");
   const [customMsg, setCustomMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Aquí puedes manejar el envío (guardar en estado global, enviar a backend, etc.)
   };

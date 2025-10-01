@@ -1,5 +1,6 @@
 "use client";
 
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { PostReceipt } from "@/app/lib/postReceipt";
 import { useRouter } from "next/navigation";
@@ -28,28 +29,25 @@ function Receipt({ numAcount }: ReceiptsProps) {
   //restrict this month//
 
   const handleSaveReceipt = async () => {
-    const currentUrl = new URL(window.location.href);
-    const params = new URLSearchParams();
-
-    const setError = (msg: string) => {
-      params.set("error", msg);
-      router.push(`${currentUrl}&${params.toString()}`);
-    };
 
     if (!numAcount) {
-      return setError("busca de nuevo al estudiante");
+      toast.error("busca de nuevo al estudiante");
+      return;
     }
 
     if (!folio) {
-      return setError("Ingresa el folio del ticket");
+      toast.error("Ingresa el folio del ticket");
+      return;
     }
 
     if (!amount) {
-      return setError("Coloca el monto a depositar");
+      toast.error("Coloca el monto a depositar");
+      return;
     }
 
     if (!date) {
-      return setError("Coloca la fecha");
+      toast.error("Coloca la fecha");
+      return;
     }
 
     try {
@@ -64,11 +62,9 @@ function Receipt({ numAcount }: ReceiptsProps) {
       setAmount("");
       setDate("");
 
-      params.delete("error");
-      params.set("success", "Recibo guardado");
-      router.push(`${currentUrl}&${params.toString()}`);
+      toast.success("Recibo guardado");
     } catch (err: any) {
-      setError(String(err));
+      toast.error(String(err));
     }
   };
 
@@ -111,10 +107,7 @@ function Receipt({ numAcount }: ReceiptsProps) {
                 if (value === "" || numericValue <= 1000) {
                   setAmount(value);
                 } else {
-                  const currentUrl = new URL(window.location.href);
-                  const params = new URLSearchParams();
-                  params.set("error", "El monto no puede superar $1000.00");
-                  router.push(`${currentUrl}&${params.toString()}`);
+                  toast.error("El monto no puede superar $1000.00");
                 }
               }
             }}

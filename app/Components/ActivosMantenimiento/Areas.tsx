@@ -9,7 +9,7 @@ export default function Areas() {
   const [mantenimiento, setMantenimiento] = useState(false); // Checkbox Mantenimiento
   const [mensaje, setMensaje] = useState(""); // Mensaje dinámico
 
-  const handleActualizar = (e: React.FormEvent) => {
+  const handleActualizar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!area) {

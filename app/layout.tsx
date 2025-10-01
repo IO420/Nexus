@@ -5,6 +5,7 @@ import Header from "./Components/layout/Header/Header";
 import Footer from "./Components/layout/Footer/Footer";
 
 import "./globals.css";
+import { ToastProvider } from "./Components/layout/ToastProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -27,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={poppins.variable} suppressHydrationWarning>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <ToastProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );

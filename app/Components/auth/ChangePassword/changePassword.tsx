@@ -6,7 +6,7 @@ export default function ChangePassword() {
   const [newPass, setNewPass] = useState("");
   const [confirmNewPass, setconfirmNewPass] = useState("");
 
-  const handleChangePass = (e: React.FormEvent) => {
+  const handleChangePass = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault;
     const data = { pass, newPass, confirmNewPass };
     console.log(data);
