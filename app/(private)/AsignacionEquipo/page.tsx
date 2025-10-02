@@ -5,7 +5,10 @@ import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
+import SearchBoxEquipo from "@/app/Components/SearchEquipo";
 import CheckBox from "@/app/Components/CheckBox";
+import CheckBoxEquipo from "@/app/Components/CheckBoxEquipo";
+import Information from "@/app/Components/Global/Information/information";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -60,7 +63,18 @@ export default async function Page(props: {
               <>
                 <SearchUser value={numAcount} />
 
-                {student && <h1>No hay records disponibles</h1>}
+                <Information
+                  numerocuenta={"12345"}
+                  nombre={"Carlos"}
+                  inscrito={"WINDOWS"}
+                  tiempo={"9minutos"}
+                  confirmo={"si/no"}
+                />
+                <label>Seleccionar tiempo</label>
+                <select name="" id=""></select>
+                <label>Seleccione un equipo</label>
+                <select name="" id=""></select>
+                <button className="button buttonSearch">Asignar Equipo</button>
               </>
             ),
           },
@@ -69,7 +83,7 @@ export default async function Page(props: {
             label: "Cancelar tiempo",
             content: (
               <>
-                <CheckBox />
+                <CheckBoxEquipo />
               </>
             ),
           },

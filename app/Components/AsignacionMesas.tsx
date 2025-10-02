@@ -16,7 +16,7 @@ export default function AsignacionMesas() {
           <option value="120">20 </option>
         </select>
         <button className="button buttonSearch" type="submit">
-          Asignar
+          Actualizar
         </button>
       </div>
     </form>
