@@ -10,13 +10,18 @@ export default async function Page(props: {
   const numAcount = params?.numAcount ? params.numAcount : null;
 
   return (
-    <>
-    <h2 className="title"> Quitar Sanciones </h2>
-    <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        flexDirection: "column",
+        paddingRight: "350px",
+      }}
+    >
+      <h2 className="title"> Quitar Sanciones </h2>
       <SearchUser value={numAcount} />
       <QuitarSancion />
     </div>
-    </>
   );
 }
 //IO
