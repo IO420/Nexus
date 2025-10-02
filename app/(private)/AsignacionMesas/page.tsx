@@ -1,5 +1,6 @@
 import AsignacionMesas from "@/app/Components/AsignacionMesas";
 import CheckBox from "@/app/Components/CheckBox";
+import Information from "@/app/Components/Global/Information/information";
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
@@ -18,6 +19,12 @@ export default function Page() {
               <>
                 <SearchUser value={"3"} />
                 <AsignacionMesas />
+                <Information cuenta={"12345"} nombre={"Alberto"} />
+                <label>Tiempo</label>
+                <select name="" id="">
+                  <option value="1">Seleciona el tiempo </option>{" "}
+                </select>
+                <button className="button buttonSearch">Asignar</button>
               </>
             ),
           },
