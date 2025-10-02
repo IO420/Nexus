@@ -1,14 +1,11 @@
-'use client';
-
 interface InformationProps {
   [key: string]: string | number | undefined;
 }
 
 export default function Information(props: InformationProps) {
-  // Obtenemos las entradas (key + value) y filtramos los que sean undefined
   const entries = Object.entries(props).filter(([_, value]) => value !== undefined);
 
-  if (entries.length === 0) return null; // no mostrar nada si no hay datos
+  if (entries.length === 0) return null; 
 
   return (
     <div className="information">
@@ -21,5 +18,5 @@ export default function Information(props: InformationProps) {
       </ul>
     </div>
   );
-}
+} 
 //IO

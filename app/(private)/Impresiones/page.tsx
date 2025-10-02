@@ -28,7 +28,7 @@ export default async function Page(props: {
     if (result.error) {
       errorMessage = `${result.error}`;
     } else {
-      student = result;
+      student = result as Student;
     }
   }
 
