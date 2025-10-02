@@ -2,11 +2,11 @@ import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
 
-import "@/app/globals.css";
-import SearchBoxEquipo from "@/app/Components/SearchEquipo";
-import CheckBox from "@/app/Components/CheckBox";
 import CheckBoxEquipo from "@/app/Components/CheckBoxEquipo";
 import Information from "@/app/Components/Global/Information/information";
+
+import "@/app/globals.css";
+import ShowError from "@/app/Components/Global/ShowError";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -19,45 +19,52 @@ export default async function Page(props: {
   const machine = params?.machine ? params.machine : null;
 
   let student: any = null;
+  let errorMessage = "";
 
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
+      errorMessage = `${result.error}`;
     } else {
-      student = result;
+      student = result as Student;
     }
   }
 
   return (
     <section className="containerSection">
-
+      {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title"> ASIGNACION DE EQUIPOS </h2>
 
       <Toggle
-        defaultView= "Asignar"
+        defaultView="Asignar"
         options={[
           {
             key: "Asignar",
             label: "Asignar tiempo",
             content: (
               <>
-              
                 <SearchUser value={numAcount} />
 
-                <Information
-                  numerocuenta={"12345"}
-                  nombre={"Carlos"}
-                  inscrito={"WINDOWS"}
-                  tiempo={"9minutos"}
-                  confirmo={"si/no"}
-                />
-                <label>Seleccionar tiempo</label>
-                <select name="" id=""></select>
-                <label>Seleccione un equipo</label>
-                <select name="" id=""></select>
-                <button className="button buttonSearch">Asignar Equipo</button>
+                {student && (
+                  <>
+                    <Information
+                      numerocuenta={student.id_cuenta}
+                      nombre={student.nombre}
+                      inscrito={"WINDOWS"}
+                      tiempo={"9minutos"}
+                      confirmo={"si/no"}
+                    />
+                    <label>Seleccionar tiempo</label>
+                    <select name="" id=""></select>
+                    <label>Seleccione un equipo</label>
+                    <select name="" id=""></select>
+                    <button className="button buttonSearch">
+                      Asignar Equipo
+                    </button>
+                  </>
+                )}
               </>
             ),
           },

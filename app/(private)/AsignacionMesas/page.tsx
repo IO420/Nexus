@@ -2,11 +2,36 @@ import AsignacionMesas from "@/app/Components/AsignacionMesas";
 import CheckBox from "@/app/Components/CheckBox";
 import Information from "@/app/Components/Global/Information/information";
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import ShowError from "@/app/Components/Global/ShowError";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
+import { GetStudent } from "@/app/lib/getStudent";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams?: Promise<{
+    key: string;
+    numAcount: string;
+  }>;
+}) {
+  const params = await props.searchParams;
+  const key = params?.key && params.key;
+  const numAcount = params?.numAcount ? params.numAcount : null;
+
+  let student: any = null;
+  let errorMessage = "";
+
+  if (numAcount) {
+    const result = await GetStudent(parseInt(numAcount));
+
+    if (result.error) {
+      errorMessage = `${result.error}`;
+    } else {
+      student = result as Student;
+    }
+  }
+
   return (
     <section className="containerSection">
+      {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
       <h2 className="title"> ASIGNACION DE MESAS </h2>
 
       <Toggle
@@ -17,14 +42,21 @@ export default function Page() {
             label: "Asignar mesa",
             content: (
               <>
-                <SearchUser value={"3"} />
-                <AsignacionMesas />
-                <Information cuenta={"12345"} nombre={"Alberto"} />
-                <label>Tiempo</label>
-                <select name="" id="">
-                  <option value="1">Seleciona el tiempo </option>{" "}
-                </select>
-                <button className="button buttonSearch">Asignar</button>
+                <SearchUser value={numAcount} />
+                {student && (
+                  <>
+                    <Information
+                      cuenta={student.id_cuenta}
+                      nombre={student.nombre}
+                    />
+                    <AsignacionMesas />
+                    <label>Tiempo</label>
+                    <select name="" id="">
+                      <option value="1">Seleciona el tiempo </option>{" "}
+                    </select>
+                    <button className="button buttonSearch">Asignar</button>
+                  </>
+                )}
               </>
             ),
           },
