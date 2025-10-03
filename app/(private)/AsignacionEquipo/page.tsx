@@ -4,17 +4,19 @@ import { GetStudent } from "@/app/lib/getStudent";
 
 import CheckBoxEquipo from "@/app/Components/CheckBoxEquipo";
 import Information from "@/app/Components/Global/Information/information";
+import ShowError from "@/app/Components/Global/ShowError";
 
 import "@/app/globals.css";
-import ShowError from "@/app/Components/Global/ShowError";
 
 export default async function Page(props: {
   searchParams?: Promise<{
+    key?:string
     numAcount?: string;
     machine?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
   const machine = params?.machine ? params.machine : null;
 
@@ -38,7 +40,7 @@ export default async function Page(props: {
       <h2 className="title"> ASIGNACION DE EQUIPOS </h2>
 
       <Toggle
-        defaultView="Asignar"
+        defaultView={key}
         options={[
           {
             key: "Asignar",

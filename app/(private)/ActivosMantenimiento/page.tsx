@@ -5,20 +5,21 @@ import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default async function Page(props: {
   searchParams?: Promise<{
+    key?: string;
     numAcount?: string;
     machine?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
 
   return (
     <section className="containerSection">
-
       <h2 className="title">EQUIPOS ACTIVOS Y EN MANTENIMIENTO</h2>
 
       <Toggle
-        defaultView="Equipos"
+        defaultView={key}
         options={[
           {
             key: "Equipos",
@@ -43,7 +44,7 @@ export default async function Page(props: {
             label: "Mesas",
             content: (
               <>
-                <MesasDisponibles/>
+                <MesasDisponibles />
               </>
             ),
           },

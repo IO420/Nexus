@@ -3,7 +3,7 @@
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { PostReceipt } from "@/app/lib/postReceipt";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 import "./Receipt.css";
 
@@ -13,6 +13,8 @@ interface ReceiptsProps {
 
 function Receipt({ numAcount }: ReceiptsProps) {
   const router = useRouter();
+  const path = usePathname();
+  console.log(path);
 
   const [folio, setFolio] = useState("");
   const [amount, setAmount] = useState("");
@@ -29,7 +31,6 @@ function Receipt({ numAcount }: ReceiptsProps) {
   //restrict this month//
 
   const handleSaveReceipt = async () => {
-
     if (!numAcount) {
       toast.error("busca de nuevo al estudiante");
       return;
@@ -63,6 +64,7 @@ function Receipt({ numAcount }: ReceiptsProps) {
       setDate("");
 
       toast.success("Recibo guardado");
+      router.refresh();
     } catch (err: any) {
       toast.error(String(err));
     }

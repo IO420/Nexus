@@ -61,6 +61,7 @@ function Impressions({ costs, numAcount }: ImpressionsProps) {
     setPages("");
     setCost("");
     toast.success("Impresion cobrada correctamente");
+    router.refresh();
   };
 
   return (

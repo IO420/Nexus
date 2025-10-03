@@ -35,7 +35,7 @@ export default async function Page(props: {
       <h2 className="title"> ASIGNACION DE MESAS </h2>
 
       <Toggle
-        defaultView="Asignar"
+        defaultView={key}
         options={[
           {
             key: "Asignar",
