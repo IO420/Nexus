@@ -41,8 +41,7 @@ export default function TableSancion() {
   
   return (
     <>
-      <h1>{sanciones}</h1>
-      <div className={styles.tableContainer}>
+      <div className={styles.tableContainer} style={{margin:"1rem 0"}}>
         <table className={styles.machineTable}>
           <thead>
             <tr>
@@ -65,7 +64,7 @@ export default function TableSancion() {
           </select>
         </div>
       </form>
-      <button className="button buttonSearch" onClick={handlebutton}>
+      <button className="button buttonSearch" style={{margin:"1rem 0"}} onClick={handlebutton}>
         Aplicar sanción
       </button>
     </>

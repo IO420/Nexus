@@ -21,7 +21,8 @@ export default function Page() {
             content: (
               <>
                 <SearchDateBetween />
-                <PorRecibos />
+                <PorServicios />
+
               </>
             ),
           },
@@ -32,7 +33,7 @@ export default function Page() {
             content: (
               <>
                 <SearchDateBetween />
-                <PorServicios />
+                <PorRecibos />
               </>
             ),
           },

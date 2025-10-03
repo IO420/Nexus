@@ -37,11 +37,10 @@ export default function Areas() {
 
   return (
     <form className="containerForm" onSubmit={handleActualizar}>
-      <label className="label">Áreas disponibles:</label>
-      <div className="groupInput" style={{display:"flex", flexDirection:"column"}}>
-        {/* Select de áreas */}
+      <label className="label">Áreas</label>
+      <div className="groupInput">
         <select value={area} onChange={(e) => setArea(e.target.value)}>
-          <option value="">-- Áreas disponibles --</option>
+          <option value="">-- Áreas --</option>
           <option value="PECERA">PECERA</option>
           <option value="JAULA">JAULA</option>
           <option value="HUACAL">HUACAL</option>

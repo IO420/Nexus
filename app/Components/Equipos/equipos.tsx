@@ -74,7 +74,7 @@ export default function Equipos() {
             <option value="4">mmmmm</option>
             <option value="5">mmmmm</option>
           </select>
-          <div className="containerButton">
+          <div className="containerButton" style={{marginTop:"1rem"}}>
             <button className="button buttonSearch">Nuevo</button>
             <button className="button buttonSearch">Editar</button>
           </div>

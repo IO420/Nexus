@@ -52,17 +52,27 @@ export default async function Page(props: {
                     <Information
                       numerocuenta={student.id_cuenta}
                       nombre={student.nombre}
+                    />
+                    <Information
                       inscrito={"WINDOWS"}
                       tiempo={"9minutos"}
                       confirmo={"si/no"}
                     />
-                    <label>Seleccionar tiempo</label>
-                    <select name="" id=""></select>
-                    <label>Seleccione un equipo</label>
-                    <select name="" id=""></select>
-                    <button className="button buttonSearch">
-                      Asignar Equipo
-                    </button>
+                    {/* <div className="containerForm">
+                      <label style={{ marginTop: "1rem" }}>
+                        Seleccionar tiempo
+                      </label>
+                      <select></select>
+                      <label style={{ marginTop: "1rem" }}>
+                        Seleccione un equipo
+                      </label>
+                      <div className="groupInput">
+                        <select></select>
+                        <button className="button buttonSearch">
+                          Asignar Equipo
+                        </button>
+                      </div>
+                    </div> */}
                   </>
                 )}
               </>

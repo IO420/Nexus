@@ -22,6 +22,7 @@ export default async function Page(props: {
             label: "Equipo",
             content: (
               <EnviarMensaje
+              key={1}
                 titulo="Seleccione un equipo"
                 opciones={["1", "2", "3", "4", "5", "6"]}
               />
@@ -32,6 +33,7 @@ export default async function Page(props: {
             label: "Sala",
             content: (
               <EnviarMensaje
+              key={2}
                 titulo="Seleccione una sala"
                 opciones={["PECERA", "PCNET1", "PCNET2", "PCNET3"]}
               />

@@ -49,12 +49,19 @@ export default async function Page(props: {
                       cuenta={student.id_cuenta}
                       nombre={student.nombre}
                     />
-                    <AsignacionMesas />
+                  {/* <div
+                    className="containerForm"
+                    style={{ margin: "1rem 0" }}
+                  >
                     <label>Tiempo</label>
-                    <select name="" id="">
-                      <option value="1">Seleciona el tiempo </option>{" "}
-                    </select>
-                    <button className="button buttonSearch">Asignar</button>
+                    <div className="groupInput">
+                      <select name="" id="">
+                        <option value="1">Seleciona el tiempo </option>{" "}
+                      </select>
+                      <button className="button buttonSearch">Asignar</button>
+                    </div>
+                  </div> */}
+                    <AsignacionMesas />
                   </>
                 )}
               </>

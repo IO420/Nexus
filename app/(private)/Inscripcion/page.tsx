@@ -29,7 +29,6 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-      
       {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title"> INSCRIPCIÓN </h2>
@@ -44,8 +43,26 @@ export default async function Page(props: {
             Carrera={student.carrera.carrera}
             Credito={student.credito}
           />
+
+          <Information
+            inscrito={"WINDOWS"}
+            tiempo={"9minutos"}
+            confirmo={"si/no"}
+          />
           <section className="inscripcion">
             <Selection />
+
+            <select
+              style={{
+                marginBottom: "1rem",
+                maxWidth: "100px",
+                minWidth: "100px",
+              }}
+            >
+              <option value="0">con pago</option>
+              <option value="1">sin pago</option>
+            </select>
+
             <Receipt numAcount={student.id_cuenta} />
           </section>
         </>

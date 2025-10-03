@@ -2,6 +2,7 @@ import BitacoraAlumno from "@/app/Components/BitacoraSanciones/BitacoraAlumno";
 import BitacoraEquipo from "@/app/Components/BitacoraSanciones/BitacoraEquipo";
 import BitacoraMesas from "@/app/Components/BitacoraSanciones/BitacoraMesas";
 import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
+import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
 
@@ -48,6 +49,7 @@ export default async function Page(props: {
             label: "Bitacora alumno",
             content: (
               <>
+              <SearchUser value={numAcount}/>
                 <BitacoraAlumno />
               </>
             ),

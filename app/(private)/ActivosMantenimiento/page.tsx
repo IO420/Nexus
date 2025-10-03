@@ -1,7 +1,6 @@
 import Areas from "@/app/Components/ActivosMantenimiento/Areas";
-import Mesas from "@/app/Components/ActivosMantenimiento/Mesas";
-import Equipos from "@/app/Components/Equipos/equipos";
-import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import MesasDisponibles from "@/app/Components/ActivosMantenimiento/MesasDisponibles";
+import TableEquipos from "@/app/Components/Equipos/tableequipos";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default async function Page(props: {
@@ -26,8 +25,7 @@ export default async function Page(props: {
             label: "Equipos",
             content: (
               <>
-                <SearchUser value={numAcount} />
-                <Equipos />
+                <TableEquipos />
               </>
             ),
           },
@@ -42,10 +40,10 @@ export default async function Page(props: {
           },
           {
             key: "Mesas",
-            label: "Liberar mesa",
+            label: "Mesas",
             content: (
               <>
-                <Mesas />
+                <MesasDisponibles/>
               </>
             ),
           },

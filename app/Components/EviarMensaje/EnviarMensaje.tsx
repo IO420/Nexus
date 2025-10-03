@@ -51,6 +51,7 @@ const EnviarMensaje = ({ titulo, opciones }: EnviarMensajeProps) => {
             </option>
           ))}
         </select>
+        <input type="checkbox" style={{minWidth:"20px", width:"20px",maxWidth:"30px"}}/>
       </div>
 
       {/* Mensaje personalizado */}
@@ -62,10 +63,12 @@ const EnviarMensaje = ({ titulo, opciones }: EnviarMensajeProps) => {
           onChange={(e) => setCustomMsg(e.target.value)}
           placeholder="Escribe tu mensaje..."
         />
+        <input type="checkbox" style={{minWidth:"20px", width:"20px",maxWidth:"30px"}}/>
       </div>
 
+
       {/* Botón de enviar */}
-      <button className="button buttonSearch" type="submit">
+      <button className="button buttonSearch" type="submit" style={{marginTop:"1rem"}}>
         Mandar mensaje
       </button>
     </form>

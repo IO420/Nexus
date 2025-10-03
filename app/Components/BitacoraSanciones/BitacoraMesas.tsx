@@ -18,7 +18,7 @@ function BitacoraMesas() {
   return (
     <>
       <SearchDate />
-      <div className={styles.tableContainer}>
+      <div className={styles.tableContainer} style={{marginTop:"1rem"}}>
         <table className={styles.machineTable}>
           <thead>
             <tr>
