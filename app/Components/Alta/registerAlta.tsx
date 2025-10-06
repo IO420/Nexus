@@ -1,8 +1,30 @@
 "use client";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function RegisterAlta() {
+  const [listMajor, setListMajor] = useState([]);
   const [major, setMajor] = useState("");
+
+  useEffect(() => {
+    const fetchCarreras = async () => {
+      try {
+        const response = await axios.get(
+          "https://venus.acatlan.unam.mx/asignacionTiempo_test/carrera"
+        );
+
+        const sortedCarreras = response.data.sort((a: any, b: any) =>
+          a.carrera.localeCompare(b.carrera)
+        );
+
+        setListMajor(sortedCarreras);
+      } catch (error) {
+        console.error("Error al obtener carreras:", error);
+      }
+    };
+    fetchCarreras();
+  }, []);
+
   return (
     <form className="containerAlta gap gridAlta">
       <div className="containerForm">
@@ -59,6 +81,11 @@ export default function RegisterAlta() {
         <label className="label">Carrera</label>
         <select value={major} onChange={(e) => setMajor(e.target.value)}>
           <option value="">Selecciona la carrera</option>
+          {listMajor.map((carrera: any, index) => (
+            <option key={index} value={carrera.id_carrera}>
+              {carrera.carrera}
+            </option>
+          ))}
         </select>
       </div>
 

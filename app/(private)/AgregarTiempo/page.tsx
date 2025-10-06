@@ -38,17 +38,7 @@ export default async function Page(props: {
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <div className="groupInput" style={{ marginBottom: "1rem" }}>
-              <label className="label">Seleccione el área</label>
-              <select>
-                <option value="0">windows</option>
-                <option value="1">ADOBE CREATIVE SUITE</option>
-                <option value="2">mmmmm</option>
-                <option value="3">mmmmm</option>
-                <option value="4">mmmmm</option>
-                <option value="5">mmmmm</option>
-              </select>
-            </div>
+            <div className="groupInput" style={{ marginBottom: "1rem" }}></div>
             <Receipt numAcount={student.id_cuenta} />
           </div>
         </>

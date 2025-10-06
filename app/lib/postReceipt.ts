@@ -9,7 +9,7 @@ export async function PostReceipt(data: any) {
       error.response?.data?.message ||
       error.message ||
       "Error desconocido al crear recibo";
-    return { error: msg };
+    throw new Error(msg);
   }
 }
 //IO

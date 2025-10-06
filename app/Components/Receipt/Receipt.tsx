@@ -3,7 +3,7 @@
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { PostReceipt } from "@/app/lib/postReceipt";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import "./Receipt.css";
 
@@ -13,8 +13,6 @@ interface ReceiptsProps {
 
 function Receipt({ numAcount }: ReceiptsProps) {
   const router = useRouter();
-  const path = usePathname();
-  console.log(path);
 
   const [folio, setFolio] = useState("");
   const [amount, setAmount] = useState("");
@@ -80,19 +78,25 @@ function Receipt({ numAcount }: ReceiptsProps) {
       <div className="gap">
         <div className="groupInput">
           <label className="label">Ticket:</label>
-          <input
-            type="text"
-            value={folio}
-            onChange={(error) => {
-              const value = error.target.value;
-              if (/^\d*$/.test(value) && value.length <= 7) {
-                setFolio(value);
-              }
-            }}
-            placeholder="Numero de tiket..."
-            inputMode="numeric"
-            pattern="[0-9]*"
-          />
+          <div className="groupInformation">
+            <input
+              type="text"
+              value={folio}
+              onChange={(error) => {
+                const value = error.target.value;
+                if (/^\d*$/.test(value) && value.length <= 7) {
+                  setFolio(value);
+                }
+              }}
+              placeholder="Numero de tiket..."
+              inputMode="numeric"
+              pattern="[0-9]*"
+            />
+            <select className="informationButton">
+              <option>7</option>
+              <option>8</option>
+            </select>
+          </div>
         </div>
 
         <div className="groupInput">

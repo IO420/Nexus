@@ -88,11 +88,12 @@ footer p {
 .mainContainer {
   position: relative;
   display: grid;
-  grid-template-rows: 40px 1fr;
+  grid-template-rows: auto 1fr;
   align-items: center;
   justify-items: center;
   height: 100%;
   width: 100%;
+  background-color: #f9f9f9;
 }
 
 @keyframes fadeInUp {
@@ -180,12 +181,12 @@ select {
 input:focus,
 select:focus {
   background-color: #f9f9f9;
-  outline:none;
-    box-shadow: 0px 0px 8px 2px rgba(0, 62, 121, 0.5);
+  outline: none;
+  box-shadow: 0px 0px 8px 2px rgba(0, 62, 121, 0.5);
   transition: all 0.2s ease-in-out;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
   min-width: 3rem;
 }
 
@@ -196,7 +197,7 @@ label {
 }
 
 button {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 1rem 1.75rem;
   border-radius: 4px;
   cursor: pointer;
@@ -296,7 +297,7 @@ a {
   font-size: 3rem;
   font-weight: bold;
   text-align: start;
-  color:#bd8c01;
+  color: #bd8c01;
   border-bottom: 1px solid #cfcfcf;
   margin-bottom: 10px;
 }
@@ -352,7 +353,7 @@ form {
 }
 
 .toggleButton.active {
-  font-weight: 700;
+  font-weight: 600;
   background-color: #e5e7eb;
   color: rgb(1, 92, 184);
   border-radius: 4px 4px 0 0;
@@ -462,22 +463,6 @@ table tr {
     align-items: center;
   }
 
-  .img {
-    width: 100%;
-  }
-
-  .img::after {
-    background: linear-gradient(to right, #f9f9f993, rgba(128, 128, 128, 0));
-  }
-
-  .img::before {
-    display: flex;
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to left, #f9f9f993, rgba(128, 128, 128, 0));
-  }
-
   .title {
     text-align: center;
   }
@@ -563,7 +548,6 @@ table tr {
   }
 
   button {
-    font-size: 1.5rem;
     padding: 1rem 1.5rem;
   }
 

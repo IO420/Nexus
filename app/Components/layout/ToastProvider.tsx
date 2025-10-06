@@ -12,6 +12,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           style: {
             padding: "16px",
             fontSize: "16px",
+            maxWidth: "400px",
           },
 
           error: {
@@ -21,7 +22,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               backgroundColor: "#fee2e2dd",
               color: "#000000ff",
               fontWeight: "600",
-              padding:"1.5rem"
+              padding: "1.5rem",
             },
           },
 
@@ -32,7 +33,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
               backgroundColor: "#d1fae5dd",
               color: "#000000ff",
               fontWeight: "600",
-              padding:"1.5rem"
+              padding: "1.5rem",
             },
           },
         }}

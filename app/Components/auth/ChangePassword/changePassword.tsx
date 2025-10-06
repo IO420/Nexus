@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import { useState } from "react";
 
 export default function ChangePassword() {
@@ -6,10 +7,14 @@ export default function ChangePassword() {
   const [newPass, setNewPass] = useState("");
   const [confirmNewPass, setconfirmNewPass] = useState("");
 
-  const handleChangePass = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChangePass = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault;
     const data = { pass, newPass, confirmNewPass };
-    console.log(data);
+
+    await axios.post(
+      "https://venus.acatlan.unam.mx/asignacionTiempo_test/user/create",
+      data
+    );
   };
 
   return (
