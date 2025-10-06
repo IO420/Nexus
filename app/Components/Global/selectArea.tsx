@@ -6,9 +6,6 @@ export default function selectArea() {
 
   useEffect(() => {
     const fetchArea = async () => {
-      const response = await axios.get(
-        "https://venus.acatlan.unam.mx/asignacionTiempo_test/area-ubicacion"
-      );
       setArea(response.data);
     };
 
