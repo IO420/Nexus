@@ -8,7 +8,7 @@ import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
-    key?:string;
+    key?: string;
     machine?: string;
     success?: string;
     error?: string;

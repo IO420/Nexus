@@ -51,7 +51,6 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
     programas.reduce((acc, prog) => ({ ...acc, [prog]: false }), {})
   );
 
-  // Función al cambiar el select
   const handleChangeEquipo = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const equipo = e.target.value;
     setEquipoSeleccionado(equipo);
@@ -74,10 +73,13 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
       Object.keys(checkboxes).filter((p) => checkboxes[p])
     );
   };
-  //hola madefoker
+
   return (
     <form className="form-container" onSubmit={handleSubmit}>
       <label>{titulo}</label>
+
+      <SelectAreas />
+
       <select value={equipoSeleccionado} onChange={handleChangeEquipo}>
         <option value="">-- Selecciona un equipo --</option>
         {opcion.map((eq, i) => (
