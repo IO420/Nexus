@@ -78,25 +78,19 @@ function Receipt({ numAcount }: ReceiptsProps) {
       <div className="gap">
         <div className="groupInput">
           <label className="label">Ticket:</label>
-          <div className="groupInformation">
-            <input
-              type="text"
-              value={folio}
-              onChange={(error) => {
-                const value = error.target.value;
-                if (/^\d*$/.test(value) && value.length <= 7) {
-                  setFolio(value);
-                }
-              }}
-              placeholder="Numero de tiket..."
-              inputMode="numeric"
-              pattern="[0-9]*"
-            />
-            <select className="informationButton">
-              <option>7</option>
-              <option>8</option>
-            </select>
-          </div>
+          <input
+            type="text"
+            value={folio}
+            onChange={(error) => {
+              const value = error.target.value;
+              if (/^\d*$/.test(value) && value.length <= 7) {
+                setFolio(value);
+              }
+            }}
+            placeholder="Numero de tiket..."
+            inputMode="numeric"
+            pattern="[0-9]*"
+          />
         </div>
 
         <div className="groupInput">

@@ -2,10 +2,11 @@ import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Information from "@/app/Components/Global/Information/information";
 import Receipt from "@/app/Components/Receipt/Receipt";
 import Selection from "@/app/Components/Selection/Selection";
+import ShowError from "@/app/Components/Global/ShowError";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "./inscripcion.css";
-import ShowError from "@/app/Components/Global/ShowError";
+import Table from "@/app/Components/Global/table";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -27,28 +28,50 @@ export default async function Page(props: {
     }
   }
 
+  const headers = ["Inscrito", "Tiempo", "Confirmó"];
+  const data = [
+    {
+      Inscrito: "WINDOWS",
+      Tiempo: "9 minutos",
+      Confirmó: "si",
+    },
+    {
+      Inscrito: "WINDOWS",
+      Tiempo: "9 minutos",
+      Confirmó: "si/no",
+    },
+    {
+      Inscrito: "WINDOWS",
+      Tiempo: "9 minutos",
+      Confirmó: "si/no",
+    },
+  ];
+
   return (
     <section className="containerSection">
       {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title"> INSCRIPCIÓN </h2>
 
-      <SearchUser value={numAcount} />
+      <div className="containeInformation">
+        <div className="firstPartInformation">
+          <SearchUser value={numAcount} />
+
+          {student && (
+            <Information
+              NoCuenta={student.id_cuenta}
+              Nombre={student.nombre}
+              Carrera={student.carrera.carrera}
+              Credito={student.credito}
+            />
+          )}
+        </div>
+
+        {student && <Table headers={headers} data={data} />}
+      </div>
 
       {student && (
         <>
-          <Information
-            NoCuenta={student.id_cuenta}
-            Nombre={student.nombre}
-            Carrera={student.carrera.carrera}
-            Credito={student.credito}
-          />
-
-          <Information
-            inscrito={"WINDOWS"}
-            tiempo={"9minutos"}
-            confirmo={"si/no"}
-          />
           <section className="inscripcion">
             <Selection />
 

@@ -1,5 +1,6 @@
 "use client";
-import axios from "axios";
+import apiClient from "@/app/lib/apiClient";
+
 import { useEffect, useState } from "react";
 
 export default function RegisterAlta() {
@@ -9,9 +10,7 @@ export default function RegisterAlta() {
   useEffect(() => {
     const fetchCarreras = async () => {
       try {
-        const response = await axios.get(
-          "https://venus.acatlan.unam.mx/asignacionTiempo_test/carrera"
-        );
+        const response = await apiClient.get("/carrera");
 
         const sortedCarreras = response.data.sort((a: any, b: any) =>
           a.carrera.localeCompare(b.carrera)

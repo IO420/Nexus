@@ -1,5 +1,5 @@
 "use client";
-import axios from "axios";
+import apiClient from "@/app/lib/apiClient";
 import { useState } from "react";
 
 export default function ChangePassword() {
@@ -11,10 +11,7 @@ export default function ChangePassword() {
     e.preventDefault;
     const data = { pass, newPass, confirmNewPass };
 
-    await axios.post(
-      "https://venus.acatlan.unam.mx/asignacionTiempo_test/user/create",
-      data
-    );
+    await apiClient.post("/user/create", data);
   };
 
   return (

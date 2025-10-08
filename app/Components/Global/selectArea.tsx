@@ -1,4 +1,4 @@
-import axios from "axios";
+import apiClient from "@/app/lib/apiClient";
 import { useEffect, useState } from "react";
 
 export default function selectArea() {
@@ -6,6 +6,7 @@ export default function selectArea() {
 
   useEffect(() => {
     const fetchArea = async () => {
+      const response = await apiClient.get("/area-ubicacion");
       setArea(response.data);
     };
 
