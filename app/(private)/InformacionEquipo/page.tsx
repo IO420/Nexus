@@ -6,7 +6,7 @@ import "./informacionequipo.css";
 
 export default async function Page(props: {
   searchParams?: Promise<{
-    key?:string;
+    key?: string;
     machine?: string;
   }>;
 }) {
