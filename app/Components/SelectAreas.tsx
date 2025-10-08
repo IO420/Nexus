@@ -1,16 +1,14 @@
-"use clien";
-import React, { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 
 export default function SelectAreas() {
-  const [areas, setAreas] = useState([]); // aquí guardaremos los datos del servidor
+  const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState("");
 
-  // useEffect se ejecuta una vez al montar el componente
   useEffect(() => {
     fetch("https://venus.acatlan.unam.mx/asignacionTiempo_test/area-ubicacion")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Áreas obtenidas:", data);
         setAreas(data);
       })
       .catch((error) => {
@@ -18,19 +16,18 @@ export default function SelectAreas() {
       });
   }, []);
 
-  const handleChange = (e) => {
-    setSelectedArea(e.target.value);
-    console.log("Área seleccionada:", e.target.value);
-  };
-
   return (
     <div>
       <label htmlFor="areaSelect">Selecciona un área:</label>
-      <select id="areaSelect" value={selectedArea} onChange={handleChange}>
+      <select
+        id="areaSelect"
+        value={selectedArea}
+        onChange={(e) => setSelectedArea(e.target.value)}
+      >
         <option value="">-- Selecciona una opción --</option>
-        {areas.map((area) => (
-          <option key={area.id_area} value={area.id_area}>
-            {area.nombre_area}
+        {areas.map((area: any, index) => (
+          <option key={index} value={area.id_area}>
+            {area.id_area}
           </option>
         ))}
       </select>
