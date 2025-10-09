@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function SelectAreas() {
@@ -6,10 +7,10 @@ export default function SelectAreas() {
   const [selectedArea, setSelectedArea] = useState("");
 
   useEffect(() => {
-    fetch("https://venus.acatlan.unam.mx/asignacionTiempo_test/area-ubicacion")
-      .then((response) => response.json())
+    axios
+      .get("https://venus.acatlan.unam.mx/asignacionTiempo_test/area-ubicacion")
       .then((data) => {
-        setAreas(data);
+        setAreas(data.data);
       })
       .catch((error) => {
         console.error("Error al traer las áreas:", error);
@@ -26,8 +27,8 @@ export default function SelectAreas() {
       >
         <option value="">-- Selecciona una opción --</option>
         {areas.map((area: any, index) => (
-          <option key={index} value={area.id_area}>
-            {area.id_area}
+          <option key={index} value={area.area}>
+            {area.area}
           </option>
         ))}
       </select>
