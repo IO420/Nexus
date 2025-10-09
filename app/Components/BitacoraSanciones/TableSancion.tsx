@@ -50,7 +50,7 @@ export default function TableSancion() {
   useEffect(() => {
     axios
       .get(
-        "  https://venus.acatlan.unam.mx/asignacionTiempo_test/alumno-sancion/320154041"
+        " https://venus.acatlan.unam.mx/asignacionTiempo_test/alumno-sancion/423019393"
       )
       .then((response) => {
         setAlumnoSanciones(response.data);
