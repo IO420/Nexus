@@ -3,7 +3,8 @@
   grid-template-columns: 1fr 1fr;
 }
 .containerAlta {
-  background-color: #f9f9f9;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 900px;
   padding: 1rem;

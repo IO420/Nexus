@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import SelectAreas from "../SelectAreas";
 
 interface DatosEquipo {
   titulo: string;
@@ -43,7 +44,7 @@ const caracteristicasPorEquipo: Record<string, string[]> = {
   // Agrega más equipos según necesites
 };
 
-function ProgramSelector({ titulo, opcion }: DatosEquipo) {
+export default function ProgramSelector({ titulo, opcion }: DatosEquipo) {
   // Estado del equipo seleccionado
   const [equipoSeleccionado, setEquipoSeleccionado] = useState("");
   // Estado de los checkboxes (programas)
@@ -108,5 +109,3 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
     </form>
   );
 }
-
-export default ProgramSelector;

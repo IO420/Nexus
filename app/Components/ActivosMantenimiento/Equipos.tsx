@@ -6,7 +6,7 @@ function Equipos() {
   const [tiempo, setTiempo] = useState("");
   const [mensaje, setMensaje] = useState("");
 
-  const handleBuscar = (e: React.FormEvent) => {
+  const handleBuscar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!cuenta) {
       setMensaje("Ingresa un número de cuenta antes de buscar");
@@ -15,7 +15,7 @@ function Equipos() {
     setMensaje(`Buscando información del No. de cuenta: ${cuenta}`);
   };
 
-  const handleAsignar = (e: React.FormEvent) => {
+  const handleAsignar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!tiempo) {
       setMensaje("Selecciona un equipo antes de asignar");

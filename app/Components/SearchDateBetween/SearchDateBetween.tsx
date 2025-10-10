@@ -6,7 +6,7 @@ function SearchDateBetween() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Fecha inicio:", startDate);
     console.log("Fecha fin:", endDate);

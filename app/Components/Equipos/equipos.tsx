@@ -14,16 +14,17 @@ export default function Equipos() {
   const [Equipo, setEquipo] = useState("");
   const [Data, setData] = useState<Data | any>();
 
-  const handleSubmit = async () => {
-    const response = await axios.get(
-      `${envConfig.apiUrl}/InformacionEquipo/${Equipo}`
-    );
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    // const response = await axios.get(
+    //   `${envConfig.apiUrl}/equipo/${Equipo}`
+    // );
 
-    if (!response) {
-      return;
-    }
+    // if (!response) {
+    //   return;
+    // }
 
-    setData(response);
+    setData("response");
   };
 
   return (
@@ -37,7 +38,7 @@ export default function Equipos() {
           }}
         />
 
-        <button className="button buttonSearch" onClick={handleSubmit}>
+        <button type="button" className="button buttonSearch" onClick={handleSubmit}>
           Buscar
         </button>
       </div>
@@ -73,7 +74,7 @@ export default function Equipos() {
             <option value="4">mmmmm</option>
             <option value="5">mmmmm</option>
           </select>
-          <div className="containerButton">
+          <div className="containerButton" style={{marginTop:"1rem"}}>
             <button className="button buttonSearch">Nuevo</button>
             <button className="button buttonSearch">Editar</button>
           </div>

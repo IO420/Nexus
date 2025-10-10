@@ -1,4 +1,5 @@
 "use client";
+import apiClient from "@/app/lib/apiClient";
 import { useState } from "react";
 
 export default function ChangePassword() {
@@ -6,10 +7,11 @@ export default function ChangePassword() {
   const [newPass, setNewPass] = useState("");
   const [confirmNewPass, setconfirmNewPass] = useState("");
 
-  const handleChangePass = (e: React.FormEvent) => {
+  const handleChangePass = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault;
     const data = { pass, newPass, confirmNewPass };
-    console.log(data);
+
+    await apiClient.post("/user/create", data);
   };
 
   return (

@@ -1,0 +1,8 @@
+.tableContainer {
+  width: 100%;
+  max-width: 450px;
+  overflow-x: hidden;
+  scrollbar-color: #2563eb #ffffff00;
+  scroll-behavior: smooth;
+  transition: all 0.3s ease;
+}

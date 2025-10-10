@@ -2,53 +2,40 @@ import SearchUser from "../../Components/Global/SearchUser/searchUser";
 import Receipt from "../../Components/Receipt/Receipt";
 import Toggle from "../../Components/Global/Toggle/Toggle";
 import Information from "../../Components/Global/Information/information";
-import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
 import Impressions from "@/app/Components/Impressions/impressions";
+import ShowError from "@/app/Components/Global/ShowError";
+
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
-import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 
 export default async function Page(props: {
   searchParams?: Promise<{
     key: string;
     numAcount: string;
-    success?: string;
-    error?: string;
   }>;
 }) {
   const params = await props.searchParams;
   const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
-  const showSuccess = params?.success ? params.success : null;
-  const showError = params?.error ? params.error : null;
 
   let student: any = null;
+  let errorMessage = "";
 
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
+      errorMessage = `${result.error}`;
     } else {
-      student = result;
+      student = result as Student;
     }
   }
 
   return (
     <section className="containerSection">
-      {showError && (
-        <>
-          <AlertBox key={Date.now()} message={showError} type="error" />
-          <ClearParams paramsToClear={["error"]} />
-        </>
-      )}
 
-      {showSuccess && (
-        <>
-          <AlertBox key={Date.now()} message={showSuccess} type="success" />
-          <ClearParams paramsToClear={["success"]} />
-        </>
-      )}
+      {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
       <SearchUser value={numAcount} />

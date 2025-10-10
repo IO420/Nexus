@@ -6,6 +6,7 @@ export async function GetSanciones(numAcount: number) {
     const response = await axios.get(
       `${envConfig.apiUrl}/alumno-sancion/${numAcount}`
     );
+
     return response.data;
   } catch (error: any) {
     const msg =
@@ -15,3 +16,4 @@ export async function GetSanciones(numAcount: number) {
     return { error: msg };
   }
 }
+//IO

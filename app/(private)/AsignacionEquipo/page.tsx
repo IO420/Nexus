@@ -1,60 +1,46 @@
-import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
-import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
 
-import "@/app/globals.css";
-import SearchBoxEquipo from "@/app/Components/SearchEquipo";
-import CheckBox from "@/app/Components/CheckBox";
 import CheckBoxEquipo from "@/app/Components/CheckBoxEquipo";
 import Information from "@/app/Components/Global/Information/information";
+import ShowError from "@/app/Components/Global/ShowError";
+
+import "@/app/globals.css";
 
 export default async function Page(props: {
   searchParams?: Promise<{
+    key?:string
     numAcount?: string;
     machine?: string;
-    success?: string;
-    error?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
   const machine = params?.machine ? params.machine : null;
-  const showSuccess = params?.success ? params.success : null;
-  const showError = params?.error ? params.error : null;
 
   let student: any = null;
+  let errorMessage = "";
 
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
+      errorMessage = `${result.error}`;
     } else {
-      student = result;
+      student = result as Student;
     }
   }
 
   return (
     <section className="containerSection">
-      {showError && (
-        <>
-          <AlertBox key={Date.now()} message={showError} type="error" />
-          <ClearParams paramsToClear={["error"]} />
-        </>
-      )}
-
-      {showSuccess && (
-        <>
-          <AlertBox key={Date.now()} message={showSuccess} type="success" />
-          <ClearParams paramsToClear={["success"]} />
-        </>
-      )}
+      {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title"> ASIGNACION DE EQUIPOS </h2>
 
       <Toggle
-        defaultView="Asignar"
+        defaultView={key}
         options={[
           {
             key: "Asignar",
@@ -63,18 +49,34 @@ export default async function Page(props: {
               <>
                 <SearchUser value={numAcount} />
 
-                <Information
-                  numerocuenta={"12345"}
-                  nombre={"Carlos"}
-                  inscrito={"WINDOWS"}
-                  tiempo={"9minutos"}
-                  confirmo={"si/no"}
-                />
-                <label>Seleccionar tiempo</label>
-                <select name="" id=""></select>
-                <label>Seleccione un equipo</label>
-                <select name="" id=""></select>
-                <button className="button buttonSearch">Asignar Equipo</button>
+                {student && (
+                  <>
+                    <Information
+                      numerocuenta={student.id_cuenta}
+                      nombre={student.nombre}
+                    />
+                    <Information
+                      inscrito={"WINDOWS"}
+                      tiempo={"9minutos"}
+                      confirmo={"si/no"}
+                    />
+                    {/* <div className="containerForm">
+                      <label style={{ marginTop: "1rem" }}>
+                        Seleccionar tiempo
+                      </label>
+                      <select></select>
+                      <label style={{ marginTop: "1rem" }}>
+                        Seleccione un equipo
+                      </label>
+                      <div className="groupInput">
+                        <select></select>
+                        <button className="button buttonSearch">
+                          Asignar Equipo
+                        </button>
+                      </div>
+                    </div> */}
+                  </>
+                )}
               </>
             ),
           },

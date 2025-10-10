@@ -1,30 +1,18 @@
 import styles from "./Page.module.css";
 
-export default async function Page(props: {
-  searchParams?: Promise<{
-    numAcount: string;
-  }>;
-}) {
-  const params = await props.searchParams;
-  const numAcount = params?.numAcount ? params.numAcount : null;
-
+export default async function TableEquipos() {
   return (
     <section className="containerSection">
-      <h2 className="title"> MONITOR DE MÁQUINAS DISPONIBLES </h2>
-
-      <div className={styles.actions}>
-        <button className={styles.resetButton}>Actualizar informacion</button>
-      </div>
 
       <div className={styles.tableContainer}>
         <table className={styles.machineTable}>
           <thead>
             <tr style={{fontSize:"15px"}}>
               <th>Ubicación</th>
-              <th>Nombre Equipo</th>
+              <th>Nombre</th>
               <th>Plataforma</th>
               <th>Área</th>
-              <th>Disponible</th>
+              <th>Activo</th>
             </tr>
             <tr>
               <th>

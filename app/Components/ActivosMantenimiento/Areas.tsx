@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 
+import "@/app/globals.css"
+
 export default function Areas() {
   const [area, setArea] = useState(""); // Área seleccionada
   const [activo, setActivo] = useState(false); // Checkbox Activo
   const [mantenimiento, setMantenimiento] = useState(false); // Checkbox Mantenimiento
   const [mensaje, setMensaje] = useState(""); // Mensaje dinámico
 
-  const handleActualizar = (e: React.FormEvent) => {
+  const handleActualizar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!area) {
@@ -35,11 +37,10 @@ export default function Areas() {
 
   return (
     <form className="containerForm" onSubmit={handleActualizar}>
-      <label className="label">Áreas disponibles:</label>
+      <label className="label">Áreas</label>
       <div className="groupInput">
-        {/* Select de áreas */}
         <select value={area} onChange={(e) => setArea(e.target.value)}>
-          <option value="">-- Áreas disponibles --</option>
+          <option value="">-- Áreas --</option>
           <option value="PECERA">PECERA</option>
           <option value="JAULA">JAULA</option>
           <option value="HUACAL">HUACAL</option>
@@ -48,13 +49,15 @@ export default function Areas() {
         </select>
 
         {/* Checkboxes */}
+        <div className="checkbox-grid">
+
         <div className="checkbox" style={{ marginTop: "10px" }}>
-          <label style={{ marginRight: "10px" }}>
+          <label style={{ marginRight: "10px"}}>
             <input
               type="checkbox"
               checked={activo}
               onChange={(e) => setActivo(e.target.checked)}
-            />
+              />
             Activo
           </label>
           <label>
@@ -62,10 +65,11 @@ export default function Areas() {
               type="checkbox"
               checked={mantenimiento}
               onChange={(e) => setMantenimiento(e.target.checked)}
-            />
+              />
             Mantenimiento
           </label>
         </div>
+              </div>
 
         {/* Botón Actualizar */}
         <button

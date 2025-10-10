@@ -6,13 +6,13 @@
   max-height: 430px;
   scrollbar-color: rgb(1, 92, 184) rgba(0, 0, 0, 0);
   background-color: #f9f9f9;
+  width: 100%;
 }
 
 .machineTable {
   width: 100%;
   border-collapse: collapse;
   table-layout: auto;
-  margin-bottom: 1rem;
 }
 
 .machineTable th,

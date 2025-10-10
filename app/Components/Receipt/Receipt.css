@@ -1,0 +1,24 @@
+.groupInformation {
+  display: flex;
+  max-width: 500px;
+  min-width: 40px;
+  width: 100%;
+  justify-content: end;
+  gap: 10px;
+}
+
+.informationButton {
+  text-align: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #cfcfcf;
+  background-color: #fff;
+  max-width: 40px;
+  min-width: 40px;
+}
+
+.informationButton:hover {
+  border: 1px solid #cfcfcf;
+  background-color: #cfcfcf;
+}

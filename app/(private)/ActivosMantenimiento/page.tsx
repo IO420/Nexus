@@ -1,52 +1,32 @@
 import Areas from "@/app/Components/ActivosMantenimiento/Areas";
-import Mesas from "@/app/Components/ActivosMantenimiento/Mesas";
-import Equipos from "@/app/Components/Equipos/equipos";
-import AlertBox from "@/app/Components/Global/AlertBox/AlertBox";
-import ClearParams from "@/app/Components/Global/ClearParams/ClearParams";
-import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import MesasDisponibles from "@/app/Components/ActivosMantenimiento/MesasDisponibles";
+import TableEquipos from "@/app/Components/Equipos/tableequipos";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 
 export default async function Page(props: {
   searchParams?: Promise<{
+    key?: string;
     numAcount?: string;
     machine?: string;
-    success?: string;
-    error?: string;
   }>;
 }) {
   const params = await props.searchParams;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
-  const showSuccess = params?.success ? params.success : null;
-  const showError = params?.error ? params.error : null;
 
   return (
     <section className="containerSection">
-      {showError && (
-        <>
-          <AlertBox key={Date.now()} message={showError} type="error" />
-          <ClearParams paramsToClear={["error"]} />
-        </>
-      )}
-
-      {showSuccess && (
-        <>
-          <AlertBox key={Date.now()} message={showSuccess} type="success" />
-          <ClearParams paramsToClear={["success"]} />
-        </>
-      )}
-
       <h2 className="title">EQUIPOS ACTIVOS Y EN MANTENIMIENTO</h2>
 
       <Toggle
-        defaultView="Equipos"
+        defaultView={key}
         options={[
           {
             key: "Equipos",
             label: "Equipos",
             content: (
               <>
-                <SearchUser value={numAcount} />
-                <Equipos />
+                <TableEquipos />
               </>
             ),
           },
@@ -61,10 +41,10 @@ export default async function Page(props: {
           },
           {
             key: "Mesas",
-            label: "Liberar mesa",
+            label: "Mesas",
             content: (
               <>
-                <Mesas />
+                <MesasDisponibles />
               </>
             ),
           },

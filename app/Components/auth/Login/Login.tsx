@@ -3,33 +3,41 @@ import { useState } from "react";
 import { loginUser } from "@/app/lib/login";
 import { useRouter } from "next/navigation";
 
+import toast from "react-hot-toast";
 import "./Login.css";
-import AlertBox from "../../Global/AlertBox/AlertBox";
 
 function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [alert, setAlert] = useState("");
 
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!user) {
+      toast.error("Coloca un usuario");
+      return;
+    }
+
+    if (!password) {
+      toast.error("Coloca una contraseña");
+      return;
+    }
+
     const data = await loginUser(user, password);
 
     if ("error" in data) {
-      setError(data.error);
+      toast.error(data.error);
     } else {
       const token = data.access_token;
       const payload = JSON.parse(atob(token.split(".")[1]));
       const usuario = payload.usuario;
 
       document.cookie = `token=${token}; path=/; SameSite=Strict`;
-      document.cookie = `usuario=${usuario}; path=/; SameSite=Strict`;
+      document.cookie = `user=${usuario}; path=/; SameSite=Strict`;
 
-      setAlert("Inicio de sesión exitoso");
+      toast.success("Inicio de sesión exitoso");
       router.push("/Impresiones");
     }
   };
@@ -70,9 +78,6 @@ function Login() {
         >
           Iniciar sesión
         </button>
-
-        {error && <AlertBox message={error} type="error" />}
-        {alert && <AlertBox message={alert} type="success" />}
       </form>
     </section>
   );

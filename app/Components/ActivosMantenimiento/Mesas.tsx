@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 
+import "@/app/globals.css"
+
 function Mesas() {
   const [mesa, setMesa] = useState(""); // Mesa seleccionada
   const [mantenimiento, setMantenimiento] = useState(false); // Checkbox Mantenimiento
   const [mensaje, setMensaje] = useState(""); // Mensaje dinámico
 
-  const handleConfirmar = (e: React.FormEvent) => {
+  const handleConfirmar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!mesa) {
@@ -26,7 +28,7 @@ function Mesas() {
   return (
     <form className="containerForm" onSubmit={handleConfirmar}>
       <label className="label">Mesas disponibles:</label>
-      <div className="groupInput">
+      <div className="groupInput"  style={{display:"flex", flexDirection:"column"}}>
         {/* Select de mesas */}
         <select value={mesa} onChange={(e) => setMesa(e.target.value)}>
           <option value="">-- Mesas disponibles --</option>

@@ -16,15 +16,15 @@ function QuitarSancion() {
   const [quitarSanciones, SetQuitarSanciones] = useState<quitarSanciones[]>([]);
   return (
     <section className="containerSection">
-      <div className={styles.tableContainer}>
+      <div className={styles.tableContainer} style={{margin:"1rem 0"}}>
         <table className={styles.machineTable}>
           <thead>
             <tr>
               <th>id</th>
               <th>Nombre</th>
-              <th>Motivo Sancion</th>
+              <th>Motivo Sanción</th>
               <th>Duracion (semanas) </th>
-              <th>Fecha Sancion</th>
+              <th>Fecha Sanción</th>
               <th>Podria utilizar el servicio hasta</th>
             </tr>
           </thead>
@@ -42,7 +42,7 @@ function QuitarSancion() {
           </tbody>
         </table>
       </div>
-      <button className="button buttonSearch">Quitar Sancion</button>
+      <button className="button buttonSearch" style={{marginTop:"1rem"}}>Quitar Sanción</button>
     </section>
   );
 }
