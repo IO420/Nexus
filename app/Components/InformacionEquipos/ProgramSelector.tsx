@@ -78,8 +78,6 @@ function ProgramSelector({ titulo, opcion }: DatosEquipo) {
     <form className="form-container" onSubmit={handleSubmit}>
       <label>{titulo}</label>
 
-      <SelectAreas />
-
       <select value={equipoSeleccionado} onChange={handleChangeEquipo}>
         <option value="">-- Selecciona un equipo --</option>
         {opcion.map((eq, i) => (

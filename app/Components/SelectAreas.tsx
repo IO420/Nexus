@@ -27,11 +27,9 @@ export default function SelectAreas() {
     <div>
       <label htmlFor="areaSelect">Selecciona un área:</label>
       <select id="areaSelect" value={selectedArea} onChange={handleChange}>
-        <option value="">-- Selecciona una opción --</option>
+        <option value="">-- Selecciona una opción  --</option>
         {areas.map((area) => (
-          <option key={area.id_area} value={area.id_area}>
-            {area.nombre_area}
-          </option>
+          
         ))}
       </select>
     </div>
