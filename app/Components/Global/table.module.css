@@ -1,4 +1,5 @@
 .tableContainer {
+  margin-top: 1rem;
   width: 100%;
   max-width: 450px;
   overflow-x: hidden;
