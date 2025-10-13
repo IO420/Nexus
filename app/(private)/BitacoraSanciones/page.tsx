@@ -3,6 +3,7 @@ import BitacoraEquipo from "@/app/Components/BitacoraSanciones/BitacoraEquipo";
 import BitacoraMesas from "@/app/Components/BitacoraSanciones/BitacoraMesas";
 import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
 import SearchUser from "@/app/Components/Global/SearchUser/searchUser";
+import SearchUserWithDate from "@/app/Components/Global/SearchUser/SearchUserWithDate";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
 
@@ -13,23 +14,22 @@ export default async function Page(props: {
   }>;
 }) {
   const params = await props.searchParams;
-  const key = params?.key && params.key ;
+  const key = params?.key && params.key;
   const numAcount = params?.numAcount ? params.numAcount : null;
 
-    let student: any = null;
-  
-    if (numAcount) {
-      const result = await GetStudent(parseInt(numAcount));
-  
-      if (result.error) {
-      } else {
-        student = result;
-      }
+  let student: any = null;
+
+  if (numAcount) {
+    const result = await GetStudent(parseInt(numAcount));
+
+    if (result.error) {
+    } else {
+      student = result;
     }
+  }
 
   return (
     <section className="containerSection">
-      
       <h2 className="title"> BITACORA Y SANCIONES </h2>
 
       <Toggle
@@ -49,7 +49,7 @@ export default async function Page(props: {
             label: "Bitacora alumno",
             content: (
               <>
-              <SearchUser value={numAcount}/>
+                <SearchUserWithDate value={numAcount} />
                 <BitacoraAlumno />
               </>
             ),
@@ -68,7 +68,7 @@ export default async function Page(props: {
             label: "Sanciones",
             content: (
               <>
-                <Sanciones student={student}/>
+                <Sanciones student={student} />
               </>
             ),
           },

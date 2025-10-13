@@ -16,7 +16,6 @@ function BitacoraEquipo() {
   const [ubicacion_equipo, setUbicacionEquipo] = useState("");
   return (
     <>
-      <SearchDate />
       <form className="containerForm">
         <label className="label">Ubicacion de equipo</label>
 
@@ -28,12 +27,10 @@ function BitacoraEquipo() {
             <option value="">-- Selecciona un equipo --</option>
             <option value="255">Equipo 255</option>
           </select>
-          <button className="button buttonSearch" type="submit">
-            Asignar
-          </button>
         </div>
+        <SearchDate />
       </form>
-      <div className={styles.tableContainer} style={{marginTop:"1rem"}}>
+      <div className={styles.tableContainer} style={{ marginTop: "1rem" }}>
         <table className={styles.machineTable}>
           <thead>
             <tr>

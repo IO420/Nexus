@@ -1,3 +1,5 @@
+"use client";
+
 import SearchUser from "../../Components/Global/SearchUser/searchUser";
 import Receipt from "../../Components/Receipt/Receipt";
 import Toggle from "../../Components/Global/Toggle/Toggle";
@@ -8,6 +10,7 @@ import ShowError from "@/app/Components/Global/ShowError";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "@/app/globals.css";
+import toast from "react-hot-toast";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -26,7 +29,7 @@ export default async function Page(props: {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
-      errorMessage = `${result.error}`;
+      toast.error("This didn't work.");
     } else {
       student = result as Student;
     }
@@ -34,7 +37,6 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-
       {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
