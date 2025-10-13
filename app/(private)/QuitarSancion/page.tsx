@@ -12,10 +12,9 @@ export default async function Page(props: {
   return (
     <>
       <h2 className="title"> Quitar Sanciones </h2>
-      <div className="containerSection"
-      >
+      <div className="containerSection">
         <SearchUser value={numAcount} />
-        <QuitarSancion />
+        <QuitarSancion numAcount={numAcount} />
       </div>
     </>
   );

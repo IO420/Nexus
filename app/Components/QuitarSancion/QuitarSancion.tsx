@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import styles from "./Page.module.css";
 import axios from "axios";
+import { envConfig } from "@/app/lib/config";
 
 interface alumno_sancion {
   id: number;
@@ -25,15 +26,17 @@ interface sancion {
   duracion: number;
 }
 
-function QuitarSancion() {
+interface prop {
+  numAcount: string | null;
+}
+
+function QuitarSancion(props: prop) {
   const [quitarSanciones, SetQuitarSanciones] = useState<any[]>([]);
   const [sanciones, setSanciones] = useState<any>([]);
   const [alumnoSanciones, setAlumnoSanciones] = useState<any>([]);
   useEffect(() => {
     axios
-      .get(
-        " https://venus.acatlan.unam.mx/asignacionTiempo_test/alumno-sancion/423019393"
-      )
+      .get(`${envConfig.apiUrl}/alumno-sancion/${props.numAcount}`)
       .then((response) => {
         SetQuitarSanciones(response.data);
       })
@@ -42,7 +45,7 @@ function QuitarSancion() {
       });
 
     axios
-      .get("https://venus.acatlan.unam.mx/asignacionTiempo_test/sancion")
+      .get(`${envConfig.apiUrl}/asignacionTiempo_test/sancion`)
       .then((response) => {
         setSanciones(response.data);
       })
