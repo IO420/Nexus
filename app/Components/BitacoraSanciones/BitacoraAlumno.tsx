@@ -1,5 +1,4 @@
 "use client";
-import SearchDate from "../SearchDate/SearchDate";
 import { useState } from "react";
 
 import styles from "./Page.module.css";
@@ -14,8 +13,7 @@ function BitacoraAlumno() {
   const [alumnos, setAlumnos] = useState<alumnos[]>([]);
   return (
     <>
-      <SearchDate />
-      <div className={styles.tableContainer} style={{marginTop:"1rem"}}>
+      <div className={styles.tableContainer} style={{ marginTop: "1rem" }}>
         <table className={styles.machineTable}>
           <thead>
             <tr>

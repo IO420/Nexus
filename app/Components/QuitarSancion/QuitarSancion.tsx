@@ -1,48 +1,75 @@
-"use client";
-import { useState } from "react";
-
 import styles from "./Page.module.css";
 
-interface quitarSanciones {
-  id: number;
+interface Alumno {
+  id_cuenta: number;
   nombre: string;
-  motivo: string;
-  duracion: number;
-  fecha_sancion: string;
-  utilizar_equipo: number;
+  credito: number;
 }
 
-function QuitarSancion() {
-  const [quitarSanciones, SetQuitarSanciones] = useState<quitarSanciones[]>([]);
+interface Sancion {
+  id_sancion: number;
+  sancion: string;
+  duracion: number;
+}
+
+interface AlumnoSancion {
+  id_alumno_sancion: number;
+  fecha_inicio: string;
+  sancion: Sancion;
+}
+
+interface DataProps {
+  student: Alumno;
+  alusancion: AlumnoSancion[];
+}
+
+interface Props {
+  data: DataProps | null;
+}
+
+function QuitarSancion({ data }: Props) {
+  const calcularFechaFin = (fechaInicio: string, duracionSemanas: number) => {
+    const fecha = new Date(fechaInicio);
+    fecha.setDate(fecha.getDate() + duracionSemanas * 7);
+    return fecha.toLocaleDateString();
+  };
+
   return (
     <section className="containerSection">
-      <div className={styles.tableContainer} style={{margin:"1rem 0"}}>
+      <div className={styles.tableContainer} style={{ margin: "1rem 0" }}>
         <table className={styles.machineTable}>
           <thead>
             <tr>
-              <th>id</th>
+              <th>ID</th>
               <th>Nombre</th>
               <th>Motivo Sanción</th>
-              <th>Duracion (semanas) </th>
+              <th>Duración (semanas)</th>
               <th>Fecha Sanción</th>
-              <th>Podria utilizar el servicio hasta</th>
+              <th>Podría utilizar el servicio hasta</th>
             </tr>
           </thead>
           <tbody>
-            {quitarSanciones.map((quitarSanciones, index) => (
-              <tr key={index}>
-                <td>{quitarSanciones.id}</td>
-                <td>{quitarSanciones.nombre}</td>
-                <td>{quitarSanciones.motivo}</td>
-                <td>{quitarSanciones.duracion}</td>
-                <td>{quitarSanciones.fecha_sancion}</td>
-                <td>{quitarSanciones.utilizar_equipo}</td>
+            {data && data.alusancion.length > 0 ? (
+              data.alusancion.map((item) => (
+                <tr key={item.id_alumno_sancion}>
+                  <td>{item.id_alumno_sancion}</td>
+                  <td>{data.student.nombre}</td>
+                  <td>{item.sancion.sancion}</td>
+                  <td>{item.sancion.duracion}</td>
+                  <td>{new Date(item.fecha_inicio).toLocaleDateString()}</td>
+                  <td>
+                    {calcularFechaFin(item.fecha_inicio, item.sancion.duracion)}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6}>No hay sanciones registradas</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
-      <button className="button buttonSearch" style={{marginTop:"1rem"}}>Quitar Sanción</button>
     </section>
   );
 }

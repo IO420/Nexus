@@ -34,7 +34,6 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-
       {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
 
       <h2 className="title">IMPRESIONES Y PLOTEO</h2>
