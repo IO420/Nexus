@@ -29,7 +29,7 @@ export default function Toggle({ options, defaultView }: ToggleProps) {
 
     router.replace(`${pathname}?${params.toString()}`);
   };
-  
+
   return (
     <section className="toggleSection">
       <div className="toggleGroup">
@@ -44,7 +44,7 @@ export default function Toggle({ options, defaultView }: ToggleProps) {
         ))}
       </div>
 
-      <div className="padding">
+      <div className="padding toggleContent">
         {options.find((opt) => opt.key === view)?.content}
       </div>
     </section>

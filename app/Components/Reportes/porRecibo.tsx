@@ -10,8 +10,8 @@ interface reportes {
 function PorRecibos() {
   const [reportes, SetQuitarSanciones] = useState<reportes[]>([]);
   return (
-    <div className={styles.tableContainer}>
-      <table className={styles.machineTable}>
+    <div>
+      <table>
         <thead>
           <tr>
             <th>Servicio</th>

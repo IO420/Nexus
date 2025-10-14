@@ -30,8 +30,8 @@ function BitacoraEquipo() {
         </div>
       </form>
       <SearchDate />
-      <div className={styles.tableContainer} style={{ marginTop: "1rem" }}>
-        <table className={styles.machineTable}>
+      <div>
+        <table>
           <thead>
             <tr>
               <th>Hora Entrada</th>

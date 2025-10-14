@@ -5,23 +5,22 @@ import TableSancion from "./TableSancion";
 interface Student {
   id_cuenta: string;
   nombre: string;
+  credito?: number;
 }
 
-export default async function Sanciones(props: { student?: Student }) {
-  const idCuenta = props?.student?.id_cuenta ?? null;
+export default function Sanciones({ student }: { student?: Student }) {
+  const idCuenta = student?.id_cuenta ?? null;
 
   return (
     <>
       <SearchUser value={idCuenta} />
-      {props.student && (
+      {student && (
         <>
-          <Information
-            NoCuenta={props.student.id_cuenta}
-            Nombre={props.student.nombre}
-          />
-          <TableSancion />
+          <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
+          <TableSancion idCuenta={parseInt(student.id_cuenta)} />
         </>
       )}
     </>
   );
 }
+//

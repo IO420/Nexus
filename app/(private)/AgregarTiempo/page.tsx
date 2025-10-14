@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { GetStudent } from "@/app/lib/getStudent";
 
 import "./addTime.css";
+import Selection from "@/app/Components/Selection/Selection";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -38,7 +39,7 @@ export default async function Page(props: {
           <Information NoCuenta={student.id_cuenta} Nombre={student.nombre} />
 
           <div className="addTime">
-            <div className="groupInput" style={{ marginBottom: "1rem" }}></div>
+            <Selection />
             <Receipt numAcount={student.id_cuenta} />
           </div>
         </>

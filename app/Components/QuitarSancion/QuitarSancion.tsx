@@ -1,5 +1,3 @@
-import styles from "./Page.module.css";
-
 interface Alumno {
   id_cuenta: number;
   nombre: string;
@@ -36,8 +34,8 @@ function QuitarSancion({ data }: Props) {
 
   return (
     <section className="containerSection">
-      <div className={styles.tableContainer} style={{ margin: "1rem 0" }}>
-        <table className={styles.machineTable}>
+      <div>
+        <table>
           <thead>
             <tr>
               <th>ID</th>
@@ -49,7 +47,7 @@ function QuitarSancion({ data }: Props) {
             </tr>
           </thead>
           <tbody>
-            {data && data.alusancion.length > 0 ? (
+            {data && data.alusancion.length !== 0 ? (
               data.alusancion.map((item) => (
                 <tr key={item.id_alumno_sancion}>
                   <td>{item.id_alumno_sancion}</td>

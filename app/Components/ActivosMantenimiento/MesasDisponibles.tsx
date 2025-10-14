@@ -1,13 +1,10 @@
-import styles from "./Page.module.css";
-
 export default async function MesasDisponibles() {
   return (
     <section className="containerSection">
-
-      <div className={styles.tableContainer}>
-        <table className={styles.machineTable}>
+      <div>
+        <table>
           <thead>
-            <tr style={{fontSize:"15px"}}>
+            <tr style={{ fontSize: "15px" }}>
               <th>Mesa</th>
               <th>Activo</th>
             </tr>

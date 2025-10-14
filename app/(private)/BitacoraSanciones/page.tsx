@@ -3,8 +3,10 @@ import BitacoraEquipo from "@/app/Components/BitacoraSanciones/BitacoraEquipo";
 import BitacoraMesas from "@/app/Components/BitacoraSanciones/BitacoraMesas";
 import Sanciones from "@/app/Components/BitacoraSanciones/Sanciones";
 import SearchUserWithDate from "@/app/Components/Global/SearchUser/SearchUserWithDate";
+import ShowError from "@/app/Components/Global/ShowError";
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import { GetStudent } from "@/app/lib/getStudent";
+import { GetSancionByStudent } from "@/app/lib/getStudent copy";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -17,11 +19,13 @@ export default async function Page(props: {
   const numAcount = params?.numAcount ? params.numAcount : null;
 
   let student: any = null;
+  let errorMessage = "";
 
   if (numAcount) {
     const result = await GetStudent(parseInt(numAcount));
 
     if (result.error) {
+      errorMessage = `${result.error}`;
     } else {
       student = result;
     }
@@ -29,6 +33,8 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
+      {errorMessage && <ShowError key={Date.now()} message={errorMessage} />}
+
       <h2 className="title"> BITACORA Y SANCIONES </h2>
 
       <Toggle

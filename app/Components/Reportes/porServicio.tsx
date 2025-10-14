@@ -13,8 +13,8 @@ interface servicios {
 function PorServicios() {
   const [recibos, setRecibos] = useState<servicios[]>([]);
   return (
-    <div className={styles.tableContainer}>
-      <table className={styles.machineTable}>
+    <div>
+      <table>
         <thead>
           <tr>
             <th>Folio Recibo</th>

@@ -1,77 +1,59 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./Page.module.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-interface alumno_sancion {
-  id_alumno_sancion: number;
-  fecha_inicio: string;
-  alumno: alumno;
-  sancion: sancion;
-}
-
-interface alumno {
+interface Alumno {
   id_cuenta: number;
   nombre: string;
   credito: number;
 }
 
-interface sancion {
+interface Sancion {
   id_sancion: number;
   sancion: string;
   duracion: number;
 }
 
-export default function TableSancion() {
-  const [sanciones, setSanciones] = useState<any>([]);
-  const [button, setButton] = useState<boolean>(false);
+interface AlumnoSancion {
+  id_alumno_sancion: number;
+  fecha_inicio: string;
+  sancion: Sancion;
+}
+
+export default function TableSancion({ idCuenta }: { idCuenta: number }) {
+  const [sanciones, setSanciones] = useState<Sancion[]>([]);
+  const [alumno, setAlumno] = useState<Alumno | null>(null);
+  const [alumnoSanciones, setAlumnoSanciones] = useState<AlumnoSancion[]>([]);
   const [selectedSancion, setSelectedSancion] = useState("");
-  const [alumnoSanciones, setAlumnoSanciones] = useState<any>([]);
-  /*
+
   useEffect(() => {
-    const getSanciones = async () => {
-      const response = await axios.get("");
-      setSanciones(response);
-    };
-    getSanciones();
-  }, [button]);
+    if (!idCuenta) return;
 
-
-
-                  <td>{new Date(item.fecha_inicio).toLocaleDateString()}</td>
-                <td>
-                  {calcularFechaFin(item.fecha_inicio, item.sancion?.duracion)}
-                </td>
-
-                https://venus.acatlan.unam.mx/asignacionTiempo_test/alumno-sancion/320154041
-                .get("https://venus.acatlan.unam.mx/asignacionTiempo_test/sancion")
-*/
-  useEffect(() => {
+    // Obtener sanciones del alumno
     axios
       .get(
-        " https://venus.acatlan.unam.mx/asignacionTiempo_test/alumno-sancion/423019393"
+        `https://venus.acatlan.unam.mx/asignacionTiempo_test/alumno-sancion/${idCuenta}`
       )
-      .then((response) => {
-        setAlumnoSanciones(response.data);
+      .then((res) => {
+        setAlumno(res.data.student);
+        setAlumnoSanciones(
+          res.data.alusancion?.length ? res.data.alusancion : []
+        );
       })
-      .catch((error) => {
-        console.error("Error al obtener las sanciones:", error);
-      });
+      .catch((err) =>
+        toast.error("Error al obtener las sanciones del alumno:", err)
+      );
 
+    // Obtener catálogo de sanciones
     axios
       .get("https://venus.acatlan.unam.mx/asignacionTiempo_test/sancion")
-      .then((response) => {
-        setSanciones(response.data);
-      })
-      .catch((error) => {
-        console.error("Error al obtener las sanciones:", error);
-      });
-  }, []);
-
-  const handlebutton = () => {
-    setButton(!button);
-  };
+      .then((res) => setSanciones(res.data))
+      .catch((err) =>
+        toast.error("Error al obtener el catálogo de sanciones:", err)
+      );
+  }, [idCuenta]);
 
   const calcularFechaFin = (fechaInicio: string, duracionSemanas: number) => {
     const fecha = new Date(fechaInicio);
@@ -81,36 +63,33 @@ export default function TableSancion() {
 
   return (
     <>
-      <div className={styles.tableContainer} style={{ margin: "1rem 0" }}>
-        <table className={styles.machineTable}>
+      <div style={{ margin: "1rem 0" }}>
+        <table>
           <thead>
             <tr>
               <th>Cuenta</th>
               <th>Motivo de la sanción</th>
-              <th>Duracion (Semanas) </th>
+              <th>Duración (Semanas)</th>
               <th>Fecha Sanción</th>
-              <th>Podra utilizar el servicio hasta</th>
+              <th>Podrá utilizar el servicio hasta</th>
             </tr>
           </thead>
           <tbody>
-            {sanciones.length > 0 ? (
-              alumnoSanciones.map((item: any) => (
+            {alumnoSanciones.length > 0 ? (
+              alumnoSanciones.map((item) => (
                 <tr key={item.id_alumno_sancion}>
-                  <td>{item.alumno?.id_cuenta}</td>
-                  <td>{item.sancion?.sancion}</td>
-                  <td>{item.sancion?.duracion}</td>
+                  <td>{alumno?.id_cuenta}</td>
+                  <td>{item.sancion.sancion}</td>
+                  <td>{item.sancion.duracion}</td>
                   <td>{new Date(item.fecha_inicio).toLocaleDateString()}</td>
                   <td>
-                    {calcularFechaFin(
-                      item.fecha_inicio,
-                      item.sancion?.duracion
-                    )}
+                    {calcularFechaFin(item.fecha_inicio, item.sancion.duracion)}
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={6}>No hay sanciones registradas</td>
+                <td colSpan={5}>No hay sanciones registradas</td>
               </tr>
             )}
           </tbody>
@@ -124,7 +103,7 @@ export default function TableSancion() {
             onChange={(e) => setSelectedSancion(e.target.value)}
           >
             <option value="">-- Selecciona una sanción --</option>
-            {sanciones.map((sancion: any) => (
+            {sanciones.map((sancion) => (
               <option key={sancion.id_sancion} value={sancion.id_sancion}>
                 {sancion.sancion} ({sancion.duracion} semana/s)
               </option>
@@ -132,14 +111,14 @@ export default function TableSancion() {
           </select>
         </div>
       </form>
+
       <button
         className="button buttonSearch"
         style={{ margin: "1rem 0" }}
-        onClick={handlebutton}
+        onClick={() => alert(`Sanción ${selectedSancion} aplicada`)}
       >
         Aplicar sanción
       </button>
     </>
   );
 }
-//IO

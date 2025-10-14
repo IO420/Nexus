@@ -10,7 +10,7 @@ import "@/app/globals.css";
 
 export default async function Page(props: {
   searchParams?: Promise<{
-    key?:string
+    key?: string;
     numAcount?: string;
     machine?: string;
   }>;
@@ -52,7 +52,7 @@ export default async function Page(props: {
                 {student && (
                   <>
                     <Information
-                      numerocuenta={student.id_cuenta}
+                      NoCuenta={student.id_cuenta}
                       nombre={student.nombre}
                     />
                     <Information
@@ -60,7 +60,7 @@ export default async function Page(props: {
                       tiempo={"9minutos"}
                       confirmo={"si/no"}
                     />
-                    {/* <div className="containerForm">
+                    <div className="containerForm">
                       <label style={{ marginTop: "1rem" }}>
                         Seleccionar tiempo
                       </label>
@@ -74,7 +74,7 @@ export default async function Page(props: {
                           Asignar Equipo
                         </button>
                       </div>
-                    </div> */}
+                    </div>
                   </>
                 )}
               </>

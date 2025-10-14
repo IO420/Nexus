@@ -2,8 +2,6 @@
 import SearchDate from "../SearchDate/SearchDate";
 import { useState } from "react";
 
-import styles from "./Page.module.css";
-
 interface tables {
   no_mesa: number;
   no_cuenta: number;
@@ -18,8 +16,8 @@ function BitacoraMesas() {
   return (
     <>
       <SearchDate />
-      <div className={styles.tableContainer} style={{marginTop:"1rem"}}>
-        <table className={styles.machineTable}>
+      <div>
+        <table>
           <thead>
             <tr>
               <th>Mesa</th>

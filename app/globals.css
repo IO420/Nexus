@@ -219,7 +219,6 @@ button {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 450px;
 }
 
 .button {
@@ -295,6 +294,7 @@ a {
   margin-top: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  min-height: fit-content;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -310,6 +310,7 @@ a {
   align-items: center;
   padding: 5px 0;
   border-bottom: 1px solid #e5e5e5;
+  height: 35px;
 }
 
 .informationItem:last-child {
@@ -324,7 +325,7 @@ a {
 
 .informationValue {
   color: #555;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .title {
@@ -364,6 +365,8 @@ form {
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  overflow: hidden;
 }
 
 .toggleGroup {
@@ -395,6 +398,12 @@ form {
   color: rgb(1, 92, 184);
   border-radius: 4px 4px 0 0;
   border-bottom: none;
+}
+
+.toggleContent {
+  overflow-y: auto;
+  height: 450px;
+  scrollbar-width: none;
 }
 
 p {

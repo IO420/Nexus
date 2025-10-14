@@ -1,4 +1,3 @@
-
 export default async function Page(props: {
   searchParams?: Promise<{
     period: string;
@@ -9,7 +8,6 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-
       <h2 className="title"> INSCRITOS </h2>
 
       <form className="containerForm">
@@ -30,7 +28,7 @@ export default async function Page(props: {
         </div>
       </form>
 
-      <div className="tableContainer">
+      <div>
         <table>
           <thead>
             <tr>
@@ -44,28 +42,27 @@ export default async function Page(props: {
         </table>
       </div>
 
-      <div className="tableContainer" style={{ marginTop: "100px" }}>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Impresione B/N</th>
-            <th>Impresiones Color</th>
-            <th>Plotteo</th>
-            <th>Escaner</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>5,000</td>
-            <td>10,000</td>
-            <td>10,000</td>
-            <td>20,000</td>
-            <td>45,000</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Impresione B/N</th>
+              <th>Impresiones Color</th>
+              <th>Plotteo</th>
+              <th>Escaner</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5,000</td>
+              <td>10,000</td>
+              <td>10,000</td>
+              <td>20,000</td>
+              <td>45,000</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   );

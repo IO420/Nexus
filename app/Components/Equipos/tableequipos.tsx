@@ -3,11 +3,10 @@ import styles from "./Page.module.css";
 export default async function TableEquipos() {
   return (
     <section className="containerSection">
-
-      <div className={styles.tableContainer}>
-        <table className={styles.machineTable}>
+      <div>
+        <table>
           <thead>
-            <tr style={{fontSize:"15px"}}>
+            <tr style={{ fontSize: "15px" }}>
               <th>Ubicación</th>
               <th>Nombre</th>
               <th>Plataforma</th>

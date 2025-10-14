@@ -47,9 +47,9 @@ function SearchUserWithDate(props: urlProp) {
             inputMode="numeric"
             pattern="[0-9]*"
           />
-          <SearchDate />
         </div>
       </form>
+      <SearchDate />
     </>
   );
 }
