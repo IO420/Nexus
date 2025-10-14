@@ -77,6 +77,28 @@ export default function RegisterAlta() {
       </div>
 
       <div className="containerForm">
+        <label className="label">Email</label>
+        <input
+          type="text"
+          //value={user}
+          //onChange={(e) => setUser(e.target.value)}
+          placeholder="Coloca el email"
+        />
+      </div>
+
+      <div className="containerForm">
+        <label htmlFor="gender" className="label">
+          Género
+        </label>
+        <select id="gender" name="gender">
+          <option value="">Selecciona Género</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div className="containerForm">
         <label className="label">Carrera</label>
         <select value={major} onChange={(e) => setMajor(e.target.value)}>
           <option value="">Selecciona la carrera</option>
@@ -88,7 +110,8 @@ export default function RegisterAlta() {
         </select>
       </div>
 
-      <button className="button buttonSearch">registrar</button>
+      <button className="button buttonSearch">Guardar</button>
+      <button className="button buttonSearch">Inscripcion</button>
     </form>
   );
 }

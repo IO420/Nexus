@@ -65,6 +65,11 @@ export default async function Page(props: {
               Credito={student.credito}
             />
           )}
+          {!student && numAcount && (
+            <button className="button buttonSearch">
+              Registrar Estudiante
+            </button>
+          )}
         </div>
 
         {student && <Table headers={headers} data={data} />}
@@ -72,6 +77,9 @@ export default async function Page(props: {
 
       {student && (
         <>
+          <button className="button buttonSearch">
+            Restablecer contraseña
+          </button>
           <section className="inscripcion">
             <Selection />
 

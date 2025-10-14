@@ -129,7 +129,7 @@ function Receipt({ numAcount }: ReceiptsProps) {
         </div>
 
         <div className="containerButton">
-          <button className="button buttonSearch">Guardar</button>
+          <button className="button buttonSearch">Agregar tiempo</button>
         </div>
       </div>
     </form>
