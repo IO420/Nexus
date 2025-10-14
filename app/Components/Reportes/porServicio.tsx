@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import styles from "./Page.module.css";
 
 interface servicios {
   folio_recibo: "100255";
