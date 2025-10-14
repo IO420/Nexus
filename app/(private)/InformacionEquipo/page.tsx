@@ -1,7 +1,6 @@
 import Toggle from "@/app/Components/Global/Toggle/Toggle";
 import Equipos from "@/app/Components/Equipos/equipos";
 import ProgramSelector from "@/app/Components/InformacionEquipos/ProgramSelector";
-
 import "./informacionequipo.css";
 
 export default async function Page(props: {
@@ -16,7 +15,6 @@ export default async function Page(props: {
 
   return (
     <section className="containerSection">
-
       <h2 className="title"> INFORMACION DE EQUIPOS </h2>
 
       <Toggle
@@ -25,7 +23,7 @@ export default async function Page(props: {
           {
             key: "Equipos",
             label: "Equipos",
-            content: <Equipos />,
+            content: <Equipos />, // ✅ Aquí solo se muestran los equipos
           },
           {
             key: "Equipo",
@@ -33,7 +31,8 @@ export default async function Page(props: {
             content: (
               <ProgramSelector
                 key={1}
-                titulo="Programas de Equipo"
+                titulo="Programas por equipo"
+                tipo="equipo"
                 opcion={["", "Equipo 1", "Equipo 2", "Equipo 3", "Equipo 4"]}
               />
             ),
@@ -44,8 +43,9 @@ export default async function Page(props: {
             content: (
               <ProgramSelector
                 key={2}
-                titulo="Programas por Sala"
-                opcion={["", "PCNET1", "PCNET2", "PCNET3", "PCNET4", "PCNET4"]}
+                titulo="Programas por sala"
+                tipo="sala"
+                opcion={["", "PCNET1", "PCNET2", "PCNET3", "PCNET4"]}
               />
             ),
           },
@@ -54,4 +54,3 @@ export default async function Page(props: {
     </section>
   );
 }
-//IO

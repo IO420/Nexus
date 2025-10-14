@@ -6,7 +6,7 @@ interface proms {
   url: string;
 }
 
-export default function SelectAreas(props: proms) {
+export default function SelectEquipo(props: proms) {
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState("");
 
@@ -19,7 +19,7 @@ export default function SelectAreas(props: proms) {
 
   return (
     <div>
-      <label htmlFor="areaSelect">Selecciona un área:</label>
+      <label htmlFor="areaSelect">Selecciona un equipo:</label>
       <select
         id="areaSelect"
         value={selectedArea}
@@ -27,8 +27,8 @@ export default function SelectAreas(props: proms) {
       >
         <option value="">-- Selecciona una opción --</option>
         {areas.map((area: any, index) => (
-          <option key={index} value={area.area}>
-            {area.area}
+          <option key={index} value={area.nombre_equipo}>
+            {area.nombre_equipo}
           </option>
         ))}
       </select>

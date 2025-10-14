@@ -1,13 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SelectAreas from "../SelectAreas";
+import { url } from "inspector";
+import SelectEquipo from "../SelectEquipo";
+import axios from "axios";
 
 interface DatosEquipo {
   titulo: string;
   opcion: string[];
+  tipo: "equipo" | "sala"; // Nuevo prop para diferenciar
 }
 
-// Lista de programas disponibles
 const programas = [
   "3D MAX STUDIO 2014",
   "ADOBE CREATIVE SUITE",
@@ -35,42 +38,28 @@ const programas = [
   "STATGRAOHICS Centurion XVI",
 ];
 
-// Mapear cada equipo a sus programas (checkboxes que deberían seleccionarse)
-const caracteristicasPorEquipo: Record<string, string[]> = {
-  "Equipo 1": ["3D MAX STUDIO 2014", "AUTOCAD", "MATLAB"],
-  "Equipo 2": ["ADOBE CREATIVE SUITE", "COREL DRAW", "R Studio"],
-  "Equipo 3": ["ARCHICAD 20", "EVIEWS Enterprise", "SPPS Statiscs"],
-  "Equipo 4": ["MATHEMATICA", "MAPLE", "Maxima"],
-  // Agrega más equipos según necesites
-};
-
-export default function ProgramSelector({ titulo, opcion }: DatosEquipo) {
-  // Estado del equipo seleccionado
-  const [equipoSeleccionado, setEquipoSeleccionado] = useState("");
-  // Estado de los checkboxes (programas)
+export default function ProgramSelector({ titulo, opcion, tipo }: DatosEquipo) {
+  const [seleccion, setSeleccion] = useState("");
   const [checkboxes, setCheckboxes] = useState<Record<string, boolean>>(
     programas.reduce((acc, prog) => ({ ...acc, [prog]: false }), {})
   );
 
-  const handleChangeEquipo = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const equipo = e.target.value;
-    setEquipoSeleccionado(equipo);
+  useEffect(() => {
+    const response = axios.get(
+      "https://venus.acatlan.unam.mx/asignacionTiempo_test/equipo"
+    );
+  });
 
-    // Actualizar checkboxes según características del equipo
-    const nuevosCheckboxes: Record<string, boolean> = {};
-    programas.forEach((prog) => {
-      nuevosCheckboxes[prog] =
-        caracteristicasPorEquipo[equipo]?.includes(prog) || false;
-    });
-    setCheckboxes(nuevosCheckboxes);
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSeleccion(e.target.value);
   };
 
-  // Guardar cambios (ejemplo)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Equipo:", equipoSeleccionado);
     console.log(
-      "Programas seleccionados:",
+      tipo === "sala" ? "Sala:" : "Equipo:",
+      seleccion,
+      "\nProgramas seleccionados:",
       Object.keys(checkboxes).filter((p) => checkboxes[p])
     );
   };
@@ -79,14 +68,12 @@ export default function ProgramSelector({ titulo, opcion }: DatosEquipo) {
     <form className="form-container" onSubmit={handleSubmit}>
       <label>{titulo}</label>
 
-      <select value={equipoSeleccionado} onChange={handleChangeEquipo}>
-        <option value="">-- Selecciona un equipo --</option>
-        {opcion.map((eq, i) => (
-          <option key={i} value={eq}>
-            {eq}
-          </option>
-        ))}
-      </select>
+      {/* 👇 Mostrar Select diferente según el tipo */}
+      {tipo === "sala" ? (
+        <SelectAreas url="https://venus.acatlan.unam.mx/asignacionTiempo_test/area-ubicacion" />
+      ) : (
+        <SelectEquipo url="https://venus.acatlan.unam.mx/asignacionTiempo_test/equipo" />
+      )}
 
       <div className="checkbox-grid">
         {programas.map((prog) => (
