@@ -58,28 +58,40 @@ export default async function Page(props: {
           <SearchUser value={numAcount} />
 
           {student && (
-            <Information
-              NoCuenta={student.id_cuenta}
-              Nombre={student.nombre}
-              Carrera={student.carrera.carrera}
-              Credito={student.credito}
-            />
+            <>
+              <Information
+                NoCuenta={student.id_cuenta}
+                Nombre={student.nombre}
+                Carrera={student.carrera.carrera}
+                Credito={student.credito}
+              />
+            </>
           )}
           {!student && numAcount && (
-            <button className="button buttonSearch">
+            <button
+              className="button buttonSearch"
+              style={{ marginTop: "1rem" }}
+            >
               Registrar Estudiante
             </button>
           )}
         </div>
 
-        {student && <Table headers={headers} data={data} />}
+        {student && (
+          <>
+            <Table headers={headers} data={data} />
+            <button
+              className="button buttonSearch"
+              style={{ marginTop: "2rem" }}
+            >
+              Restablecer contraseña
+            </button>
+          </>
+        )}
       </div>
 
       {student && (
         <>
-          <button className="button buttonSearch">
-            Restablecer contraseña
-          </button>
           <section className="inscripcion">
             <Selection />
 

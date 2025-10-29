@@ -9,7 +9,6 @@ export default async function PrivateLayout({
 }) {
   return (
     <div className="mainContainer">
-      <BarNavigation />
       <div className="container">
         <Logout />
         <div className="img"></div>

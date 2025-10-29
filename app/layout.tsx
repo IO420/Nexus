@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import Header from "./Components/layout/Header/Header";
 import Footer from "./Components/layout/Footer/Footer";
@@ -7,11 +7,7 @@ import Footer from "./Components/layout/Footer/Footer";
 import "./globals.css";
 import { ToastProvider } from "./Components/layout/ToastProvider";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Servicio AT",
@@ -27,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={poppins.variable} suppressHydrationWarning>
+      <body className={inter.className}>
         <ToastProvider>
           <Header />
           <main>{children}</main>
