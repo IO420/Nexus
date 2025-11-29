@@ -1,10 +1,11 @@
 import axios from "axios";
 import { envConfig } from "./config";
+import apiClient from "./apiClient";
 
 export async function GetStudent(numAcount: number) {
   try {
-    const response = await axios.get(
-      `${envConfig.apiUrl}/student/${numAcount}`
+    const response = await apiClient.get(
+      `/student/${numAcount}`
     );
 
     return response.data;

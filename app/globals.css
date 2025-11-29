@@ -419,7 +419,7 @@ table {
 
 table th,
 table td {
-  padding: 0.85rem 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 table th {
@@ -432,6 +432,7 @@ table th {
   text-align: center;
   z-index: 2;
   border: none;
+  min-height: 35px;
 }
 
 table td {

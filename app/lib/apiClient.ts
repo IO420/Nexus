@@ -46,7 +46,9 @@ apiClient.interceptors.response.use(
       }
 
       if (status === 403) {
+        if (typeof window !== "undefined") {
           window.location.href = "/Impresiones";
+        }
       }
     }
     return Promise.reject(error);
