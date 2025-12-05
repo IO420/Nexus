@@ -4,9 +4,31 @@ import Receipt from "@/app/Components/Receipt/Receipt";
 import Selection from "@/app/Components/Selection/Selection";
 import ShowError from "@/app/Components/Global/ShowError";
 import { GetStudent } from "@/app/lib/getStudent";
-
 import "./inscripcion.css";
 import Table from "@/app/Components/Global/table";
+
+async function getInscripcion(idCuenta: number) {
+  try {
+    const res = await fetch(`http://localhost:5000/alumno-inscrito/${idCuenta}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Desactiva caché si los datos pueden cambiar frecuentemente
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error ${res.status}: ${res.statusText}`);
+    }
+
+    return await res.json();
+  } catch (error: any) {
+    return { error: error.message || "No se pudo cargar la inscripción" };
+  }
+}
+
+const headers = ["Inscrito", "Tiempo", "Confirmó"];
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -17,35 +39,37 @@ export default async function Page(props: {
   const numAcount = params?.numAcount ? params.numAcount : null;
 
   let student: any = null;
+  let inscripcion: any = null;
   let errorMessage = "";
-  if (numAcount) {
-    const result = await GetStudent(parseInt(numAcount));
 
-    if (result.error) {
-      errorMessage = `${result.error}`;
+  if (numAcount) {
+    const idCuenta = parseInt(numAcount);
+
+    const studentResult = await GetStudent(idCuenta);
+    if (studentResult.error) {
+      errorMessage = `${studentResult.error}`;
     } else {
-      student = result;
+      student = studentResult;
+    }
+    const inscResult = await getInscripcion(idCuenta);
+    if (!inscResult.error) {
+      inscripcion = inscResult;
+    } else {
+
     }
   }
 
-  const headers = ["Inscrito", "Tiempo", "Confirmó"];
-  const data = [
-    {
-      Inscrito: "WINDOWS",
-      Tiempo: "9 minutos",
-      Confirmó: "si",
-    },
-    {
-      Inscrito: "WINDOWS",
-      Tiempo: "9 minutos",
-      Confirmó: "si/no",
-    },
-    {
-      Inscrito: "WINDOWS",
-      Tiempo: "9 minutos",
-      Confirmó: "si/no",
-    },
-  ];
+  const tableData = inscripcion
+    ? [
+        {
+          Inscrito: inscripcion.plataforma?.nombre || "—",
+          Tiempo: inscripcion.tiempo_disponible
+            ? `${Math.floor(inscripcion.tiempo_disponible / 60)} minutos`
+            : "—",
+          Confirmó: inscripcion.realizo_pago === 1 ? "sí" : "no",
+        },
+      ]
+    : [];
 
   return (
     <section className="containerSection">
@@ -68,10 +92,7 @@ export default async function Page(props: {
             </>
           )}
           {!student && numAcount && (
-            <button
-              className="button buttonSearch"
-              style={{ marginTop: "1rem" }}
-            >
+            <button className="button buttonSearch" style={{ marginTop: "1rem" }}>
               Registrar Estudiante
             </button>
           )}
@@ -79,7 +100,7 @@ export default async function Page(props: {
 
         {student && (
           <>
-            <Table headers={headers} data={data} />
+            <Table headers={headers} data={tableData} />
             <button
               className="button buttonSearch"
               style={{ marginTop: "2rem" }}
@@ -113,4 +134,3 @@ export default async function Page(props: {
     </section>
   );
 }
-//IO
